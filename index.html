@@ -73,9 +73,11 @@ function render(){
  var ch=$("chips");ch.innerHTML="";
  cats.forEach(function(c){ch.appendChild(chip(c,c===sel,function(){sel=c;render()}))});
  var tc={};rows.forEach(function(r){if(sel==="All"||r.category===sel)(r.tags||[]).forEach(function(t){tc[t]=(tc[t]||0)+1})});
+ if(sel==="All")tc={};
  if(tsel&&!tc[tsel])tsel="";
+ $("tagwrap").style.display=sel==="All"?"none":"";
  var tg=$("tagchips");tg.innerHTML="";
- ["All tags"].concat(Object.keys(tc).sort()).forEach(function(t){var v=t==="All tags"?"":t;tg.appendChild(chip(v?t+" ("+tc[t]+")":t,v===tsel,function(){tsel=v;render()},1))});
+ Object.keys(tc).sort().forEach(function(t){tg.appendChild(chip(t+" ("+tc[t]+")",t===tsel,function(){tsel=tsel===t?"":t;render()},1))});
  var l=rows.filter(function(r){var t=r.tags||[];return(sel==="All"||r.category===sel)&&(!tsel||t.indexOf(tsel)>-1)&&([r.name,r.category,r.description,r.use_when].concat(t).join(" ").toLowerCase().indexOf(q)>-1)});
  $("count").textContent=l.length+" of "+rows.length+" entries";
  var g=$("grid");g.innerHTML=l.length?"":'<div class="empty">No matches.</div>';
