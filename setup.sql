@@ -1,0 +1,50 @@
+-- 1) Table
+create table tools(
+  id bigint generated always as identity primary key,
+  name text not null, category text not null, description text not null,
+  use_when text, repo text, tags text[] default '{}',
+  created_at timestamptz default now());
+-- 2) Security: anyone can read, only YOUR_EMAIL can write
+alter table tools enable row level security;
+create policy "public read" on tools for select using (true);
+create policy "owner write" on tools for all to authenticated
+  using ((auth.jwt()->>'email') = 'YOUR_EMAIL')
+  with check ((auth.jwt()->>'email') = 'YOUR_EMAIL');
+-- 3) Starter data
+insert into tools(name,category,description,use_when,repo,tags) values
+('Impeccable','Design & UI','Frontend design skill and CLI with design vocabulary, critiques, audits and anti-pattern detection for agents.','Your AI-built UI looks generic and you want it critiqued and polished.',null,array['Frontend','Design critique']::text[]),
+('taste-skill','Design & UI','Gives coding agents art direction, curated styling rules, real photography and browser checks.','You want a distinctive landing page or site, not a template-looking one.',null,array['Frontend','Visual style']::text[]),
+('anti-slop','Design & UI','Rulebook that stops agents from producing AI-shaped UI, robotic boilerplate and cliché copy.','Output keeps sounding or looking “AI-generated” and you want it cleaned up.','miqdadbadjuber/anti-slop',array['Visual style','Copywriting','Design critique']::text[]),
+('ui-ux pro max','Design & UI','Searchable database of design systems, palettes, typography and UX guidelines across frontend frameworks.','You need quick, sensible design decisions (colors, fonts, layouts) before coding.',null,array['Frontend','Visual style']::text[]),
+('Emil Kowalski motion skill','Design & UI','Guides agents to build restrained micro-interactions, animations and state transitions using Emil Kowalski’s principles.','You want UI motion that feels fluid, not flashy.',null,array['Animation','Frontend']::text[]),
+('Framer Motion (Motion)','Design & UI','Production-ready React animation library: springs, layout transitions, gestures, scroll-linked effects.','You are animating a React app and want a declarative API.','motiondivision/motion',array['Animation','Components','Frontend']::text[]),
+('21st.dev','Design & UI','Community registry of copy-paste React + Tailwind components, installable via the shadcn CLI.','You need ready-made, good-looking components fast.',null,array['Components','Frontend','Templates & registry']::text[]),
+('page-mascot','Design & UI','Sprite-based character for a web page that follows the cursor and reacts to clicks.','You want a playful touch on a portfolio or landing page.','nilbuild/page-mascot',array['Animation','Components']::text[]),
+('superpowers','Coding Workflow','Opinionated agent methodology: requirements discovery, Socratic brainstorming, worktree isolation, TDD.','Starting a non-trivial feature and you want the agent to plan and test first.',null,array['Planning & TDD']::text[]),
+('Matt Pocock skills','Coding Workflow','Production-tested skills, including a requirements-interrogation routine (grill-me) and strict TypeScript workflows.','Requirements are vague, or you work heavily in TypeScript.',null,array['Planning & TDD','TypeScript']::text[]),
+('Karpathy skills','Coding Workflow','Guidelines inspired by Andrej Karpathy: minimal assumptions, clean abstractions, direct implementations.','The agent over-engineers or makes too many assumptions.',null,array['Code style']::text[]),
+('ponytail','Coding Workflow','Pushes agents toward the smallest complete diffs and reuse of existing helpers.','Diffs are bloated and you want pragmatic, minimal changes.',null,array['Code style']::text[]),
+('caveman','Coding Workflow','Cuts output tokens and latency by dropping filler and articles while keeping technical accuracy.','You are burning tokens or want terse, fast replies.',null,array['Token saving']::text[]),
+('Claude Code best practice','Coding Workflow','Reference repo of production patterns, commands, subagents, workflows and hooks for Claude Code.','Learning Claude Code or tightening up your setup.','shanraisshan/claude-code-best-practice',array['Learning']::text[]),
+('wshobson/agents','Coding Workflow','Huge catalog of specialized agent personas, skills and slash commands for Claude Code, Cursor, Codex CLI and more.','You want ready-made specialist agents instead of writing your own.','wshobson/agents',array['Templates & registry']::text[]),
+('AITMPL','Coding Workflow','Registry and CLI of templates, subagents, skills, slash commands and MCP servers for Claude Code.','Browsing or installing Claude Code add-ons from one place.',null,array['Templates & registry']::text[]),
+('Anthropic skills','Coding Workflow','Official reference skills for document generation, API patterns and design workflows.','You want authoritative examples of how skills should be written.','anthropics/skills',array['Official','Learning']::text[]),
+('Find Skills (Vercel Labs)','Coding Workflow','Meta-skill (npx skills find) that lets agents search and install skills from the skills.sh registry.','The agent needs a capability it doesn’t have yet.',null,array['Templates & registry']::text[]),
+('Orca (stablyai)','Coding Workflow','Orchestrator and agentic IDE to run fleets of CLI agents in parallel across isolated Git worktrees.','Running several coding agents on different tasks at once.','stablyai/orca',array['Parallel agents']::text[]),
+('Hindsight','Agent Tools & Memory','Bi-directional memory and reflection architecture that reviews past runs and feedback to self-correct.','Your agent repeats the same mistakes across sessions.',null,array['Memory']::text[]),
+('graphify','Agent Tools & Memory','Parses code, docs, schemas and media into a local knowledge graph using deterministic ASTs, not vectors.','You need a queryable map of a large codebase or doc set.',null,array['Code search','Memory']::text[]),
+('Agent-Reach','Agent Tools & Memory','CLI and skill giving agents free read/search across X, Reddit, YouTube, GitHub and more, with no paid API keys.','Your agent needs web and social research access cheaply.',null,array['Web research']::text[]),
+('Unlimited OCR','Docs & Media','Local-first OCR that runs vision-language models on your machine to turn images and PDFs into Markdown.','Digitizing scans or PDFs without API limits or cost.',null,array['OCR','Self-hosted']::text[]),
+('ppt-master','Docs & Media','Turns documents or prompts into fully editable native PowerPoint decks with vector shapes and speaker notes.','You need real, editable .pptx files, not flattened images.','hugohe3/ppt-master',array['Slides']::text[]),
+('Claude Cybersecurity','Security','Claude Code plugin mapping 18+ security domains to frameworks like NIST and MITRE ATT&CK.','Incident response, threat intel or cloud security work with framework alignment.',null,array['Defensive','Compliance']::text[]),
+('vbsec','Security','Audits codebases for common vulnerabilities and insecure patterns in AI-generated code.','You shipped “vibe-coded” code and want a security pass.',null,array['Defensive','Code audit']::text[]),
+('Security Audit','Security','Audits repos and agent configs for secret leaks, supply-chain risks and prompt injection vectors.','Pre-release check of a repo or agent setup.',null,array['Defensive','Code audit']::text[]),
+('Defending Code','Security','Anthropic reference pipeline for threat modeling, static scanning, triage and patch generation.','Building an automated find-and-fix security pipeline.',null,array['Defensive','Threat modeling','Code audit','Official']::text[]),
+('Trail of Bits Skills','Security','Security engineering skills: Semgrep, CodeQL, variant analysis, smart contracts and secure code review.','Deep code review or static analysis with an agent.',null,array['Defensive','Code audit']::text[]),
+('OWASP Agentic Skills Top 10','Security','Reference and evaluation skill applying OWASP’s top 10 risks to agent workflows and tool calls.','Assessing whether your agent setup is safe.',null,array['Defensive','Compliance','Guardrails']::text[]),
+('AgentGuard','Security','Zero-trust runtime framework that monitors and enforces access policies on agents around tool execution.','Agents touch sensitive systems and need guardrails.',null,array['Defensive','Guardrails']::text[]),
+('cc-safety-net','Security','Pre-execution guardrail for AI coding CLIs that blocks destructive shell commands and credential access.','Preventing an agent from running rm -rf or reading secrets.',null,array['Defensive','Guardrails']::text[]),
+('Ghost Security','Security','AppSec platform and proxy toolkit (e.g. Reaper) to intercept, inspect and validate web app and API traffic.','Testing web app and API vulnerabilities, by hand or with agents.',null,array['Offensive','Web & API testing']::text[]),
+('Bug Hunter','Security','Offensive skill guiding agents through attack-surface recon, endpoint chaining and finding verification.','Authorized bug bounty or pentest work.',null,array['Offensive','Web & API testing']::text[]),
+('Claude-Red','Security','Offensive framework turning Claude Code into a red-team assistant for recon and guided pentesting.','Authorized penetration testing only.','SnailSploit/Claude-Red',array['Offensive']::text[]),
+('Wardrobe','Apps','Self-hosted web app to catalog clothes, track laundry and get weather-based outfit suggestions.','You want a personal, self-hosted closet manager.',null,array['Self-hosted']::text[]);

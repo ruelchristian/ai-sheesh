@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Skills &amp; Tools Library</title>
+<style>
+:root{--bg:#faf9f6;--card:#fff;--tx:#1c1b19;--mu:#6b685f;--bd:#e5e2d9;--ac:#c4552d;--chip:#f0ede4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171614;--card:#201f1c;--tx:#efece4;--mu:#9d998d;--bd:#33312b;--ac:#e8845c;--chip:#2a2823}}
+:root[data-theme="dark"]{--bg:#171614;--card:#201f1c;--tx:#efece4;--mu:#9d998d;--bd:#33312b;--ac:#e8845c;--chip:#2a2823}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 Georgia,"Times New Roman",serif}
+main{max-width:1100px;margin:0 auto;padding:40px 20px 60px}
+h1{font-size:2.2rem;margin:0 0 6px;letter-spacing:-.02em}
+.sub{color:var(--mu);margin:0 0 24px;font-family:system-ui,sans-serif;font-size:.95rem}
+.bar{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;font-family:system-ui,sans-serif}
+input{width:100%;padding:11px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--bd);background:var(--chip);color:var(--tx);padding:6px 13px;border-radius:99px;font-size:.85rem;cursor:pointer}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.count{color:var(--mu);font-size:.85rem;font-family:system-ui,sans-serif;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.cat{font:600 .7rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--ac)}
+.card h2{margin:0;font-size:1.15rem}
+.card p{margin:0;font-size:.93rem}
+.use{font-family:system-ui,sans-serif;font-size:.85rem;background:var(--chip);border-radius:8px;padding:9px 11px;color:var(--tx)}
+.use b{color:var(--ac)}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-family:system-ui,sans-serif;font-size:.82rem}
+a.gh{color:var(--ac);text-decoration:none;font-weight:600}
+a.gh:hover{text-decoration:underline}
+.tag{color:var(--mu)}
+.empty{color:var(--mu);padding:40px 0;text-align:center;font-family:system-ui,sans-serif}
+.chip.sm{padding:3px 10px;font-size:.78rem}
+.lbl{font:600 .7rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);margin-bottom:-6px}
+.tl{display:flex;flex-wrap:wrap;gap:6px}
+.t{border:0;background:var(--chip);color:var(--mu);font:.72rem system-ui,sans-serif;padding:3px 8px;border-radius:6px;cursor:pointer}
+.t:hover{color:var(--ac)}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+button.b{font:600 .85rem system-ui,sans-serif;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 14px;border-radius:9px;cursor:pointer}
+button.b.p{background:var(--ac);border-color:var(--ac);color:#fff}
+.adm{display:flex;gap:8px;font-family:system-ui,sans-serif}
+dialog{border:1px solid var(--bd);border-radius:14px;background:var(--card);color:var(--tx);width:min(520px,92vw);padding:20px}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+label{display:block;font:600 .78rem system-ui,sans-serif;color:var(--mu);margin:10px 0 4px}
+textarea{width:100%;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit;min-height:64px}
+dialog input{background:var(--bg)}
+.row{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+.err{color:#c0392b;font:.85rem system-ui,sans-serif;margin-top:8px}
+</style></head>
+<body><main>
+<div class="top"><div><h1>Skills &amp; Tools Library</h1><p class="sub">Agent skills, CLIs and open-source tools: what they are, when to use them, and where the repo is.</p></div><div class="adm" id="adm"></div></div>
+<div class="bar"><input id="q" type="search" placeholder="Search by name, purpose, or use case…" aria-label="Search">
+<div class="lbl">Category</div><div class="chips" id="chips"></div>
+<div class="lbl">Tag</div><div class="chips" id="tagchips"></div></div>
+<div class="count" id="count">Loading…</div><div class="grid" id="grid"></div>
+</main>
+<dialog id="dlg"></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+var SUPABASE_URL="YOUR_SUPABASE_URL",SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY";
+var sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+var rows=[],user=null,sel="All",tsel="",q="";
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function link(r){return r.repo?["https://github.com/"+encodeURI(r.repo),"GitHub repo ↗","verified link"]:["https://github.com/search?type=repositories&q="+encodeURIComponent(r.name),"Find on GitHub ↗","search link, confirm repo"]}
+function chip(t,on,f,sm){var b=document.createElement("button");b.className="chip"+(sm?" sm":"")+(on?" on":"");b.textContent=t;b.onclick=f;return b}
+function btn(t,f,p){var b=document.createElement("button");b.className="b"+(p?" p":"");b.textContent=t;b.onclick=f;return b}
+async function load(){var r=await sb.from("tools").select("*").order("name");if(r.error){$("count").textContent="Could not load data: "+r.error.message;return}rows=r.data;render()}
+function render(){
+ var cats=["All"];rows.forEach(function(r){if(cats.indexOf(r.category)<0)cats.push(r.category)});
+ if(cats.indexOf(sel)<0)sel="All";
+ var ch=$("chips");ch.innerHTML="";
+ cats.forEach(function(c){ch.appendChild(chip(c,c===sel,function(){sel=c;render()}))});
+ var tc={};rows.forEach(function(r){if(sel==="All"||r.category===sel)(r.tags||[]).forEach(function(t){tc[t]=(tc[t]||0)+1})});
+ if(tsel&&!tc[tsel])tsel="";
+ var tg=$("tagchips");tg.innerHTML="";
+ ["All tags"].concat(Object.keys(tc).sort()).forEach(function(t){var v=t==="All tags"?"":t;tg.appendChild(chip(v?t+" ("+tc[t]+")":t,v===tsel,function(){tsel=v;render()},1))});
+ var l=rows.filter(function(r){var t=r.tags||[];return(sel==="All"||r.category===sel)&&(!tsel||t.indexOf(tsel)>-1)&&([r.name,r.category,r.description,r.use_when].concat(t).join(" ").toLowerCase().indexOf(q)>-1)});
+ $("count").textContent=l.length+" of "+rows.length+" entries";
+ var g=$("grid");g.innerHTML=l.length?"":'<div class="empty">No matches.</div>';
+ l.forEach(function(r){var k=link(r),c=document.createElement("article");c.className="card";
+  c.innerHTML='<div class="cat">'+esc(r.category)+'</div><h2>'+esc(r.name)+'</h2><p>'+esc(r.description)+'</p><div class="use"><b>Use when:</b> '+esc(r.use_when)+'</div><div class="tl">'+(r.tags||[]).map(function(t){return'<button class="t" data-t="'+esc(t)+'">#'+esc(t)+'</button>'}).join("")+'</div><div class="foot"><a class="gh" href="'+esc(k[0])+'" target="_blank" rel="noopener">'+k[1]+'</a><span class="tag">'+k[2]+'</span></div>'+(user?'<div class="adm"><button class="b" data-e="1">Edit</button><button class="b" data-d="1">Delete</button></div>':"");
+  c.querySelectorAll(".t").forEach(function(b){b.onclick=function(){tsel=b.dataset.t;render();scrollTo(0,0)}});
+  var e=c.querySelector("[data-e]");if(e)e.onclick=function(){form(r)};
+  var d=c.querySelector("[data-d]");if(d)d.onclick=function(){del(r)};
+  g.appendChild(c)});
+ var a=$("adm");a.innerHTML="";
+ if(user){a.appendChild(btn("+ Add",function(){form({})},1));a.appendChild(btn("Log out",function(){sb.auth.signOut()}))}else a.appendChild(btn("Admin login",loginDlg))}
+function loginDlg(){var d=$("dlg");d.innerHTML='<h2>Admin login</h2><label>Email</label><input id="em" type="email"><label>Password</label><input id="pw" type="password"><div class="err" id="er"></div><div class="row"><button class="b" id="x">Cancel</button><button class="b p" id="go">Log in</button></div>';
+ d.showModal();$("x").onclick=function(){d.close()};
+ $("go").onclick=async function(){var r=await sb.auth.signInWithPassword({email:$("em").value,password:$("pw").value});if(r.error)$("er").textContent=r.error.message;else d.close()}}
+function form(r){var d=$("dlg"),cats=[];rows.forEach(function(x){if(cats.indexOf(x.category)<0)cats.push(x.category)});
+ d.innerHTML='<h2>'+(r.id?"Edit":"Add")+' entry</h2><label>Name</label><input id="f1" value="'+esc(r.name)+'"><label>Category</label><input id="f2" list="cl" value="'+esc(r.category)+'"><datalist id="cl">'+cats.map(function(c){return'<option value="'+esc(c)+'">'}).join("")+'</datalist><label>Description</label><textarea id="f3">'+esc(r.description)+'</textarea><label>Use when</label><textarea id="f4">'+esc(r.use_when)+'</textarea><label>GitHub repo (owner/repo, optional)</label><input id="f5" value="'+esc(r.repo)+'"><label>Tags (comma separated)</label><input id="f6" value="'+esc((r.tags||[]).join(", "))+'"><div class="err" id="er"></div><div class="row"><button class="b" id="x">Cancel</button><button class="b p" id="go">Save</button></div>';
+ d.showModal();$("x").onclick=function(){d.close()};
+ $("go").onclick=async function(){
+  var o={name:$("f1").value.trim(),category:$("f2").value.trim(),description:$("f3").value.trim(),use_when:$("f4").value.trim(),repo:$("f5").value.trim().replace(/^https?:\/\/github\.com\//,"").replace(/\/$/,"")||null,tags:$("f6").value.split(",").map(function(t){return t.trim()}).filter(Boolean)};
+  if(!o.name||!o.category||!o.description){$("er").textContent="Name, category and description are required.";return}
+  var res=r.id?await sb.from("tools").update(o).eq("id",r.id):await sb.from("tools").insert(o);
+  if(res.error){$("er").textContent=res.error.message;return}
+  d.close();load()}}
+async function del(r){if(!confirm("Delete "+r.name+"?"))return;var res=await sb.from("tools").delete().eq("id",r.id);if(res.error)alert(res.error.message);else load()}
+$("q").oninput=function(e){q=e.target.value.toLowerCase();render()};
+sb.auth.onAuthStateChange(function(ev,s){user=s?s.user:null;render()});
+load();
+</script></body></html>
