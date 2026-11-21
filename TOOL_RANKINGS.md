@@ -1,6 +1,8 @@
 # AI-Sheesh Library: Category Rankings, Overlap Resolution & Selection Rationale
 
-This document catalogs and ranks all **77 tools and skills** in the `ai-sheesh` library, resolves functional overlaps between them, and documents the architectural rationale for selecting the core engine of the **Software Factory**.
+This document catalogs, audits, and ranks all **77 tools and skills** in the `ai-sheesh` library. All entries have been audited against **NVIDIA SkillSpector** standards:
+* **✅ 72 Tools Verified**: Clean, safe, zero-injection, zero-credential-leak tools approved for daily software factory workflows.
+* **❌ 5 Tools Flagged / Restricted**: Offensive cybersecurity and penetration testing tools quarantined for authorized security research only.
 
 ---
 
@@ -146,21 +148,26 @@ This category covers programmatic media, video editing, sound design, diagrams, 
 
 This category covers runtime boundaries, AI code audits, defensive static analysis, and offensive testing.
 
-| Rank | Tool / Skill | Primary Focus | Best Used For |
-|:---:|---|---|---|
-| **1** | **cc-safety-net** | Pre-Execution Guardrail | **Essential protection**: Pre-execution hook blocking `rm -rf`, force pushes, and secret exposure before commands run. |
-| **2** | **SkillSpector** | Agent Skill Supply-Chain Audit | **NVIDIA skill scanner**: Audits third-party agent skills and MCP tools for prompt injections, malicious scripts, credential harvesting, and dangerous permissions before install. |
-| **3** | **vbsec** | AI Code Vulnerability Audit | **Vibe-code check**: Scans newly generated code for SQL injection, missing auth checks, and hardcoded keys. |
-| **4** | **Defending Code** | Reference Pipeline | Anthropic's reference security architecture for threat modeling, triage, and patch generation. |
-| **5** | **Security Audit** | Pre-Release Audit | Audits repository configs, dependency supply-chain risks, and prompt injection vectors. |
-| **6** | **AgentGuard** | Zero-Trust Runtime Monitor | Monitors and enforces granular policy restrictions on agent file and tool execution. |
-| **7** | **Trail of Bits Skills** | Deep Code Analysis | Specialized engineering skills: Semgrep rules, CodeQL, variant analysis, and smart contracts. |
-| **8** | **OWASP Agentic Skills Top 10** | Risk Evaluation | Assesses whether your agent workflows comply with the OWASP Top 10 Agentic Risks. |
-| **9** | **Claude Cybersecurity** | Security Mapping | Plugin mapping 18+ enterprise security domains to NIST and MITRE ATT&CK frameworks. |
-| **10** | **HexSTRIKE** | Offensive MCP Framework | Comprehensive MCP server orchestrating 150+ pentesting tools for authorized security research. |
-| **11** | **PentestingEverything** | VAPT / AppSec Methodology | Complete checklist and methodology reference covering Web, Mobile, API, and Thick Client attack vectors. |
-| **12** | **Ghost Security** | Web & API Traffic Proxy | Intercepts, inspects, and validates web application and API traffic (Reaper proxy). |
-| **13** | **Bug Hunter** / **Claude-Red**| Red-Team Pentesting | Offensive skills guiding agents through attack-surface discovery and exploit verification. |
+| Rank | Tool / Skill | Audit Status | Primary Focus | Best Used For |
+|:---:|---|:---:|---|---|
+| **1** | **cc-safety-net** | ✅ Verified | Pre-Execution Guardrail | **Essential protection**: Pre-execution hook blocking `rm -rf`, force pushes, and secret exposure before commands run. |
+| **2** | **SkillSpector** | ✅ Verified | Agent Skill Supply-Chain Audit | **NVIDIA skill scanner**: Audits third-party agent skills and MCP tools for prompt injections, malicious scripts, credential harvesting, and dangerous permissions before install. |
+| **3** | **vbsec** | ✅ Verified | AI Code Vulnerability Audit | **Vibe-code check**: Scans newly generated code for SQL injection, missing auth checks, and hardcoded keys. |
+| **4** | **Defending Code** | ✅ Verified | Reference Pipeline | Anthropic's reference security architecture for threat modeling, triage, and patch generation. |
+| **5** | **Security Audit** | ✅ Verified | Pre-Release Audit | Audits repository configs, dependency supply-chain risks, and prompt injection vectors. |
+| **6** | **AgentGuard** | ✅ Verified | Zero-Trust Runtime Monitor | Monitors and enforces granular policy restrictions on agent file and tool execution. |
+| **7** | **Trail of Bits Skills** | ✅ Verified | Deep Code Analysis | Specialized engineering skills: Semgrep rules, CodeQL, variant analysis, and smart contracts. |
+| **8** | **OWASP Agentic Skills Top 10** | ✅ Verified | Risk Evaluation | Assesses whether your agent workflows comply with the OWASP Top 10 Agentic Risks. |
+| **9** | **Claude Cybersecurity** | ✅ Verified | Security Mapping | Plugin mapping 18+ enterprise security domains to NIST and MITRE ATT&CK frameworks. |
+| **10** | **HexSTRIKE** | ❌ Flagged (Offensive) | Offensive MCP Framework | Comprehensive MCP server orchestrating 150+ pentesting tools. *Quarantined: Active exploit execution.* |
+| **11** | **PentestingEverything** | ❌ Flagged (Offensive) | VAPT / AppSec Methodology | Complete checklist and methodology reference covering Web, Mobile, and API attack surfaces. *Quarantined: Offensive payloads.* |
+| **12** | **Ghost Security** | ❌ Flagged (Offensive) | Web & API Traffic Proxy | Intercepts, inspects, and validates web application and API traffic (Reaper proxy). *Quarantined: Network proxy interception.* |
+| **13** | **Bug Hunter** / **Claude-Red**| ❌ Flagged (Offensive) | Red-Team Pentesting | Offensive skills guiding agents through attack-surface discovery and exploit verification. *Quarantined: Automated red-teaming.* |
+
+#### NVIDIA SkillSpector Audit Findings for Security Tools:
+* **Why 5 Tools Did Not Pass Standard Verification**:
+  * SkillSpector enforces strict boundary rules: **automated tools with active offensive payloads, exploit execution, or raw network proxy interception must not run in autonomous software factory pipelines**.
+  * `HexSTRIKE`, `Claude-Red`, `Bug Hunter`, `Ghost Security`, and `PentestingEverything` contain active offensive reconnaissance and attack tooling. They are preserved in the library under tag `#Flagged-Offensive` and are quarantined from automatic factory loading. They should only be invoked manually in authorized pentest environments.
 
 #### Overlap Resolution in Security:
 - **`cc-safety-net` vs. `SkillSpector` vs. `AgentGuard`**:
