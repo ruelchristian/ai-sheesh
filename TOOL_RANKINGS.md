@@ -1,7 +1,7 @@
 # AI-Sheesh Library: Category Rankings, Overlap Resolution & Selection Rationale
 
-This document catalogs, audits, and ranks all **89 tools and skills** in the `ai-sheesh` library under the **Dual-Verification Model** (audited against **NVIDIA SkillSpector** standards):
-* **✅ 84 Tools Verified for Everyday Engineering**: 100% clean, zero-injection, zero-credential-leak tools approved for autonomous coding runs in production pipelines.
+This document catalogs, audits, and ranks all **90 tools and skills** in the `ai-sheesh` library under the **Dual-Verification Model** (audited against **NVIDIA SkillSpector** standards):
+* **✅ 85 Tools Verified for Everyday Engineering**: 100% clean, zero-injection, zero-credential-leak tools approved for autonomous coding runs in production pipelines.
 * **🎯 5 Tools Verified for Authorized Pentesting**: Legitimate, verified offensive security and penetration testing tools for authorized red-teaming and VAPT assessments in isolated sandboxes.
 
 ---
@@ -116,28 +116,35 @@ This category ensures agents remember context, reduce token consumption, optimiz
 
 ---
 
-### Category D: Docs, Media & Video Generation (16 Tools)
+### Category D: Docs, Media & Video Generation (17 Tools)
 
 This category covers programmatic media, video editing, sound design, diagrams, and document processing.
 
 | Rank | Tool / Skill | Audit Status | Primary Focus | Best Used For |
 |:---:|---|:---:|---|---|
 | **1** | **stack diagram** | ✅ Verified | Architecture Diagrams | **Essential documentation**: Generates clean architecture diagrams with official logos from 1 sentence. |
-| **2** | **Remocn** | ✅ Verified | Programmatic Video | **Feature releases & changelogs**: 900+ Remotion components to generate video demos straight from code. |
-| **3** | **real sfx** | ✅ Verified | Video Sound Design | **Audio placement**: Places real recorded sound effects on exact video frames while preserving voice/music. |
-| **4** | **VibeVoice** | ✅ Verified | Frontier Voice AI | **High-fidelity synthetic audio**: Microsoft open-source expressive, low-latency conversational speech synthesis for video narration and agents. |
-| **5** | **earshot** | ✅ Verified | Sound FX Engine | **Procedural audio**: CPU-only sound generation engine (922 sound designs) and audio verification for agents. |
-| **6** | **motionmaxxing** | ✅ Verified | Kinetic Typography | **Launch teasers**: Turns AI video slop into high-tempo, kinetic typography launch films. |
-| **7** | **i hate editing** | ✅ Verified | Social Reel Editing | **Founder videos**: Takes raw talking-head takes and auto-cuts silences, captions, and zoom cards. |
-| **8** | **reverse-engineer-marketing** | ✅ Verified | Marketing & Funnel Intelligence | **Competitor reverse-engineering**: Deep-dive marketing analysis of any URL (paid ads, SEO, social, tech stack, and funnel steps). |
-| **9** | **Openverse** | ✅ Verified | Royalty-Free Media Search | **Legal stock assets**: Search engine and API for 700M+ CC0 and public-domain images and audio. |
-| **10** | **ppt-master** | ✅ Verified | Presentation Decks | **Pitch decks**: Generates real, editable vector `.pptx` PowerPoint decks with speaker notes. |
-| **11** | **Unlimited OCR** | ✅ Verified | Local Document Parsing | **Digitization**: Runs local vision models to convert PDFs and scans into Markdown without API limits. |
-| **12** | **Teardown** | ✅ Verified | 3D Interactive Simulators | **Explainer widgets**: Turns machines or physical mechanisms into 3D HTML simulators you can take apart. |
-| **13** | **rea-video** | ✅ Verified | Video Forensics | **Reverse-engineering**: Dissects reference videos shot-by-shot to extract pacing, camera moves, and recreation prompts. |
-| **14** | **make-an-anime** | ✅ Verified | Story-to-Anime Pipeline | Automated pipeline directing anime production (character sheets, storyboards, voice lines). |
-| **15** | **animated shorts** | ✅ Verified | Cartoon Story Shorts | Three.js + Remotion pipeline making vertical 2D/3D cartoon story shorts locally. |
-| **16** | **page-mascot** | ✅ Verified | Interactive Sprite | Lightweight cursor-tracking mascot character for landing pages. |
+| **2** | **ffmpeg-skill** | ✅ Verified | Local Video & Audio CLI Engine | **Essential media processing**: 40+ Python 3.10+ contract scripts driving local FFmpeg for cutting, reframing (9:16 vertical), silence removal, LUFS normalization, and SRT/ASS captions without API costs. |
+| **3** | **Remocn** | ✅ Verified | Programmatic Video | **Feature releases & changelogs**: 900+ Remotion components to generate video demos straight from code. |
+| **4** | **real sfx** | ✅ Verified | Video Sound Design | **Audio placement**: Places real recorded sound effects on exact video frames while preserving voice/music. |
+| **5** | **VibeVoice** | ✅ Verified | Frontier Voice AI | **High-fidelity synthetic audio**: Microsoft open-source expressive, low-latency conversational speech synthesis for video narration and agents. |
+| **6** | **earshot** | ✅ Verified | Sound FX Engine | **Procedural audio**: CPU-only sound generation engine (922 sound designs) and audio verification for agents. |
+| **7** | **motionmaxxing** | ✅ Verified | Kinetic Typography | **Launch teasers**: Turns AI video slop into high-tempo, kinetic typography launch films. |
+| **8** | **i hate editing** | ✅ Verified | Social Reel Editing | **Founder videos**: Takes raw talking-head takes and auto-cuts silences, captions, and zoom cards. |
+| **9** | **reverse-engineer-marketing** | ✅ Verified | Marketing & Funnel Intelligence | **Competitor reverse-engineering**: Deep-dive marketing analysis of any URL (paid ads, SEO, social, tech stack, and funnel steps). |
+| **10** | **Openverse** | ✅ Verified | Royalty-Free Media Search | **Legal stock assets**: Search engine and API for 700M+ CC0 and public-domain images and audio. |
+| **11** | **ppt-master** | ✅ Verified | Presentation Decks | **Pitch decks**: Generates real, editable vector `.pptx` PowerPoint decks with speaker notes. |
+| **12** | **Unlimited OCR** | ✅ Verified | Local Document Parsing | **Digitization**: Runs local vision models to convert PDFs and scans into Markdown without API limits. |
+| **13** | **Teardown** | ✅ Verified | 3D Interactive Simulators | **Explainer widgets**: Turns machines or physical mechanisms into 3D HTML simulators you can take apart. |
+| **14** | **rea-video** | ✅ Verified | Video Forensics | **Reverse-engineering**: Dissects reference videos shot-by-shot to extract pacing, camera moves, and recreation prompts. |
+| **15** | **make-an-anime** | ✅ Verified | Story-to-Anime Pipeline | Automated pipeline directing anime production (character sheets, storyboards, voice lines). |
+| **16** | **animated shorts** | ✅ Verified | Cartoon Story Shorts | Three.js + Remotion pipeline making vertical 2D/3D cartoon story shorts locally. |
+| **17** | **page-mascot** | ✅ Verified | Interactive Sprite | Lightweight cursor-tracking mascot character for landing pages. |
+
+#### Overlap Resolution in Docs & Media:
+- **`ffmpeg-skill` vs. `Remocn` vs. `i hate editing`**:
+  - `Remocn`: **Generative programmatic video** using React code, CSS animations, and Three.js components to synthesize new videos from scratch.
+  - `i hate editing`: **Specialized talking-head pipeline** that transcribes with local whisper.cpp and auto-cuts zoom cards and silences for monologue clips.
+  - `ffmpeg-skill`: The **foundational Swiss Army knife for existing media**: uses deterministic Python 3.10+ standard library scripts to run complex FFmpeg filtergraphs (cutting, concatenating, loudness normalization, 9:16 vertical social reframing, and burned-in karaoke captions) without cloud APIs.
 
 ---
 
