@@ -1,7 +1,7 @@
 # AI-Sheesh Library: Category Rankings, Overlap Resolution & Selection Rationale
 
-This document catalogs, audits, and ranks all **90 tools and skills** in the `ai-sheesh` library under the **Dual-Verification Model** (audited against **NVIDIA SkillSpector** standards):
-* **✅ 85 Tools Verified for Everyday Engineering**: 100% clean, zero-injection, zero-credential-leak tools approved for autonomous coding runs in production pipelines.
+This document catalogs, audits, and ranks all **91 tools and skills** in the `ai-sheesh` library under the **Dual-Verification Model** (audited against **NVIDIA SkillSpector** standards):
+* **✅ 86 Tools Verified for Everyday Engineering**: 100% clean, zero-injection, zero-credential-leak tools approved for autonomous coding runs in production pipelines.
 * **🎯 5 Tools Verified for Authorized Pentesting**: Legitimate, verified offensive security and penetration testing tools for authorized red-teaming and VAPT assessments in isolated sandboxes.
 
 ---
@@ -10,7 +10,7 @@ This document catalogs, audits, and ranks all **90 tools and skills** in the `ai
 
 ---
 
-### Category A: Coding Workflow & Architecture (33 Tools)
+### Category A: Coding Workflow & Architecture (34 Tools)
 
 This category governs planning, diff creation, code style, architecture mapping, database design, and PR delivery.
 
@@ -21,36 +21,41 @@ This category governs planning, diff creation, code style, architecture mapping,
 | **3** | **ponytail** | ✅ Verified | Diff Generation | **Surgical changes**: Restricts diffs to the absolute minimum lines; forbids drive-by refactorings. |
 | **4** | **Matt Pocock skills** | ✅ Verified | Requirements Interrogation | **Spec discovery**: Runs `/grill-me` before coding when requirements are vague; enforces strict TypeScript. |
 | **5** | **elephant-goldfish-model** | ✅ Verified | Spec & Unbiased Review | **Google's spec review paradigm**: Drafting agent with deep memory ("Elephant") paired with a cold, context-free reviewer ("Goldfish") to eliminate confirmation bias. |
-| **6** | **database-architect** | ✅ Verified | Senior DBA & Schema Design | **Zero-downtime database architecture**: Safe online migrations (`CREATE INDEX CONCURRENTLY`, `lock_timeout = '2s'`), composite FKs for multi-tenant RLS, and scratch Postgres test proof. |
-| **7** | **code-reviewer** | ✅ Verified | Forensic Diff Bug Hunter | **Pre-merge bug hunting**: Reads beyond hunks to check all external callers, hunts subtle language gotchas (TS, Python, Go, SQL), and strictly requires a concrete failure scenario before reporting. |
-| **8** | **ultra-think** | ✅ Verified | Multi-Framework Deep Reasoning | **Pre-flight reasoning**: Multi-framework structured analysis surfacing hidden assumptions, trade-offs, and competing solutions before coding. |
-| **9** | **generate-tests** | ✅ Verified | Automated Test Generator | **Comprehensive test suites**: Crafts unit, edge-case, and boundary test files matching repo conventions (Jest, Vitest, Pytest, Go). |
-| **10** | **run-tests-after-changes** | ✅ Verified | Post-Tool TDD Regression Hook | **Immediate TDD feedback**: Silently executes fast unit tests immediately after file modifications to catch regressions in the same turn. |
-| **11** | **superpowers** | ✅ Verified | TDD & Isolation | **Code safety**: Enforces writing failing tests first + working in isolated `git worktree`s. |
-| **12** | **tstack** | ✅ Verified | PR Automation & Review | **Autonomous delivery**: Multi-model consensus review (`council`), hands-off PR shipping (`full-send`), CI babysitting. |
-| **13** | **modern-web-guidance** | ✅ Verified | Web Standards & Best Practices | **Google Chrome official guidance**: Injects modern web platform APIs, browser compatibility, and performance patterns directly into coding agents. |
-| **14** | **Floorplan** | ✅ Verified | Codebase Map | **Navigation**: Live, interactive, plain-English architectural map of files, routes, and connections. |
-| **15** | **bulletproof-react** | ✅ Verified | Scalable Frontend Blueprint | **React architecture**: Production-ready folder structure, feature-based modularity, state management, and testing patterns. |
-| **16** | **breakscale** | ✅ Verified | Architecture Stress-Testing | **System design**: Simulates synthetic load, queues, and retry storms to find bottlenecks before coding. |
-| **17** | **system-design-primer** | ✅ Verified | Distributed Systems Roadmap | **Scalability knowledge**: Definitive architectural patterns for caching, replication, sharding, and consensus algorithms. |
-| **18** | **safe-dev-permissions** | ✅ Verified | Streamlined Execution Profile | **Frictionless workflow**: Pre-authorizes safe routine commands (test, lint, build, git diff, git status) to eliminate repetitive permission prompts. |
-| **19** | **founder** | ✅ Verified | Business Strategy | **Pre-code validation**: Tests business models, unit economics, and customer personas before building. |
-| **20** | **system-design-notes** | ✅ Verified | Architecture Quick Reference | **Concise blueprints**: Trade-offs, high-level diagrams, and scaling numbers for rate limiters, KV stores, and chat backends. |
-| **21** | **devops-engineer** | ✅ Verified | CI/CD & Cloud Infrastructure | **Deployment automation**: Production GitHub Actions CI/CD pipelines, multi-arch Docker packaging, blue-green deployment scripts, Terraform IaC, and Prometheus alerting. |
-| **22** | **dotnet-skills** | ✅ Verified | C# / .NET Conventions | **Microsoft official skills**: Clean architecture, Roslyn analyzers, dependency injection, and EF Core patterns for .NET. |
-| **23** | **caveman** | ✅ Verified | Latency & Token Economy | **Speed & cost**: Drops filler words and conversational fluff to make agent replies faster. |
-| **24** | **Claude Code best practice** | ✅ Verified | Reference Patterns | Authoritative patterns for subagents, workflows, and hooks. |
-| **25** | **Anthropic skills** | ✅ Verified | Official Reference | Official patterns for API design and document generation. |
-| **26** | **aspnetboilerplate** | ✅ Verified | Enterprise Backend Boilerplate | Enterprise DDD (Domain Driven Design), multi-tenancy, and modular application framework for ASP.NET Core. |
-| **27** | **Orca (stablyai)** | ✅ Verified | Fleet Execution | Runs fleets of coding agents in parallel across separate worktrees (heavy orchestration). |
-| **28** | **openhuman** | ✅ Verified | Lightweight Agent Fleet Harness | High-efficiency agent harness designed to run fleets of 500+ parallel autonomous agents with minimal memory footprint. |
-| **29** | **agentic-awesome-skills** | ✅ Verified | Meta Skill Catalog | Massive collection of 3,000+ curated and categorized reusable agent skills across specialized frameworks and languages. |
-| **30** | **Find Skills (Vercel Labs)**| ✅ Verified | Meta-Installer | `npx skills find` utility to search and install missing skills on demand. |
-| **31** | **ai-engineering-from-scratch**| ✅ Verified | AI Architecture Reference | Zero-dependency implementation of LLMs, fine-tuning, RAG, and agent runtimes from first principles. |
-| **32** | **wshobson/agents** | ✅ Verified | Persona Catalog | Large catalog of specialized personas when you need an uncommon specialist. |
-| **33** | **AITMPL** | ✅ Verified | CLI Registry | Template browser for downloading Claude Code templates and commands. |
+| **6** | **thirteen-layer-audit** | ✅ Verified | 13-Layer AIDE Standard & Plays | **Matt Murphy's production readiness standard**: Automated CLI scanner across 13 architecture layers (frontend to DR) + the 7 Daily Standing Plays to prevent vibe-coding collapse. |
+| **7** | **database-architect** | ✅ Verified | Senior DBA & Schema Design | **Zero-downtime database architecture**: Safe online migrations (`CREATE INDEX CONCURRENTLY`, `lock_timeout = '2s'`), composite FKs for multi-tenant RLS, and scratch Postgres test proof. |
+| **8** | **code-reviewer** | ✅ Verified | Forensic Diff Bug Hunter | **Pre-merge bug hunting**: Reads beyond hunks to check all external callers, hunts subtle language gotchas (TS, Python, Go, SQL), and strictly requires a concrete failure scenario before reporting. |
+| **9** | **ultra-think** | ✅ Verified | Multi-Framework Deep Reasoning | **Pre-flight reasoning**: Multi-framework structured analysis surfacing hidden assumptions, trade-offs, and competing solutions before coding. |
+| **10** | **generate-tests** | ✅ Verified | Automated Test Generator | **Comprehensive test suites**: Crafts unit, edge-case, and boundary test files matching repo conventions (Jest, Vitest, Pytest, Go). |
+| **11** | **run-tests-after-changes** | ✅ Verified | Post-Tool TDD Regression Hook | **Immediate TDD feedback**: Silently executes fast unit tests immediately after file modifications to catch regressions in the same turn. |
+| **12** | **superpowers** | ✅ Verified | TDD & Isolation | **Code safety**: Enforces writing failing tests first + working in isolated `git worktree`s. |
+| **13** | **tstack** | ✅ Verified | PR Automation & Review | **Autonomous delivery**: Multi-model consensus review (`council`), hands-off PR shipping (`full-send`), CI babysitting. |
+| **14** | **modern-web-guidance** | ✅ Verified | Web Standards & Best Practices | **Google Chrome official guidance**: Injects modern web platform APIs, browser compatibility, and performance patterns directly into coding agents. |
+| **15** | **Floorplan** | ✅ Verified | Codebase Map | **Navigation**: Live, interactive, plain-English architectural map of files, routes, and connections. |
+| **16** | **bulletproof-react** | ✅ Verified | Scalable Frontend Blueprint | **React architecture**: Production-ready folder structure, feature-based modularity, state management, and testing patterns. |
+| **17** | **breakscale** | ✅ Verified | Architecture Stress-Testing | **System design**: Simulates synthetic load, queues, and retry storms to find bottlenecks before coding. |
+| **18** | **system-design-primer** | ✅ Verified | Distributed Systems Roadmap | **Scalability knowledge**: Definitive architectural patterns for caching, replication, sharding, and consensus algorithms. |
+| **19** | **safe-dev-permissions** | ✅ Verified | Streamlined Execution Profile | **Frictionless workflow**: Pre-authorizes safe routine commands (test, lint, build, git diff, git status) to eliminate repetitive permission prompts. |
+| **20** | **founder** | ✅ Verified | Business Strategy | **Pre-code validation**: Tests business models, unit economics, and customer personas before building. |
+| **21** | **system-design-notes** | ✅ Verified | Architecture Quick Reference | **Concise blueprints**: Trade-offs, high-level diagrams, and scaling numbers for rate limiters, KV stores, and chat backends. |
+| **22** | **devops-engineer** | ✅ Verified | CI/CD & Cloud Infrastructure | **Deployment automation**: Production GitHub Actions CI/CD pipelines, multi-arch Docker packaging, blue-green deployment scripts, Terraform IaC, and Prometheus alerting. |
+| **23** | **dotnet-skills** | ✅ Verified | C# / .NET Conventions | **Microsoft official skills**: Clean architecture, Roslyn analyzers, dependency injection, and EF Core patterns for .NET. |
+| **24** | **caveman** | ✅ Verified | Latency & Token Economy | **Speed & cost**: Drops filler words and conversational fluff to make agent replies faster. |
+| **25** | **Claude Code best practice** | ✅ Verified | Reference Patterns | Authoritative patterns for subagents, workflows, and hooks. |
+| **26** | **Anthropic skills** | ✅ Verified | Official Reference | Official patterns for API design and document generation. |
+| **27** | **aspnetboilerplate** | ✅ Verified | Enterprise Backend Boilerplate | Enterprise DDD (Domain Driven Design), multi-tenancy, and modular application framework for ASP.NET Core. |
+| **28** | **Orca (stablyai)** | ✅ Verified | Fleet Execution | Runs fleets of coding agents in parallel across separate worktrees (heavy orchestration). |
+| **29** | **openhuman** | ✅ Verified | Lightweight Agent Fleet Harness | High-efficiency agent harness designed to run fleets of 500+ parallel autonomous agents with minimal memory footprint. |
+| **30** | **agentic-awesome-skills** | ✅ Verified | Meta Skill Catalog | Massive collection of 3,000+ curated and categorized reusable agent skills across specialized frameworks and languages. |
+| **31** | **Find Skills (Vercel Labs)**| ✅ Verified | Meta-Installer | `npx skills find` utility to search and install missing skills on demand. |
+| **32** | **ai-engineering-from-scratch**| ✅ Verified | AI Architecture Reference | Zero-dependency implementation of LLMs, fine-tuning, RAG, and agent runtimes from first principles. |
+| **33** | **wshobson/agents** | ✅ Verified | Persona Catalog | Large catalog of specialized personas when you need an uncommon specialist. |
+| **34** | **AITMPL** | ✅ Verified | CLI Registry | Template browser for downloading Claude Code templates and commands. |
 
 #### Overlap Resolution in Coding Workflow:
+- **`thirteen-layer-audit` vs. `code-reviewer` vs. `vbsec`**:
+  - `vbsec`: Focused on **vulnerability detection** (SQL injection, hardcoded secrets, schema sanitization).
+  - `code-reviewer`: Focused on **forensic diff investigation** (external callers, failure scenarios, language-specific runtime edge cases).
+  - `thirteen-layer-audit`: Focused on **holistic production readiness across the entire stack** (automated CLI scanner for all 13 architecture layers from frontend to DR) and enforces the 7 Daily Standing Plays for autonomous coding agents.
 - **`gstack` vs. `tstack`**: `gstack` acts as your **internal engineering department** (CEO, Eng Manager, Browser QA). `tstack` acts as your **shipping pipeline** (`council` for multi-model consensus, `full-send` for hands-off PR creation). Combine them: Plan and QA with `gstack`; review and ship PRs with `tstack`.
 - **`code-reviewer` vs. `council` vs. `gstack (review)`**:
   - `gstack review`: Emulates a high-level Engineering Manager asking architecture questions.
