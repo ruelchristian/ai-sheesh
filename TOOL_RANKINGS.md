@@ -1,7 +1,7 @@
 # AI-Sheesh Library: Category Rankings, Overlap Resolution & Selection Rationale
 
-This document catalogs, audits, and ranks all **81 tools and skills** in the `ai-sheesh` library under the **Dual-Verification Model** (audited against **NVIDIA SkillSpector** standards):
-* **✅ 76 Tools Verified for Everyday Engineering**: 100% clean, zero-injection, zero-credential-leak tools approved for autonomous coding runs in production pipelines.
+This document catalogs, audits, and ranks all **89 tools and skills** in the `ai-sheesh` library under the **Dual-Verification Model** (audited against **NVIDIA SkillSpector** standards):
+* **✅ 84 Tools Verified for Everyday Engineering**: 100% clean, zero-injection, zero-credential-leak tools approved for autonomous coding runs in production pipelines.
 * **🎯 5 Tools Verified for Authorized Pentesting**: Legitimate, verified offensive security and penetration testing tools for authorized red-teaming and VAPT assessments in isolated sandboxes.
 
 ---
@@ -10,7 +10,7 @@ This document catalogs, audits, and ranks all **81 tools and skills** in the `ai
 
 ---
 
-### Category A: Coding Workflow & Architecture (29 Tools)
+### Category A: Coding Workflow & Architecture (33 Tools)
 
 This category governs planning, diff creation, code style, architecture mapping, database design, and PR delivery.
 
@@ -23,28 +23,32 @@ This category governs planning, diff creation, code style, architecture mapping,
 | **5** | **elephant-goldfish-model** | ✅ Verified | Spec & Unbiased Review | **Google's spec review paradigm**: Drafting agent with deep memory ("Elephant") paired with a cold, context-free reviewer ("Goldfish") to eliminate confirmation bias. |
 | **6** | **database-architect** | ✅ Verified | Senior DBA & Schema Design | **Zero-downtime database architecture**: Safe online migrations (`CREATE INDEX CONCURRENTLY`, `lock_timeout = '2s'`), composite FKs for multi-tenant RLS, and scratch Postgres test proof. |
 | **7** | **code-reviewer** | ✅ Verified | Forensic Diff Bug Hunter | **Pre-merge bug hunting**: Reads beyond hunks to check all external callers, hunts subtle language gotchas (TS, Python, Go, SQL), and strictly requires a concrete failure scenario before reporting. |
-| **8** | **superpowers** | ✅ Verified | TDD & Isolation | **Code safety**: Enforces writing failing tests first + working in isolated `git worktree`s. |
-| **9** | **tstack** | ✅ Verified | PR Automation & Review | **Autonomous delivery**: Multi-model consensus review (`council`), hands-off PR shipping (`full-send`), CI babysitting. |
-| **10** | **modern-web-guidance** | ✅ Verified | Web Standards & Best Practices | **Google Chrome official guidance**: Injects modern web platform APIs, browser compatibility, and performance patterns directly into coding agents. |
-| **11** | **Floorplan** | ✅ Verified | Codebase Map | **Navigation**: Live, interactive, plain-English architectural map of files, routes, and connections. |
-| **12** | **bulletproof-react** | ✅ Verified | Scalable Frontend Blueprint | **React architecture**: Production-ready folder structure, feature-based modularity, state management, and testing patterns. |
-| **13** | **breakscale** | ✅ Verified | Architecture Stress-Testing | **System design**: Simulates synthetic load, queues, and retry storms to find bottlenecks before coding. |
-| **14** | **system-design-primer** | ✅ Verified | Distributed Systems Roadmap | **Scalability knowledge**: Definitive architectural patterns for caching, replication, sharding, and consensus algorithms. |
-| **15** | **founder** | ✅ Verified | Business Strategy | **Pre-code validation**: Tests business models, unit economics, and customer personas before building. |
-| **16** | **system-design-notes** | ✅ Verified | Architecture Quick Reference | **Concise blueprints**: Trade-offs, high-level diagrams, and scaling numbers for rate limiters, KV stores, and chat backends. |
-| **17** | **devops-engineer** | ✅ Verified | CI/CD & Cloud Infrastructure | **Deployment automation**: Production GitHub Actions CI/CD pipelines, multi-arch Docker packaging, blue-green deployment scripts, Terraform IaC, and Prometheus alerting. |
-| **18** | **dotnet-skills** | ✅ Verified | C# / .NET Conventions | **Microsoft official skills**: Clean architecture, Roslyn analyzers, dependency injection, and EF Core patterns for .NET. |
-| **19** | **caveman** | ✅ Verified | Latency & Token Economy | **Speed & cost**: Drops filler words and conversational fluff to make agent replies faster. |
-| **20** | **Claude Code best practice** | ✅ Verified | Reference Patterns | Authoritative patterns for subagents, workflows, and hooks. |
-| **21** | **Anthropic skills** | ✅ Verified | Official Reference | Official patterns for API design and document generation. |
-| **22** | **aspnetboilerplate** | ✅ Verified | Enterprise Backend Boilerplate | Enterprise DDD (Domain Driven Design), multi-tenancy, and modular application framework for ASP.NET Core. |
-| **23** | **Orca (stablyai)** | ✅ Verified | Fleet Execution | Runs fleets of coding agents in parallel across separate worktrees (heavy orchestration). |
-| **24** | **openhuman** | ✅ Verified | Lightweight Agent Fleet Harness | High-efficiency agent harness designed to run fleets of 500+ parallel autonomous agents with minimal memory footprint. |
-| **25** | **agentic-awesome-skills** | ✅ Verified | Meta Skill Catalog | Massive collection of 3,000+ curated and categorized reusable agent skills across specialized frameworks and languages. |
-| **26** | **Find Skills (Vercel Labs)**| ✅ Verified | Meta-Installer | `npx skills find` utility to search and install missing skills on demand. |
-| **27** | **ai-engineering-from-scratch**| ✅ Verified | AI Architecture Reference | Zero-dependency implementation of LLMs, fine-tuning, RAG, and agent runtimes from first principles. |
-| **28** | **wshobson/agents** | ✅ Verified | Persona Catalog | Large catalog of specialized personas when you need an uncommon specialist. |
-| **29** | **AITMPL** | ✅ Verified | CLI Registry | Template browser for downloading Claude Code templates and commands. |
+| **8** | **ultra-think** | ✅ Verified | Multi-Framework Deep Reasoning | **Pre-flight reasoning**: Multi-framework structured analysis surfacing hidden assumptions, trade-offs, and competing solutions before coding. |
+| **9** | **generate-tests** | ✅ Verified | Automated Test Generator | **Comprehensive test suites**: Crafts unit, edge-case, and boundary test files matching repo conventions (Jest, Vitest, Pytest, Go). |
+| **10** | **run-tests-after-changes** | ✅ Verified | Post-Tool TDD Regression Hook | **Immediate TDD feedback**: Silently executes fast unit tests immediately after file modifications to catch regressions in the same turn. |
+| **11** | **superpowers** | ✅ Verified | TDD & Isolation | **Code safety**: Enforces writing failing tests first + working in isolated `git worktree`s. |
+| **12** | **tstack** | ✅ Verified | PR Automation & Review | **Autonomous delivery**: Multi-model consensus review (`council`), hands-off PR shipping (`full-send`), CI babysitting. |
+| **13** | **modern-web-guidance** | ✅ Verified | Web Standards & Best Practices | **Google Chrome official guidance**: Injects modern web platform APIs, browser compatibility, and performance patterns directly into coding agents. |
+| **14** | **Floorplan** | ✅ Verified | Codebase Map | **Navigation**: Live, interactive, plain-English architectural map of files, routes, and connections. |
+| **15** | **bulletproof-react** | ✅ Verified | Scalable Frontend Blueprint | **React architecture**: Production-ready folder structure, feature-based modularity, state management, and testing patterns. |
+| **16** | **breakscale** | ✅ Verified | Architecture Stress-Testing | **System design**: Simulates synthetic load, queues, and retry storms to find bottlenecks before coding. |
+| **17** | **system-design-primer** | ✅ Verified | Distributed Systems Roadmap | **Scalability knowledge**: Definitive architectural patterns for caching, replication, sharding, and consensus algorithms. |
+| **18** | **safe-dev-permissions** | ✅ Verified | Streamlined Execution Profile | **Frictionless workflow**: Pre-authorizes safe routine commands (test, lint, build, git diff, git status) to eliminate repetitive permission prompts. |
+| **19** | **founder** | ✅ Verified | Business Strategy | **Pre-code validation**: Tests business models, unit economics, and customer personas before building. |
+| **20** | **system-design-notes** | ✅ Verified | Architecture Quick Reference | **Concise blueprints**: Trade-offs, high-level diagrams, and scaling numbers for rate limiters, KV stores, and chat backends. |
+| **21** | **devops-engineer** | ✅ Verified | CI/CD & Cloud Infrastructure | **Deployment automation**: Production GitHub Actions CI/CD pipelines, multi-arch Docker packaging, blue-green deployment scripts, Terraform IaC, and Prometheus alerting. |
+| **22** | **dotnet-skills** | ✅ Verified | C# / .NET Conventions | **Microsoft official skills**: Clean architecture, Roslyn analyzers, dependency injection, and EF Core patterns for .NET. |
+| **23** | **caveman** | ✅ Verified | Latency & Token Economy | **Speed & cost**: Drops filler words and conversational fluff to make agent replies faster. |
+| **24** | **Claude Code best practice** | ✅ Verified | Reference Patterns | Authoritative patterns for subagents, workflows, and hooks. |
+| **25** | **Anthropic skills** | ✅ Verified | Official Reference | Official patterns for API design and document generation. |
+| **26** | **aspnetboilerplate** | ✅ Verified | Enterprise Backend Boilerplate | Enterprise DDD (Domain Driven Design), multi-tenancy, and modular application framework for ASP.NET Core. |
+| **27** | **Orca (stablyai)** | ✅ Verified | Fleet Execution | Runs fleets of coding agents in parallel across separate worktrees (heavy orchestration). |
+| **28** | **openhuman** | ✅ Verified | Lightweight Agent Fleet Harness | High-efficiency agent harness designed to run fleets of 500+ parallel autonomous agents with minimal memory footprint. |
+| **29** | **agentic-awesome-skills** | ✅ Verified | Meta Skill Catalog | Massive collection of 3,000+ curated and categorized reusable agent skills across specialized frameworks and languages. |
+| **30** | **Find Skills (Vercel Labs)**| ✅ Verified | Meta-Installer | `npx skills find` utility to search and install missing skills on demand. |
+| **31** | **ai-engineering-from-scratch**| ✅ Verified | AI Architecture Reference | Zero-dependency implementation of LLMs, fine-tuning, RAG, and agent runtimes from first principles. |
+| **32** | **wshobson/agents** | ✅ Verified | Persona Catalog | Large catalog of specialized personas when you need an uncommon specialist. |
+| **33** | **AITMPL** | ✅ Verified | CLI Registry | Template browser for downloading Claude Code templates and commands. |
 
 #### Overlap Resolution in Coding Workflow:
 - **`gstack` vs. `tstack`**: `gstack` acts as your **internal engineering department** (CEO, Eng Manager, Browser QA). `tstack` acts as your **shipping pipeline** (`council` for multi-model consensus, `full-send` for hands-off PR creation). Combine them: Plan and QA with `gstack`; review and ship PRs with `tstack`.
@@ -52,6 +56,13 @@ This category governs planning, diff creation, code style, architecture mapping,
   - `gstack review`: Emulates a high-level Engineering Manager asking architecture questions.
   - `council`: Polls multiple external LLMs (Claude + Gemini + ChatGPT) for consensus.
   - `code-reviewer`: An **active AST and diff investigator**: reads beyond the hunks, greps for external callers, tests failure scenarios, and drops fluff/style comments.
+- **`ultra-think` vs. `ponytail` / `Karpathy skills`**:
+  - `ultra-think` is **pre-flight divergence**: rigorously explores alternative architectures, unstated assumptions, and edge cases before writing a line of code.
+  - `ponytail` and `Karpathy skills` enforce **strict convergence during execution**: minimalist diffs, zero speculative abstractions, and lean implementations once code writing begins.
+- **`generate-tests` vs. `run-tests-after-changes` vs. `superpowers`**:
+  - `superpowers` dictates **TDD workflow discipline** (write failing test first, run in worktree).
+  - `generate-tests` **authors comprehensive test files** (unit, boundary, edge cases conforming to Jest/Vitest/Pytest).
+  - `run-tests-after-changes` is the **real-time execution hook** that silently triggers fast unit tests immediately upon file changes.
 - **`elephant-goldfish-model` vs. `Matt Pocock (/grill-me)`**:
   - `Matt Pocock (/grill-me)` is an **interactive human-agent interview**: the agent grills *you* to flesh out requirements before writing any code.
   - `elephant-goldfish-model` is an **agent-agent review protocol**: the Elephant agent synthesizes deep historical context to write the spec, while the Goldfish agent reviews the spec with zero conversational memory to flag hidden assumptions and logical gaps without sycophancy or bias.
@@ -80,20 +91,28 @@ This category covers UI styling, de-slopping, design systems, and frontend anima
 
 ---
 
-### Category C: Agent Tools, Memory & Research (8 Tools)
+### Category C: Agent Tools, Memory & Research (12 Tools)
 
 This category ensures agents remember context, reduce token consumption, optimize prompts, and research external knowledge.
 
 | Rank | Tool / Skill | Audit Status | Primary Focus | Best Used For |
 |:---:|---|:---:|---|---|
 | **1** | **Claude-mem** | ✅ Verified | Session Memory Bank | **Stopping amnesia**: Captures what the agent does, compresses it, and injects context into future sessions. |
-| **2** | **headroom** | ✅ Verified | Token Compression Layer | **Context optimization**: Compresses large logs, terminal output, and files locally before the LLM reads them. |
-| **3** | **graphify** | ✅ Verified | Code Knowledge Graph | **Large codebase navigation**: AST-based deterministic knowledge graph to query relationships without vector search. |
-| **4** | **prompt-engineer** | ✅ Verified | Meta-Prompt Optimization | **Universal prompt architect**: Designs, optimizes, and token-compresses prompts across Claude, OpenAI/Codex, and Gemini models with XML encapsulation and few-shot examples. |
-| **5** | **Agent-Reach** | ✅ Verified | Web & Social Research | **Free external data**: Lets agents read/search GitHub, X, Reddit, and YouTube without paid API keys. |
-| **6** | **zabbix-mcp-server** | ✅ Verified | Enterprise Infra Telemetry | **Production monitoring**: MCP server exposing 237 tools for real-time infrastructure metrics, host alarms, and automated incident triage. |
-| **7** | **rea** | ✅ Verified | Reverse-Engineering Framework | **Binary & protocol inspection**: Disassembles and analyzes software behavior from opaque network APIs down to compiled binaries. |
-| **8** | **Hindsight** | ✅ Verified | Reflection Architecture | Bi-directional memory loop reviewing past runs to self-correct repeating agent errors. |
+| **2** | **context7** | ✅ Verified | Live Official Documentation MCP | **Zero API hallucinations**: Upstash Context7 MCP server dynamically fetching version-specific official documentation (Next.js 15, Tailwind v4, Drizzle) directly into prompts. |
+| **3** | **headroom** | ✅ Verified | Token Compression Layer | **Context optimization**: Compresses large logs, terminal output, and files locally before the LLM reads them. |
+| **4** | **graphify** | ✅ Verified | Code Knowledge Graph | **Large codebase navigation**: AST-based deterministic knowledge graph to query relationships without vector search. |
+| **5** | **prompt-engineer** | ✅ Verified | Meta-Prompt Optimization | **Universal prompt architect**: Designs, optimizes, and token-compresses prompts across Claude, OpenAI/Codex, and Gemini models with XML encapsulation and few-shot examples. |
+| **6** | **context-monitor** | ✅ Verified | Real-Time Statusline Gauge | **Context exhaustion prevention**: Displays visual token progress bars, color-coded alerts, and auto-compact warnings in terminal statuslines. |
+| **7** | **postgresql-mcp** | ✅ Verified | Live Database Introspection MCP | **Schema & data verification**: Model Context Protocol server providing read-only SQL queries, table schema introspection, and foreign key inspection. |
+| **8** | **simple-notifications** | ✅ Verified | Desktop OS Alert Hook | **Unattended workflows**: Fires native desktop audio and banner notifications (`notify-send` / `osascript`) when long-running agent tasks complete or request input. |
+| **9** | **Agent-Reach** | ✅ Verified | Web & Social Research | **Free external data**: Lets agents read/search GitHub, X, Reddit, and YouTube without paid API keys. |
+| **10** | **zabbix-mcp-server** | ✅ Verified | Enterprise Infra Telemetry | **Production monitoring**: MCP server exposing 237 tools for real-time infrastructure metrics, host alarms, and automated incident triage. |
+| **11** | **rea** | ✅ Verified | Reverse-Engineering Framework | **Binary & protocol inspection**: Disassembles and analyzes software behavior from opaque network APIs down to compiled binaries. |
+| **12** | **Hindsight** | ✅ Verified | Reflection Architecture | Bi-directional memory loop reviewing past runs to self-correct repeating agent errors. |
+
+#### Overlap Resolution in Agent Tools & Memory:
+- **`context7` vs. `Agent-Reach`**: `Agent-Reach` is an open-ended researcher exploring community forums, GitHub issues, and social platforms; `context7` directly queries canonical, version-pinned documentation (Next.js 15, Tailwind v4, Drizzle) straight from official sources into prompt context, eliminating API hallucinations.
+- **`context-monitor` vs. `headroom`**: `headroom` is an active data compressor that shrinks terminal outputs and logs before LLM ingestion; `context-monitor` provides ambient terminal statusline visibility and auto-compact threshold alerts.
 
 ---
 

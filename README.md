@@ -2,7 +2,7 @@
 
 1. supabase.com -> New project (free plan). Wait until it is ready.
 2. SQL Editor -> paste setup.sql. Replace BOTH 'YOUR_EMAIL' with your email, then Run.
-   This creates the table, the security rules (everyone reads, only you write) and loads 81 starter entries.
+   This creates the table, the security rules (everyone reads, only you write) and loads 89 starter entries.
 3. Authentication -> Users -> Add user (your email + a strong password, auto-confirm).
    Then in the Authentication settings turn OFF new-user sign-ups so nobody else can register.
 4. Project Settings -> API: copy the Project URL and the anon/public key into the top of index.html
