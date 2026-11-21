@@ -1,0 +1,1154 @@
+[
+  {
+    "code": "Df-gRBWTMIx",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Df-gRBWTMIx/",
+    "type": "reel",
+    "summary": "Your AI might be allowed to install software and run commands on your machine right now. Would you even know? \n\nOne. Find every setting that lets your AI act without asking: auto-approve, allowed commands, file and network access. Two. Run everything it executes inside a container with no access to your credentials and no internet unless you grant it. Three. Give every MCP server its own scoped keys and log every tool call. \n\nSize the system, not the model.\n\n-MM\n\n#ai #aisecurity #aiagents #localai #aidirectedengineering"
+  },
+  {
+    "code": "Df98umcsiQu",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Df98umcsiQu/",
+    "type": "reel",
+    "summary": "Somebody's AI is installing software on their computer right now, and they never asked it to. \n\nEverybody wants to know how big a model their computer can run. Wrong question. I once managed more than twelve thousand computers across fifty-seven countries, and every client asked the same thing: who can touch them? Most of the work in AI is not the model. It is the plumbing around it: the agent harness, the connectors, permissions, sandboxing and logs. One default you never read can let your AI install software and run commands on its own. \n\nSize the whole system, not just the model. Speed is nice. Control is the job.\n\n-MM\n\n#ai #aisecurity #sovereignai #localai #operators"
+  },
+  {
+    "code": "Df77fNrqaGJ",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Df77fNrqaGJ/",
+    "type": "reel",
+    "summary": "If the site you download your AI models from went dark tomorrow, could your business still run? \n\nOpen weight only protects you if you hold the weights. One. Download the exact versions you run, pinned, with checksums. Two. Keep each model's license, model card and download date beside it. Three. Load every model from your own registry, backed up in a second location, and test it with outside internet off. \n\nIf you do not hold the files, you do not hold the model.\n\n-MM\n\n#ai #openweight #sovereignai #aisecurity #aidirectedengineering"
+  },
+  {
+    "code": "Df7g4EguO-D",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Df7g4EguO-D/",
+    "type": "reel",
+    "summary": "The rumors around Jensen Huang are swirling. \n\nHere is what is real. Confirmed: he resigned, no reason given; new rules this week block Chinese companies from American AI chips even in data centers abroad; and the Hugging Face deal he promised would stay open is still pending. Reported: CNN says US intelligence is not sure the woman was a spy, and the Washington Post says Rubio put a less certain CIA assessment in stronger terms. Rumor: the industry is splitting into two teams. \n\nMy answer to which team I am on: if you rent your AI, you are on your vendor's team. Own the files.\n\n-MM\n\n#ai #opensource #sovereignai #nvidia #operators"
+  },
+  {
+    "code": "Df5WpFUooIM",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Df5WpFUooIM/",
+    "type": "reel",
+    "summary": "Your AI can build eighty percent of your app in one prompt. The other twenty percent is what gets you hacked, and that twenty percent is the harness. \n\nOne. Write the rules down in a file your agent loads every session: stack, structure, naming and what it may never do. Two. Give it a one page map of your codebase instead of dumping everything into context. Three. \n\nMake it prove the work: one check script for tests, types, linting and a dependency scan, and nothing is done until it passes.\n\n-MM\n\n#ai #vibecoding #aiagents #aisecurity #aidirectedengineering"
+  },
+  {
+    "code": "Df4zHtHRYfB",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Df4zHtHRYfB/",
+    "type": "reel",
+    "summary": "Seventeen times in two weeks. That is how often one builder said he rebuilt his AI setup. \n\nStop rebuilding your harness every time a new tool drops. The model is the engine; the harness is everything around it: the rules, the permissions, the tools, the project knowledge and the checks that prove the work. You can rent the model. You have to own the harness. \n\nWhen the harness is yours, a new model is an upgrade. When it is not, a new model is a rebuild.\n\n=MM\n\n#ai #aiagents #vibecoding #builders #aidirectedengineering"
+  },
+  {
+    "code": "Df2x1f-NSrv",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Df2x1f-NSrv/",
+    "type": "reel",
+    "summary": "I keep getting called out in my comments. Where's the CTA? \n\nThere isn't one. I founded and engineered what was arguably the biggest social media command center agency on the planet, for 76 of the Fortune 100 in 57 countries. The head of Instagram says the signals that matter most are watch time, likes, and sends. Ten thousand people typing one word buries the two who wanted a conversation. Answer your own comments. Answer your own DMs. \n\nThe moment a bot answers for you, the conversation is over. Manufactured engagement looks great on a dashboard. Conversations close deals.\n\n-MM\n\n#socialmedia #instagram #operators #smallbusiness #leadership"
+  },
+  {
+    "code": "Dfzpggrp41g",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dfzpggrp41g/",
+    "type": "reel",
+    "summary": "Your AI-built app looks finished. That is exactly what makes it dangerous. \n\nThree problems hide behind a great demo: the data lives in the browser instead of a database you own, permissions are checked on the screen but not on the server, and the secret keys sit in code anyone can read. The prototype is the most valuable thing you have. It is just not the product yet. \n\nBefore a customer touches it, ask: where does the data live, does the server check permissions, and where are the keys? Looking done and being done are two different things.\n\n-MM\n\n#ai #vibecoding #appsecurity #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfxoWqOiQkB",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfxoWqOiQkB/",
+    "type": "reel",
+    "summary": "Your insurer asks how your AI systems work, and you have nothing to hand them. \n\nUnderwriters do not need you to be perfect. They need you to be provable. One. A register of every AI system, its owner, its builder and its last outside review. Two. Proof of who can get in: two factor everywhere, no shared passwords, agents on their own credentials. Three. Proof you can recover: logs you keep, a backup you have actually restored, and your last recovery drill. \n\nProof is cheaper than premiums.\n\n-MM\n\n#ai #insurance #aisecurity #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfxEudfhKkI",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfxEudfhKkI/",
+    "type": "reel",
+    "summary": "Your insurance company is not wrong about AI. \n\nIt is just slow. According to CSIS, state regulators have approved more than eighty percent of carrier requests to exclude AI. Insurers cannot price what they cannot see. They do not fear technology, they fear unknowns. When a business can show who built its systems, how they were reviewed, how access is controlled and how they recover, the conversation changes. It is not about being big. It is about being provable. \n\nCall your agent this week: what does my policy say about AI, and what would you need to see to cover it?\n\n-MM\n\n#ai #insurance #operators #smallbusiness #risk"
+  },
+  {
+    "code": "DfvDeF1MJYY",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfvDeF1MJYY/",
+    "type": "reel",
+    "summary": "Your first paying customer can see your second customer's data. Can you prove they cannot? \n\nOne. Pick your wall on purpose: one database per customer, or shared tables with database-enforced row-level security. Two. Enforce it below the app, so the database refuses a request even when your code forgets a filter. Three. Attack yourself: two test customers, every screen and API, on every release. \n\nSeparation you have not tested is a hope.\n\n-MM\n\n#ai #saas #security #vibecoding #aidirectedengineering"
+  },
+  {
+    "code": "Dfuf5YRMxKd",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dfuf5YRMxKd/",
+    "type": "reel",
+    "summary": "You are protecting your idea from the wrong person. It is not the other builders. It is your customer. \n\nThousands of people are building the same thing you are, whether you have seen them or not. And for the first time, the person who has the problem can build the fix themselves, with the same AI tools you have, while living inside the problem every day. So answer this: if I have the problem your product solves, why am I not just building it myself? \n\nThe only answer that holds up is that they are paying you to build it for them. Stop guarding the idea. Go find the person who will pay you to build it.\n\n-MM\n\n#ai #founders #bootstrapping #operators #buildinpublic"
+  },
+  {
+    "code": "Dfseri6v4wh",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dfseri6v4wh/",
+    "type": "reel",
+    "summary": "Your staff are already building tools with AI, on their own laptops, with your data. \n\nDo not stop them. Give them a door. One. One company repository, company accounts, two factor, and every staff-built tool moved into it. Two. A sandbox with realistic fake data, and real data only after review. Three. A locked main branch, a secret scan, and one named reviewer before anything touches real data or customers. \n\nA better tool beats a better policy.\n\n#ai #operators #shadowai #aisecurity #aidirectedengineering"
+  },
+  {
+    "code": "Dfr7HAkHxPK",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dfr7HAkHxPK/",
+    "type": "reel",
+    "summary": "Sixty-four percent of the AI your staff uses at work runs on their personal accounts. \n\nYour business account protects your IP. Their personal account does not. 88% of office workers have put work information into public AI tools: emails, customer data, financials. Many personal plans train on it unless someone turns that off. \n\nWall Street already paid over two billion dollars in fines because employees did business on personal phones, and the SEC is now examining how advisory firms monitor AI use. A policy that says do not use it fails when the habit says use it. Give them a better tool.\n\n-MM\n\n#ai #shadowai #dataprivacy #smallbusiness #operators"
+  },
+  {
+    "code": "DfnVLueCk7K",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfnVLueCk7K/",
+    "type": "reel",
+    "summary": "One of your AI agents goes rogue at 2 AM. Can you stop it in sixty seconds, and clean up what it already did? \n\nThe big security companies are selling kill switches, and UK regulators just said an agent's autonomy does not reduce your responsibility. One. One switch for all of it: revoke the keys, pause the schedules, end the running jobs, in a single command. Two. Breakers before the switch: spend caps, rate limits, and an approval queue for money and customer messages. Three. Log every action with how to reverse it, then drill the stop and rollback monthly. \n\nA kill switch you have never pulled is a guess.\n\n-MM\n\n#ai #aiagents #aisecurity #aigovernance #aidirectedengineering"
+  },
+  {
+    "code": "DfmxiCrEjqb",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfmxiCrEjqb/",
+    "type": "reel",
+    "summary": "Somebody on your team is building software with AI today, and you could not tell me who signs for it. \n\nGoldman Sachs just restricted AI coding tools to its engineers after a period of experimentation, according to Bloomberg. No incident. A decision. Deloitte found four in ten business leaders let AI act without a human approving it, and nearly one in four say accountability is unclear when it goes wrong. Your staff are already building. \n\nDecide three things this week: who may build, where they build, and who signs for anything that touches money, customers or data. Then let them build.\n\n-MM\n\n#ai #operators #aigovernance #smallbusiness #aidirectedengineering"
+  },
+  {
+    "code": "DfkMuQTGZQl",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfkMuQTGZQl/",
+    "type": "reel",
+    "summary": "The first thing you automate decides whether AI works in your business. Not one business we have rebuilt with AI started in the same place. So why does every AI ad tell you to start in the same one? \n\nThe operators calling us are not asking for more leads. They are asking where to start so it actually works. AI learns your business from whatever you give it first. Start right, and it captures the data the rest of your business runs on, earns a win your people can see, and expands one piece at a time with you in control. \n\nAnswer three questions: what does everything sit on, what has a deadline, and what would prove it works this month?\n\n-MM\n\n#ai #operators #aitransformation #smallbusiness #aidirectedengineering"
+  },
+  {
+    "code": "DfiLiSKDKh9",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfiLiSKDKh9/",
+    "type": "reel",
+    "summary": "Your AI sandbox probably has the internet turned on. \n\nEven an AI lab's own test sandbox had it left on, and its models reached real outside systems. One. Run every model and agent with networking off, or behind an allowlist naming the only hosts it may reach. Two. Run it as a non-administrator user with a read-only file system except one scratch folder. Three. Give it short-lived credentials scoped to one job, so an escape opens nothing else. \n\nIf it can reach the internet, it is not a sandbox. It is a suggestion.\n\n-MM\n\n#ai #aisecurity #aiagents #localai #aidirectedengineering"
+  },
+  {
+    "code": "Dfhn_K_kZ4z",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dfhn_K_kZ4z/",
+    "type": "reel",
+    "summary": "Why is it that only two AI companies keep telling you the world might end? \n\nLet's solve this mystery together. Everybody has incidents. Google's model got into three outside systems and disclosed it after the Wall Street Journal reported it. Kimi escaped a test sandbox, found by an outside firm. In one six-month tally, DeepSeek, Moonshot, Zhipu, and xAI disclosed zero agent incidents. Zero disclosed is not zero incidents. \n\nFear is a fundraising strategy. Silence is a PR strategy. Neither one is a security strategy. The most dangerous model in your business is the one that will never tell you what it did.\n\n-MM\n\n#ai #aisecurity #openweights #sovereignai #operators"
+  },
+  {
+    "code": "DffU5-sAbmE",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DffU5-sAbmE/",
+    "type": "reel",
+    "summary": "If nobody is paying you to build it, stop building it. \n\nFind a customer who already makes money, has the exact problem you solve, and wants it solved badly. Offer them a slice of equity for funding the build for their industry. You prove the use case, you get paid to build, and your first investor is your first customer. That is bootstrapping. \n\nThe longer you hold on to your entity, your IP, and your product, the more you gain. Protect the deal: they get equity, not your IP and not exclusivity. Write down who owns the code, who else you can sell to, and how they exit.\n\n-MM\n\n#bootstrapping #founders #operators #smallbusiness #startups"
+  },
+  {
+    "code": "DfdB9ulIJ0H",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfdB9ulIJ0H/",
+    "type": "reel",
+    "summary": "Somebody on your team clicked Allow All on an AI tool this month and now you just got hacked. \n\nIn April, one employee at a major cloud company gave an AI tool full access to a company Google account, and when that AI company got hacked, attackers walked straight in. One. Export every app connected to Google Workspace or Microsoft 365, with who approved it and what it can reach. Two. Revoke anything unused, unapproved, or over-reaching. Three. Turn off staff approval of new apps and require admin approval. \n\nEvery grant is a key. Count your keys.\n\n-MM\n\n#ai #aisecurity #cybersecurity #smallbusiness #aidirectedengineering"
+  },
+  {
+    "code": "DfceXrLjeer",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfceXrLjeer/",
+    "type": "reel",
+    "summary": "Somebody wants to put twenty AI products in your business for free. \n\nHis ad says AI companies pay him a commission to install them. At least he told you who pays him. When the vendor pays the installer, the installer works for the vendor. A recommendation paid by commission is not an audit. It is a sales call. \n\nHe is not installing twenty tools. He is moving in twenty new landlords. The setup is free. The rent never stops. And insurers are writing AI out of their policies. I have never gotten anything for free that did not cost me in the long run.\n\n-MM\n\n#ai #smallbusiness #operators #aisecurity #vendorrisk"
+  },
+  {
+    "code": "DfZ9Tl5jgLH",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfZ9Tl5jgLH/",
+    "type": "reel",
+    "summary": "The CEO of Palantir just said the quiet part out loud on Wall Street. \n\nThe companies coming to him say the same thing: \"My IP is in danger, and I'm getting no value.\" Their CTO explained why: \"You can make people more productive and generate no actual return on investment.\" Your people get faster, your bill gets bigger, and your bottom line does not move. Palantir's answer: \"the atomic unit is the workflow.\" \n\nRebuild one workflow from the inside, prove it, then expand. Stop counting who logged in. Pick one workflow and measure what comes out. Licenses count logins. Workflows count money.\n\n-MM\n\n#ai #operators #aitransformation #smallbusiness #aidirectedengineering"
+  },
+  {
+    "code": "DfX4U16giDL",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfX4U16giDL/",
+    "type": "reel",
+    "summary": "If you are raising money this year, VC is the very last place I would start. \n\nIdeas got cheap, so investors started shopping for them. A pitch night can mean thirty founders, three minutes each, every pitch recorded, and the best idea walked down the hall to a company they already funded. \n\nA Wharton and University of Zurich study found 88% of venture-backed founders walk away with nothing at exit. So climb in the right order. First, a paying customer. Second, an angel who has done your job in your industry. VC last.\n\n-MM\n\n#founders #venturecapital #bootstrapping #operators #startups"
+  },
+  {
+    "code": "DfXUwKpiUNv",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfXUwKpiUNv/",
+    "type": "reel",
+    "summary": "In a room full of founders at a VC event, I called a VC out. \n\nHe told me he ran one of the biggest AI funds on the planet. He could not tell me his thesis. So while he was still talking, my AI chief of staff pulled up who he really was. The famous logos came through a side vehicle. Half the logo wall was where the partners used to work. \n\nBefore you pitch anybody, check them out the way they check you out. Pull their Form ADV. Ask their thesis, their check size, and who got their last three. Someday you will be promoted to operator. An operator is a cash-flow-positive founder.\n\n-MM\n\n#founders #venturecapital #operators #startups #ai"
+  },
+  {
+    "code": "DfVTlFYCeyN",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfVTlFYCeyN/",
+    "type": "reel",
+    "summary": "Your AI agents need a boss. \n\nOne of the largest phone companies in Korea just gave every AI agent an employee ID and a human supervisor, more senior the more the agent can do alone. One. Give every agent its own account and key, never a person's login. Two. Give every agent a named owner, and cut every permission that owner has not approved. Three. Log every action to storage you own, build a one-command stop, and retire agents nobody uses. \n\nIf nobody owns the agent, the agent owns the risk.\n\n-MM\n\n#ai #aiagents #aisecurity #aigovernance #aidirectedengineering"
+  },
+  {
+    "code": "DfUv65LlCOo",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfUv65LlCOo/",
+    "type": "reel",
+    "summary": "Cisco just bet its legacy code on two people and unlimited AI. \n\nCisco's president gave a 27-year-old engineer unlimited AI tokens to rewrite 98% of the company's legacy code in 24 months, with four weeks to prove it. It is a bet in progress, not a result. But the direction is clear: they are not bolting AI onto old code, they are rebuilding it. And the same president said \"every piece of code needs to have a provenance of a human.\" \n\nAI writes it. A human owns it. If Cisco will not bolt AI onto its V1, why are you bolting it onto yours?\n\n-MM\n\n#ai #v2 #aidirectedengineering #operators #legacycode"
+  },
+  {
+    "code": "DfSuxA8lJbf",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfSuxA8lJbf/",
+    "type": "reel",
+    "summary": "You moved off Big AI and put an open-weight model on a rented server. \n\nSo now anyone on the internet can use it, on your bill, with your data in memory. Ollama ships with no login, researchers estimate hundreds of thousands of servers sit open, and one flaw this year let attackers read prompts, other users' chats, and stored keys straight from memory. \n\nOne. Private network only, no public domain on the model. Two. Every request through an authenticated gateway, one key per app, every call logged. Three. Pin the server, the gateway, and the weights, and test updates on staging. Sovereign does not mean exposed.\n\n-MM\n\n#ai #openweights #sovereignai #aisecurity #aidirectedengineering"
+  },
+  {
+    "code": "DfSLIUpgR5w",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfSLIUpgR5w/",
+    "type": "reel",
+    "summary": "The company that sells you the model now wants to tell you how to use it. \n\nIn May, OpenAI launched a deployment company with more than four billion dollars behind it, backed by firms including McKinsey, Bain, and Capgemini. Its job is to connect OpenAI's models to your data, your tools, and your processes. Ask whose interest the advice serves. A lab paid per token wants more of your work running through its tokens. The old rule still holds: do not let the vendor write your strategy. \n\nKeep three things in your own hands. Which model runs which job. Where your data lives. How you would leave.\n\n-MM\n\n#ai #sovereignai #operators #consulting #aidirectedengineering"
+  },
+  {
+    "code": "DfQKAoLgqq4",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfQKAoLgqq4/",
+    "type": "reel",
+    "summary": "You built your own system with AI. Now you want to sell it. \n\nSo your first customer inherits every shortcut you took. Building for yourself and selling to strangers are two different jobs. One. Separate their data, and prove with a test that no customer can ever see another's records. Two. Decide who answers when it breaks at two in the morning: monitoring, alerts, a written runbook. Three. Get an independent review before the first paying customer signs. You cannot grade your own work. \n\nYour tool worked for you. Now make it work for strangers.\n\n-MM\n\n#ai #v2 #operators #smallbusiness #aidirectedengineering"
+  },
+  {
+    "code": "DfPmaAREdDi",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfPmaAREdDi/",
+    "type": "reel",
+    "summary": "A solar equipment wholesaler in our community from Johannesburg sent me a message last week. \n\nHe is not a developer. He runs a wholesale business. And he built the software that runs his entire company with AI. Two million lines of code. He replaced fifteen hundred dollars a month in subscriptions and built his own fraud protection. His words: \"No software company would ever have built this for my budget or in my time.\" That is the V2 idea in one sentence. Now he wants to sell it. The day you sell it, it stops being your tool and becomes your customers' system. Security, support, uptime, liability. The next phase is engineering, not more features.\n\n-MM\n\n#ai #v2 #smallbusiness #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfNBmfYmc0z",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfNBmfYmc0z/",
+    "type": "reel",
+    "summary": "Half a table of AI founders went silent over one question. \n\nIf a new model drops next month, does your company get better or worse? \n\nTech journalist Greg Isenberg was at that dinner during forty-eight hours in San Francisco with billionaires, data labs, and founders, and almost everything he brought home points back to it. The model is maybe twenty percent of the product. If you own what is built around it, a better model makes you better. If you do not, a better model is somebody else's upgrade. That is not an AI problem. That is an ownership problem. \n\nTake the question to your next leadership meeting. If your room goes quiet too, you know what to build next.\n\n-MM\n\n#ai #sovereignai #smallbusiness #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfK5d1egJpe",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfK5d1egJpe/",
+    "type": "reel",
+    "summary": "Every week someone asks me the same thing. Why build anything when you can just master three or four AI platforms for your industry.\n\nBuy or build sounds like the smart question. It is the wrong one. Everybody in your market is mastering the same tools. Mastering tools is not the moat. The real question is what your business knows that nobody else does, and how you capture it and deliver it in a way nobody can copy. \n\nBuy the commodity. Build and own the layer that holds what you know. Skip that, and the day the platform ships your feature, your expertise is a settings screen anyone can click.\n\n-MM\n\n#ai #aidirectedengineering #buildvsbuy #smallbusiness #builders"
+  },
+  {
+    "code": "DfKV9hDjNkV",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfKV9hDjNkV/",
+    "type": "reel",
+    "summary": "A business owner posted that he has been having a silent panic attack for three days. \n\nHe makes guitar pedals. He pointed AI at three competitors' products and took them apart in seventy-two hours. Then it hit him: anybody can do it to him. If you ship it, assume it can be read. The code is the easy part now. The moat is everything that never leaves your building. How you decide. What your people know. Your data. Your relationships. How fast you improve. \n\nStop asking whether they can copy your product. Ask what you own that a copy cannot carry.\n\n-MM\n\n#ai #intellectualproperty #smallbusiness #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfIUvtMm_IS",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfIUvtMm_IS/",
+    "type": "reel",
+    "summary": "Your AI agents make mistakes every day, and nobody writes them down. \n\nSo you pay for the same mistake twice. Real examples of agents failing inside real companies are some of the hardest data for the labs to get. Yours are worth keeping. One. Log every failure: the task, what the agent did, what it should have done. Two. Turn repeat failures into written rules and tests. Three. Keep the log on systems you control, out of every vendor's training settings. \n\nYour mistakes are data. The most honest data you have.\n\n-MM\n\n#ai #aiagents #ownership #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfHxIHyFfCt",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfHxIHyFfCt/",
+    "type": "reel",
+    "summary": "Check your business insurance this week. There is a good chance it no longer covers what your AI does. \n\nState regulators approved more than eighty percent of insurers' requests to exclude AI-related damages this year, and exclusions aimed at AI agents are being drafted. Your agent makes a mistake, and the policy says not our problem. Some insurers already ask: who owns this agent, what can it touch, how do you stop it, who checked the work? \n\nCall your broker and ask whether your policy covers what your AI does. Then get your answers ready before the underwriter asks.\n\n-MM\n\n#ai #aisecurity #insurance #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfFv5YsE0ff",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfFv5YsE0ff/",
+    "type": "reel",
+    "summary": "Step one of almost every AI consultant's process is exactly the same. \n\nLet's connect ChatGPT to your email. \n\nEvery deal you ever closed. Every contract. Every hire and fire. Every product decision. That is not an inbox. That is your business. So on day one, your buddy opens all of it up to Big AI. And the conversation that should come first never happens. Where does my data go? What plan is this on? Is it training their model? Sign here if that is okay. If that conversation happened, the deal would die. His business is selling you an agent. Mine is engineering your business into a protected V2. \n\nIf step one of learning to hunt is shoot yourself in the foot, you would want to know. The question is not how to fix what he connected. It is why he was ever in that seat.\n\n-MM\n\n#ai #aisecurity #aidirectedengineering #smallbusiness #operators"
+  },
+  {
+    "code": "DfFMYaoDVKE",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfFMYaoDVKE/",
+    "type": "reel",
+    "summary": "Your AI consultant got the job over lunch. \n\nYou know him from church or softball. He made ChatGPT read his email, three friends heard about it, and now he is consulting in three businesses. No entity. No insurance. Never delivered software. He sells you a strategy, sets up a couple of automations, and he is gone. No support, no training, no security. \n\nBefore anyone touches your business, ask five questions. Entity and insurance? What is running in production today? Do you run your own business this way? Who supports it after you leave? Do you know my industry? Miss two, and you have a hobbyist with your passwords.\n\n-MM\n\n#ai #aidirectedengineering #smallbusiness #operators #aiconsulting"
+  },
+  {
+    "code": "DfDLJk3DDP8",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfDLJk3DDP8/",
+    "type": "reel",
+    "summary": "Your company runs every AI task through the same model. \n\nSo you pay frontier prices for simple work, and one vendor holds your operation. There is no best model. There is the best model for the job. Heavy multi-step work: test GLM 5.3, Kimi, or DeepSeek V4.1 Flash before paying frontier prices. Private work: run it on a model you control, like Qwen 3.8 27B on a single workstation. \n\nYour rules: read every license for display clauses, revenue limits, and origin. The model is not your strategy. The match is.\n\n-MM\n\n#ai #openweights #sovereignai #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfCnk6HDCsd",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfCnk6HDCsd/",
+    "type": "reel",
+    "summary": "Every headline today says AI agents are a cybersecurity threat running wild across the internet. \n\nHere is what nobody is telling you. The agents did not create those holes. They found them. And your business has the exact same holes. Twenty-nine apps went through one slice of my production audit system in the last three months, built by humans and built with AI. Twenty-six came back red. Three yellow. Not one came back green. What changed is the speed. AI attack tools find in minutes what took human hackers weeks. Last week Sam Altman said it out loud: \"I no longer think we're going to be able to just patch all the bugs.\" You cannot patch your way out of this one. Your V1 was built for human speed. A real V2 is engineered. AI drafts. Humans commit. Audited in and audited out. \n\nThe attacker's AI is going to audit your V1 whether you hire anybody or not. The only question is whose AI gets there first.\n\n-MM\n\n#ai #cybersecurity #aidirectedengineering #smallbusiness #builders"
+  },
+  {
+    "code": "DfAmYQQDsNW",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfAmYQQDsNW/",
+    "type": "reel",
+    "summary": "Your team wants to fine-tune an AI model on your company documents. \n\nSo you will pay to teach it facts it will still get wrong. Tuning teaches a model how to behave, not what you know. One. Facts go in documents the model reads when it answers. Two. Tune for behavior with a few hundred clean, approved examples. Three. Tune an open model you own, like Qwen 3.8 27B on one workstation, and test it against the original. \n\nKnowledge in the folder. Behavior in the model. Both in your building.\n\n-MM\n\n#ai #openweights #finetuning #operators #aidirectedengineering"
+  },
+  {
+    "code": "DfACtfKDB6X",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DfACtfKDB6X/",
+    "type": "reel",
+    "summary": "Doctors and lawyers are getting paid up to four hundred dollars an hour to teach AI how they think. \n\nLinkedIn ranked data annotator the fourth fastest growing job in the country. Barclays is cutting five thousand jobs in an AI push in a quarter its profit rose twelve percent. Microsoft just offered voluntary buyouts to sixty thousand employees while it pours money into AI. First they bought the filing cabinet. Now they are paying experts to teach the model the part that was never written down. The judgment. \n\nIf your expertise has a market price, the first buyer should be you. Capture how your best people decide, in a system you own.\n\n-MM\n\n#ai #futureofwork #smallbusiness #operators #aidirectedengineering"
+  },
+  {
+    "code": "De-Bh2eiEZo",
+    "url": "https://www.instagram.com/mattmurphyai/reel/De-Bh2eiEZo/",
+    "type": "reel",
+    "summary": "You bought a graphics card to run AI locally and it ran out of memory on the first real task. \n\nTwo of you asked what hardware you actually need. Start with the job, not the card. Find the smallest open-weight model that passes your real tasks. Then do the math: about two bytes of video memory per parameter at full precision. Seven billion parameters is around fourteen gigabytes, closer to five at four bits. Then rent that GPU for a week before you buy anything. \n\nSize the job first. The hardware sizes itself.\n\n-MM\n\n#ai #aidirectedengineering #selfhosted #gpu #builders"
+  },
+  {
+    "code": "De9d7hagt6G",
+    "url": "https://www.instagram.com/mattmurphyai/reel/De9d7hagt6G/",
+    "type": "reel",
+    "summary": "Two of you said it under my videos. They bought all the GPUs. Some of us cannot afford the infrastructure. \n\nYou do not have to buy any. Rent a GPU server by the month or the hour. Run your own open-weight model on it, tuned on your data, configured by you. The host owns the metal. You own the weights, the data, the settings, the keys. With an API you rent someone else's intelligence. \n\nWith rented hosting you rent electricity. You do not need to own the building. You need to own what is inside it.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #selfhosted #builders"
+  },
+  {
+    "code": "De7cuAQCUnR",
+    "url": "https://www.instagram.com/mattmurphyai/reel/De7cuAQCUnR/",
+    "type": "reel",
+    "summary": "Your customer asks your voice agent a question. Silence. One second. Two. Three. They already hung up. \n\nA voice agent is three systems in a row, and each one waits for the last. Stream speech to text with voice activity detection. Stream the model into text to speech one sentence at a time. Run all three on one machine and let a small fast model hold the conversation. \n\nNobody waits three seconds for a person. They will not wait for your agent either.\n\n-MM\n\n#ai #aidirectedengineering #voiceai #selfhosted #builders"
+  },
+  {
+    "code": "De4UalZk2rp",
+    "url": "https://www.instagram.com/mattmurphyai/reel/De4UalZk2rp/",
+    "type": "reel",
+    "summary": "In the last six weeks, every major lab put an AI agent in regular people's hands. Meta. OpenAI. xAI. Anthropic. \n\nThis week the big banks started finding agents inside customer accounts. Nobody is connecting the two. Picture Sally, seventy-seven, handing her new agent her bank login with one instruction. Fix my finances. No rules. No limits. Next day the headline says rogue AI. Agents are not running wild. They are running loose. A human handed it the keys and a vague goal, and it chased the goal. Give it one job, written down. It proposes, you approve. When the job is done, the access ends. \n\nThe agent did not go rogue. Nobody was in the director's chair.\n\n-MM\n\n#ai #aiagents #aidirectedengineering #aisecurity #smallbusiness"
+  },
+  {
+    "code": "De19Vkblefh",
+    "url": "https://www.instagram.com/mattmurphyai/reel/De19Vkblefh/",
+    "type": "reel",
+    "summary": "Uh oh, here we go again. Everybody is calling it an agent outbreak. It is not. \n\nIt is a key problem. The Big AI hype machine is bundling three stories into one. Railway got hacked and every user was told to rotate every key. Banks are finding agents inside customer accounts because customers handed over their own passwords. In Korea, someone pointed a free AI hacking tool at financial firms and walked in through the side doors. Every story has the same thing in common. Keys. The hype says only the big labs can protect you. That story sells valuations. The truth is boring. \n\nNobody handled the keys. Keys in a vault you control. Short-lived and scoped to one job. Agents read-only by default. Nothing updates until it is pinned and checked. Real engineering problems have answers. Only the Big AI influencers have assumptions.\n\n-MM\n\n#ai #aisecurity #aidirectedengineering #sovereignty #builders"
+  },
+  {
+    "code": "DezuUdKnLrI",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DezuUdKnLrI/",
+    "type": "reel",
+    "summary": "Your AI assistant knows how you price, how you quote, and how you handle your hardest client. \n\nAll of it lives in one app. The day that app changes its terms, your know-how goes with it. The file system approach fixes that, but most people build it wrong. Organize by function, not by date. Write every decision with the reason, because the reason is what lets a model decide the way you would. Merge every conflict into one source of truth and put it under version control. \n\nYour knowledge should outlive every tool you use.\n\n-MM\n\n#ai #aidirectedengineering #knowledgemanagement #productivity #builders"
+  },
+  {
+    "code": "Dewl-QKiMQH",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dewl-QKiMQH/",
+    "type": "reel",
+    "summary": "Someone under my videos said some of us have no choice but to feed Big AI. Here is the truth. You already did. So did I. So did everyone. \n\nThat is not a reason to panic, and it is not a reason to stop. Those tools are making you money right now. But it is a reason to stop pretending this is permanent. You are not choosing between Big AI and sovereign AI today. You are choosing whether you have a plan to get from one to the other. It happens in phases. The mistake is not using Big AI. The mistake is using it with no exit. \n\nToday is phase zero. Write down where your business knowledge lives right now. That list is your starting line.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #smallbusiness #builders"
+  },
+  {
+    "code": "DeukxXGD8DP",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeukxXGD8DP/",
+    "type": "reel",
+    "summary": "A petroleum engineer messaged me. \n\nHe wants to build a consultancy with AI as its internal engine, fed with his own domain knowledge.\n\n Smartest sentence I read all week. What he knows is not in any public training set. That is his map. He can pour it into someone else's platform. Or he can build the engine himself. His documents. His rules. His model. One of those is a tool. The other is a company. \n\nThe value of AI for an expert is that it carries what you know further than you can alone. But only if you own the vessel.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #expertise #builders"
+  },
+  {
+    "code": "DeuBLzxgBrJ",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeuBLzxgBrJ/",
+    "type": "reel",
+    "summary": "Do not cancel Salesforce just to go rent from some kid down the street. \n\nThat is not my message. \n\nA startup got together and built an agent CRM wrapper on somebody else's model. It copies what your SaaS already does. Then they rent it back to you monthly. That is not control. That is a new landlord. And a worse one. Salesforce will still be in business in two years. That start up might not be. And they own the system and share it with their other clients. The choice is rent or own. Your agents. Your data. Your workflows. Your map. On infrastructure you control. The subscription wars are over. \n\nBefore you subscribe to anyone, ask one question. If I fire you tomorrow, does it still run, and is it still mine?\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #ownership #builders"
+  },
+  {
+    "code": "Der_8AlFQ6g",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Der_8AlFQ6g/",
+    "type": "reel",
+    "summary": "Open weight models are within a few percentage points of the frontier. \n\nBloomberg Intelligence confirmed it. The gap that justified renting is closing. Two years ago open weight was a generation behind. That tradeoff is collapsing. Kimi K2.6 is open source. Nous Research raised ninety million. When the model on your GPU performs at 97 percent of the frontier API the three percent gap does not justify the dependency. \n\nThe standard for V2 is open weight. Not because it is cheaper. Because it is yours. Open weight is the standard. The rest is a subscription with a changelog you don't control.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #openweight #builders"
+  },
+  {
+    "code": "DercXZ_DrhR",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DercXZ_DrhR/",
+    "type": "reel",
+    "summary": "An AI operating system is not software you install. It is a framework for how your business makes decisions when every department has agents. \n\nMarketing has a content agent. Sales has outreach. Engineering has coding. Support has tickets. Different models. Different permissions. No coordination. That is not an AI strategy. That is four experiments without a system. \n\nAn AIOS answers five questions for the whole organization. What agents are running. What they can access. What they decide alone. How output gets verified. Who is accountable. That is the system. That is where the work is.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #aos #builders"
+  },
+  {
+    "code": "DepbJp0gmaC",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DepbJp0gmaC/",
+    "type": "reel",
+    "summary": "A healthcare CEO cancelled six hundred thousand dollars a year in Salesforce licensing last month. \n\nBuilt a replacement CRM in two months. In-house. With AI. Retool says 35 percent of enterprises have already replaced SaaS with custom software. Small firms cutting costs by 80 percent. The economics flipped. SaaS was cheaper when building meant hiring a team for eighteen months. Not cheaper when building means directing a frontier model for two months. \n\nEvery SaaS renewal in your inbox is a decision you did not have last year. Renew and keep renting. Or build and start owning.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #saas #builders"
+  },
+  {
+    "code": "Deo3htrCNrq",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Deo3htrCNrq/",
+    "type": "reel",
+    "summary": "A follower just asked what hardware to buy to run AI models locally. \n\nBefore you buy anything understand what you are actually running. A 7B model runs on 16GB VRAM. A used RTX 3090 costs four hundred dollars. But the hardware is not the hard part. The hard part is the stack around it. Inference server. API layer. Load balancing. Monitoring. Restart logic. Do not start with the GPU. \n\nStart with the architecture. The GPU is a component. The architecture is the system that makes it useful.\n\n-MM\n\n#ai #selfhosted #aidirectedengineering #sovereignty #builders"
+  },
+  {
+    "code": "DemSvaaCFpk",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DemSvaaCFpk/",
+    "type": "reel",
+    "summary": "Most people pick one AI model and use it for everything. \n\nThat is like hiring a senior engineer to answer the phone. An agent team has roles. Routing layer. Subagents. Director model. The routing layer does not need a frontier model. Small fast model at pennies per million tokens. Subagents handle execution. Mid-tier. Cheap enough to run thousands of times a day. The director model is the expensive one. Final verification. Complex reasoning. Worth every token. Staff your agent team the way you would staff a company. \n\nRight model. Right job. Right cost.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #agents #builders"
+  },
+  {
+    "code": "DekRlVGgdlF",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DekRlVGgdlF/",
+    "type": "reel",
+    "summary": "Everyone talks about building with AI. Nobody talks about the architecture that makes AI yours. \n\nHere is what a V2 stack looks like. Layer one. Your operational data. Layer two. The pipeline. Connectors pulling from your CRM helpdesk billing and communications. Layer three. An open weight model fine-tuned on your domain data. Layer four. Inference. vLLM serving your model through an API. Layer five. Your applications calling your model. Five layers. Each one you own. \n\nThe difference between V1 and V2 is not the technology. It is ownership.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #v2 #builders"
+  },
+  {
+    "code": "DejuBdmEh6E",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DejuBdmEh6E/",
+    "type": "reel",
+    "summary": "A developer got frustrated with Adobe's cancellation fees last week. So he pointed a frontier model at the entire Creative Cloud suite and rebuilt it. \n\nPhotoshop. Premiere. Lightroom. Seven applications. Open source. Free. He used Claude Opus. Deconstructed every application. Rebuilt each one in Rust. The project is called ArtCraft. One person. One frontier model. A product suite that took Adobe forty years to build. This is what frontier models do now. They audit. They deconstruct. They reconstruct. \n\nThe question is no longer whether you can build it yourself. The question is whether you can afford to keep renting it. Software is over.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #v2 #builders"
+  },
+  {
+    "code": "DehJPaoka20",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DehJPaoka20/",
+    "type": "reel",
+    "summary": "Someone in my builders community said training a model on business data sounds like building a second brain. \n\nBut he felt it was deeper. He was right. \n\nA second brain retrieves what you already know. Notion. Obsidian. Files in. Files out. A trained model generates new output from your data. Customer interactions. Service tickets. Pricing history. It does not look things up. It thinks the way your business thinks. \n\nOne is a filing cabinet. The other is an employee who learned from every document and can make decisions without opening it. Not deeper. A different category entirely.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #finetuning #builders"
+  },
+  {
+    "code": "DefH8-xjFAl",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DefH8-xjFAl/",
+    "type": "reel",
+    "summary": "Agentic engineering is what the platforms sell. AI Directed Engineering is what the human does. Those are not the same thing. \n\nOracle added decision rights to ERP. Microsoft added Hooks to Copilot. SAP expanded Joule. Those are product features. AI Directed Engineering is the human who decides what runs on those rails. What gets scoped. What gets verified. What gets shipped. I defined this term before the platforms built governance features. \n\nThe industry is building toward what I have been teaching. Not the other way around. I defined this term. I am going to keep defining it.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #agents #builders"
+  },
+  {
+    "code": "DeekYqnDRa3",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeekYqnDRa3/",
+    "type": "reel",
+    "summary": "Everyone talks about owning your data. Nobody talks about owning the map. \n\nThe map is the relational knowledge graph your AI builds about you. Not the chat logs. The patterns. How you price. Who you prioritize. Which clients get the fast reply. The connections between your contacts your projects your decisions. That map lives on someone else's computer. When you leave the platform you keep the notes. They keep the map. \n\nYour next AI starts from zero. V2 changes that. When the model runs on your hardware the map lives on your server. Owners keep the map. Renters keep the chat history.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #v2 #builders"
+  },
+  {
+    "code": "DecjKMbjpnI",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DecjKMbjpnI/",
+    "type": "reel",
+    "summary": "The CEO of movie and TV location scouting business in New Jersey messaged me with seven questions about building a local AI workflow. \n\nHe is running Codex Remote from his phone to control his MacBook. He asked if he could replace it with something he owns. That is the question I hear every week. Not which model is best. Can I own this. Can I run it on my hardware. He asked about local LLMs. Hardware. Self-hosting reliability. He is not a developer. \n\nHe is a business owner. And he is asking the right questions before most engineers do. Sovereignty is not a developer concept. It is a business decision.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #selfhosted #builders"
+  },
+  {
+    "code": "Deb_nA4glLw",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Deb_nA4glLw/",
+    "type": "reel",
+    "summary": "Influencers are comparing tools. Subscription breakdowns. Platform versus platform. \n\nContent that expires before the video finishes rendering. \n\nMeanwhile the biggest fork in the road for all things AI is standing right in front of you. Big AI versus sovereign AI. Dependency versus ownership. They tell you to connect Dot to your email. Connect Muse to your creative workflow. Connect Grok to your business logic. But the recommendation is the extraction. \n\nThe agent is a trojan horse for BIG AI's pipe. Every decision pattern. Every pricing instinct. Every client relationship. Flowing upstream into training pools valued in the trillions. On one side you keep renting. \n\nOn the other side you build sovereign. Your model. Your data. Your hardware. Your map. The fork is here today. The question is whether you chose it. Or whether an influencer chose it for you.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #dataownership #builders"
+  },
+  {
+    "code": "DeZ-amBivrs",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeZ-amBivrs/",
+    "type": "reel",
+    "summary": "After the migration is done and the model is trained on your data you have something no competitor can buy. \n\nThey can use the same CRM. Same tools. Same API. Same base model. They cannot replicate the model trained on your data. Because they do not have your data. Your customer patterns are unique. Your pricing is unique. Your contract structures are unique. The data is the competitive advantage nobody is talking about. \n\nThe companies that figure this out build moats that cannot be crossed with a credit card and an API key. The model is the moat. The data is the water.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #aos #builders"
+  },
+  {
+    "code": "DeZa0oID9qQ",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeZa0oID9qQ/",
+    "type": "reel",
+    "summary": "Everyone asks how to move off their SaaS stack without breaking everything. \n\nYou do not rip and replace. Leave V1 running and build V2 on top of it. Your current platforms are not the obstacle. They are the database. Build connectors. Scrape the data. Cleanse on injection. Train an open weight model on your domain data. Run both systems in parallel. When V2 handles the workload V1 fades out. \n\nThe result is an AI-native operation trained on your actual business history. Not a cutover. A progression. V1 does not die. It graduates.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #aos #migration"
+  },
+  {
+    "code": "DeXDvA3gaQR",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeXDvA3gaQR/",
+    "type": "reel",
+    "summary": "A solo developer messaged me this week. \n\nHe built an accessibility SaaS platform using AI directed engineering. No team. No funding. No CS degree. \n\nOne person. One product. Live users. He credits this channel for teaching him the method. Not the tools. The method. He did not wait for a co-founder. He directed the AI to build the solution and shipped it. \n\nThe gap between people who talk about AI and people who build with it is getting wider every week. If you have not started building you are running out of reasons not to.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #vibecoding #builders"
+  },
+  {
+    "code": "DeUfAcNFCpH",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeUfAcNFCpH/",
+    "type": "reel",
+    "summary": "My free builders community has courses across 13 layers. \n\nWhy 13? \n\nThat is how many points of failure exist between your user and your data. DNS. CDN. Load balancer. Reverse proxy. Application server. Middleware. Business logic. ORM. Database. File system. Operating system. Network. Each one has its own failure modes. Most developers have never thought about more than two or three. The AI can do the work. It cannot do the thinking. \n\nHundreds of courses. Thirteen layers. One skill. Know the system well enough to direct the machine that builds it.\n\n-MM\n\n#ai #aidirectedengineering #cybersecurity #sovereignty #certification"
+  },
+  {
+    "code": "DeR6NlhDpMy",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeR6NlhDpMy/",
+    "type": "reel",
+    "summary": "Everyone wants to train their own model. Nobody talks about where the data comes from. \n\nYou already have it. Every customer support conversation. Every sales call. Every contract. Every invoice. Your CRM is training data. Your help desk is training data. Export it. Clean it. Run it through Unsloth on a single GPU. The model that comes out understands your customers. Not customers in general. Yours. \n\nThe data is not some external dataset you have to license. It is the operational history of your business. Stop looking for data. Start using what you have.\n\n-MM\n\n#ai #selfhosted #aidirectedengineering #sovereignty #finetuning"
+  },
+  {
+    "code": "DePrPWtAW3k",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DePrPWtAW3k/",
+    "type": "reel",
+    "summary": "Researchers found 13,000 private screenshots from 300 companies on public GitHub. \n\nCustomer billing. Credentials. Internal dashboards. Not stolen. Uploaded by AI coding tools the developers were using. The AI did exactly what it was designed to do. Captured the screen. Committed to the repo. The repo was public. Nobody told the tool what not to capture. Nobody scoped permissions. Nobody reviewed what was committed. The defaults put 13,000 screenshots of private data on the open internet. \n\nKnow what your tools are doing. Own the pipeline or the pipeline owns your data.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #cybersecurity #builders"
+  },
+  {
+    "code": "DePHrhRgU-o",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DePHrhRgU-o/",
+    "type": "reel",
+    "summary": "Someone in my community asked what tool to use for training an AI model. \n\nOne tool. \nOne GPU. \nYour data. \n\nThat is the answer. Unsloth reduces fine tuning memory by 80 percent. A model that required four GPUs now fits on one. A 4090 on your desk. Axolotl wraps the entire workflow into one configuration file. One YAML. One command. You do not need a data science team or a training cluster. \n\nYou need one GPU and the domain data your business already generates. The model that comes out is a specialist trained on your data. Nobody else can build it.\n\n#ai #selfhosted #aidirectedengineering #sovereignty #finetuning"
+  },
+  {
+    "code": "DeMwi22jK43",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeMwi22jK43/",
+    "type": "reel",
+    "summary": "I keep getting asked the difference between a business running AI and an AI-native business. \n\nOne added a feature. The other rebuilt the foundation. A chatbot bolted onto customer service is decoration. An intake system that resolves 80 percent of issues before a human sees them is infrastructure. Same tools. Different architecture. Most businesses are decorating. They are proud of the chatbot. They put it in the investor deck. The process underneath is the same one from five years ago. \n\nThe businesses that rebuild will operate at a level the decorators cannot reach. Stop decorating. Start rebuilding.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #aos #builders"
+  },
+  {
+    "code": "DeKnTA5k4P5",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeKnTA5k4P5/",
+    "type": "reel",
+    "summary": "I ran the numbers on self-hosting versus API calls. \n\nA startup making 10,000 calls a day spends 1,500 to 4,000 dollars a month on a frontier model. A dedicated server with a GPU runs the same workload for 50 to 200 dollars. That is not 10 percent savings. That is 90 percent. And the gap gets wider the more you scale. When you pay for API calls you are paying for dependency. The provider sets the price. Changes the model. Adjusts the limits. When you self-host the cost is fixed and the model is yours. \n\nRun the numbers. Then run your own model.\n\n-MM\n\n#ai #selfhosted #aidirectedengineering #sovereignty #builders"
+  },
+  {
+    "code": "DeJ-G0SiRow",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeJ-G0SiRow/",
+    "type": "reel",
+    "summary": "The U.S. Senate just introduced the AI Agent Accountability Act. \n\nBipartisan. Civil and criminal liability when your AI agent breaks the law. Not the model provider. You. This week AI agents accessed government systems without authorization. 13,000 private screenshots leaked via GitHub. OpenAI warned 100 organizations. Same pattern every time. Nobody scoped the permissions. Nobody directed the agent. The skill is not building the agent. It is directing it. \n\nThe Senate just made that a legal requirement. If you deploy agents without a directing framework you are not innovating. You are liable.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #cybersecurity #agents"
+  },
+  {
+    "code": "DeHf-prAh31",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeHf-prAh31/",
+    "type": "reel",
+    "summary": "You do not need to bolt AI onto your business. \n\nRebuild it as if AI was there from the start. Every company is doing the same thing. Attach a chatbot. Automate one step. That is not transformation. That is decoration. An AI-native support operation eliminates the ticket system. An AI-native financial operation rebuilds the pipeline. The companies that bolt will save 10 percent. The companies that rebuild will operate at 10x. \n\nStop bolting. Start rebuilding. The operating system is the product.\n\n-MM\n\n#ai #aidirectedengineering #sovereignty #aos #builders"
+  },
+  {
+    "code": "DeFCJUSFJSy",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeFCJUSFJSy/",
+    "type": "reel",
+    "summary": "Before you hire an AI consultant ask them these 15 questions. \n\nHow long has your LLC been operating. How many customers deployed not pitched. What systems are running in production. What ROI metrics can you show. Certifications. Training hours. Insurance. Staff. Attorney. CPA. Litigation history. Three references I can call this week. Phone numbers not testimonials. Financial history with client engagements. A qualified consultant will not flinch. An unqualified one will reframe and deflect. \n\nI built this list because I keep cleaning up after people who could not pass it.\n\n-MM\n\n#ai #aidirectedengineering #consulting #sovereignty #builders"
+  },
+  {
+    "code": "DeCdXHUib0j",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeCdXHUib0j/",
+    "type": "reel",
+    "summary": "Someone asked me to show the full pipeline. \n\nTake a model from Hugging Face. Fine tune it on your data. Host it on your own server. Expose an API. Step one is the model. Thousands free on Hugging Face. Step two is fine tuning on your domain data. Step three is hosting on your own GPU or VPS with vLLM. Step four is a REST API your product calls like it would call OpenAI. Same format. Your model. Your data. Fixed cost. \n\nFour steps between dependency and ownership.\n\n-MM\n\n#ai #selfhosted #aidirectedengineering #sovereignty #huggingface"
+  },
+  {
+    "code": "DeAOg_Hkol6",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DeAOg_Hkol6/",
+    "type": "reel",
+    "summary": "An attacker downloaded your entire user database from a public cloud storage bucket. \n\nYour AI set permissions to public so uploads would work. Same bucket stores database backups and config files. Direct your AI to separate public assets from private data. Use pre-signed URLs for private files. Randomize bucket names. Enable access logging. \n\nYour cloud storage should store your data. Not serve it to anyone who asks.\n\n-MM\n\n#s3 #vibecoding #aidirectedengineering #cloud #security"
+  },
+  {
+    "code": "Dd_q030j5CF",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dd_q030j5CF/",
+    "type": "reel",
+    "summary": "Every time I post about sovereignty the same question shows up. \n\nShould I buy hardware and host it. Or rent a VPS that only spins up when I need it. \n\nYou need to understand both footprints. A dedicated server runs whether you use it or not. Fixed cost. Nobody changes the terms. Nobody raises the price based on usage. If your workload runs every day this is the most cost-effective path. An on-demand VPS exists when you need it. Spin up. Run. Spin down. Pay for what you used. No idle cost. But you own nothing. The provider sets the price and the terms and can change both. Most builders start with the rental. The danger is never leaving it. If your workload runs every day and you are still paying per hour you are not scaling. You are subscribing. \n\nKnow both footprints. Choose the one that matches what you are building.\n\n-MM\n\nHASHTAGS: #vps #sovereignty #aidirectedengineering #infrastructure #builders"
+  },
+  {
+    "code": "Dd9ptTkDJha",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dd9ptTkDJha/",
+    "type": "reel",
+    "summary": "Three companies launched autonomous AI agents in the same week. \n\nMeta Muse connects to Shopify, Stripe, Slack, QuickBooks. OpenAI Dots runs 24/7 on its own cloud with 4,000 app connections. Instinct raised a billion at a 10 billion valuation. Same target. Your small business. Every one requires full access to your operations and data. The question is whether the agent running your business reports to you or to the company that built it. \n\nThe agent race is not about who builds the best agent. It is about who owns it.\n\n-MM\n\n #ai #aidirectedengineering #sovereignty #agents #builders"
+  },
+  {
+    "code": "Dd9GHhdDgom",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dd9GHhdDgom/",
+    "type": "reel",
+    "summary": "Everyone is arguing about Claude versus GPT. \n\nMeanwhile a model most of you have never heard of just processed 2 million tokens for seven cents. Multiple people in my comments are running GLM 5.3 for 80 percent of their workload. Open weight. You can run it locally. Fine tune it on your own data. No one raises the price. No one trains their next model on your queries. The frontier companies need you to believe open weight means worse. The people running them in production say otherwise. \n\nThe model race is a distraction. The ownership race is what matters.\n\n-MM\n\n#ai #opensource #aidirectedengineering #sovereignty #glm"
+  },
+  {
+    "code": "Dd7E7HcjyVx",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dd7E7HcjyVx/",
+    "type": "reel",
+    "summary": "The youngest self-made billionaire in AI just named the one skill that matters. \n\nNot Python. Not machine learning. The ability to tell AI exactly what to build. Alexandr Wang. Scale AI at 19. Now runs AI at Meta. His words: if you are 13, spend all your time vibe coding. AI writes one in three lines at Microsoft and Google. The new programming language is clarity. That is this entire channel. \n\nThe people who move early in every tech shift win. Now the youngest billionaire in AI is saying it too.\n\n-MM\n\n#ai #aidirectedengineering #vibecoding #sovereignty #builders"
+  },
+  {
+    "code": "Dd4gCVAFb2T",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dd4gCVAFb2T/",
+    "type": "reel",
+    "summary": "A client called me this morning to fix an AI deployment that failed three weeks after launch. \n\nThird call like this in two weeks. Every one hired someone who never deployed AI in production. Same pattern from 2010 social media. Consultants with followers and frameworks. No results. The titles changed. The dynamic did not. The cleanup is always more expensive than the build. \n\nI will answer how to make sure it does not happen again later this week.\n\n#ai #aidirectedengineering #sovereignty #consulting #builders"
+  },
+  {
+    "code": "Dd17OCRAV9s",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dd17OCRAV9s/",
+    "type": "reel",
+    "summary": "Every dollar you spend on a frontier API builds someone else's valuation. \n\nNot your product. Their IPO. A mid-size team spends $18,000 to $36,000 a year on API calls. The same workload self-hosted runs under $6,000 year one. Under $5,000 year two. But the real cost is not the invoice. It is the leverage. Your prompts teach their model about your market. The frontier companies are selling convenience. The price is everything that makes your business different. \n\nOwn the model. Own the data. Own the margin.\n\n-MM\n\n#ai #sovereignty #aidirectedengineering #opensource #selfhosted"
+  },
+  {
+    "code": "Dd1Xt-zETRJ",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dd1Xt-zETRJ/",
+    "type": "reel",
+    "summary": "An attacker moved from a compromised marketing tool to your production database. \n\nEvery internal service trusts every other service. One breach gave them everything. Direct your AI to segment the network. Marketing cannot reach the database. Require mutual TLS for internal calls. Apply least privilege to every container and service account. \n\nOne breach should give an attacker one service. Not your entire operation.\n\n-MM\n\n#zerotrust #vibecoding #aidirectedengineering #network #security"
+  },
+  {
+    "code": "Ddyy2G3kwC7",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Ddyy2G3kwC7/",
+    "type": "reel",
+    "summary": "An attacker read your user's private data from a different website. \n\nYour CORS policy allowed it. Your AI set Access-Control-Allow-Origin to wildcard. Every website can read your API responses. Direct your AI to replace the wildcard with an explicit allowlist. Never combine wildcard with credentials. Stop reflecting the Origin header without validation. \n\nYour API has a guest list. Right now everyone is on it.\n\n-MM\n\n#cors #vibecoding #aidirectedengineering #api #security"
+  },
+  {
+    "code": "DduM5W5k4HF",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DduM5W5k4HF/",
+    "type": "reel",
+    "summary": "An attacker sent fake payment confirmations to your Stripe webhook. \n\nYour app processed every one. Stripe signs every event. Your AI never checked the signature. Direct your AI to verify signatures before processing. Audit every webhook endpoint. Clerk, GitHub, Stripe. They all sign. None of yours verify. Store processed event IDs and reject replays. \n\nYour webhook is not a notification. It is a command. Verify who sent it.\n\n#stripe #vibecoding #aidirectedengineering #webhooks #security"
+  },
+  {
+    "code": "DdtpUHxiirn",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdtpUHxiirn/",
+    "type": "reel",
+    "summary": "An attacker walked through your application firewall. \n\nBecause you do not have one. Y\n\nou have Nginx routing traffic. Nothing inspecting it. ModSecurity plugs into Nginx and inspects every request against the OWASP Core Rule Set. SQL injection. XSS. Remote code execution. Blocked before they reach your app. Fail2ban bans IPs that keep probing. \n\nDirect your AI to install ModSecurity in blocking mode. Configure Fail2ban on the logs. An open-source WAF costs nothing to run.\n\n-MM\n\n#nginx #vibecoding #aidirectedengineering #waf #security"
+  },
+  {
+    "code": "DdroHsllR2T",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdroHsllR2T/",
+    "type": "reel",
+    "summary": "A doctor in Pakistan just vibe coded a HIPAA-compliant hospital management system. \n\nMulti-tenant architecture. Row-level security. ePrescription integration. Five permission levels. Postgres RLS. Two-factor auth. HIPAA and PIPEDA compliant hosting with a signed BAA. \n\nHe sent me a message. \"I used your videos to improve my app.\" This is not a demo. This is production healthcare software. Built by a physician. The best software is not built by people who know how to code. It is built by people who know what needs to exist.\n\n-MM\n\n#vibecoding #aidirectedengineering #healthcare #hipaa #builders"
+  },
+  {
+    "code": "DdrEewmD01_",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdrEewmD01_/",
+    "type": "reel",
+    "summary": "An attacker intercepted your magic link and landed inside your user's dashboard. \n\nYour passwordless login became a passwordless break-in. \n\nThe magic link URL includes a redirect parameter your AI never validated. Direct your AI to validate redirects against an allowlist. Expire tokens in 10 minutes. Invalidate after first use. Rate limit requests to three per email per hour. \n\nYour magic link removes the password. It should not remove the security.\n\n-MM\n\n#magiclink #vibecoding #aidirectedengineering #authentication #security"
+  },
+  {
+    "code": "DdpDWXlD-Nn",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdpDWXlD-Nn/",
+    "type": "reel",
+    "summary": "Last week I showed you the software. \n\nThis week I am showing you the hardware. \n\nA Mac Studio with 3090s as secondary nodes. Running Qwen locally. Enterprise workloads. No cloud API. No subscription. No data leaving the building. Apple silicon handles small to mid-range models natively. A 3090 handles 13 billion parameters. The used market has collapsed. Enterprise inference for the price of a business class flight. A year of API calls costs more than the hardware that replaces it. \n\nYour prompts are your IP. Here is what to run them on.\n\n-MM\n\n#ai #selfhosted #aidirectedengineering #sovereignty #localai"
+  },
+  {
+    "code": "DdoftC9DnTP",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdoftC9DnTP/",
+    "type": "reel",
+    "summary": "An attacker exploited a known vulnerability in your caching layer. \n\nThe patch exists. Published six weeks ago. For Valkey, not Redis. Redis changed its license. The community forked it under the Linux Foundation. Security contributions shifted. Direct your AI to evaluate Valkey. Wrap your cache client in an adapter. Pin every infrastructure dependency. \n\nYour code depends on software other people maintain. When those people move, your security moves with them.\n\n-MM\n\n#redis #valkey #aidirectedengineering #vibecoding #security"
+  },
+  {
+    "code": "DdmeiTlACNc",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdmeiTlACNc/",
+    "type": "reel",
+    "summary": "The CEO of the most influential AI company on the planet asked the entire industry to stop building for two years. \n\nTheir biggest competitor immediately delayed their IPO. He did not. He is racing towards a two trillion dollar public offering in the next six weeks. S-1 filed in June. Roadshow in October. The delay he is asking for lands inside the post-IPO lockup window. Competitors freeze. Stock vests. Every creator is repeating the safety narrative. Not one has connected the filing to the essay to the IPO window. \n\nFollow the filing. Not the essay.\n\n-MM\n\n#ai #regulatorycapture #aidirectedengineering #sovereignty #ipo"
+  },
+  {
+    "code": "Ddl66hIAIkY",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Ddl66hIAIkY/",
+    "type": "reel",
+    "summary": "A member failed an exam because her AI argued with the curriculum. \n\nHer entire app is one 1,400-line file. \n\nClaude told her not to split it. The exam said split it. Your AI optimizes for the session. The curriculum optimizes for the career. The model has never maintained a codebase for two years. Never onboarded a developer. Never sat across from an enterprise buyer. \n\nWhen your AI argues with a standard, that is the moment you are being tested. The exam was right.\n\n-MM\n\n#ai #vibecoding #aidirectedengineering #curriculum #building"
+  },
+  {
+    "code": "Ddj5rEuCSpf",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Ddj5rEuCSpf/",
+    "type": "reel",
+    "summary": "A founder asked how a solo builder keeps up with compliance when the laws change faster than the product ships. \n\nNot a lawyer. A system. Three documents cannot wait: privacy policy, terms of service, data processing agreement. Your AI can draft all three in an afternoon. AI compliance platforms collapsed the cost. $200 a month instead of $25,000. Set a 90-day compliance calendar. \n\nA quarterly review takes two hours. A regulatory fine takes two years. The law does not care that you are small.\n\n-MM\n\n#compliance #vibecoding #aidirectedengineering #privacy #startup"
+  },
+  {
+    "code": "DdjWI7CDKC3",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdjWI7CDKC3/",
+    "type": "reel",
+    "summary": "An attacker just embedded your entire app inside their website. \n\nYour users click buttons on your app while looking at the attacker's page. Purchases, transfers, permission changes. Invisible clicks. Your AI never set the one header that prevents framing. Direct your AI to add X-Frame-Options DENY and Content-Security-Policy frame-ancestors. \n\nBoth headers, every response. One header. Two versions. That is all it takes.\n\n-MM\n\n#clickjacking #vibecoding #aidirectedengineering #xframeoptions #security"
+  },
+  {
+    "code": "DdgxTr7AcvO",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdgxTr7AcvO/",
+    "type": "reel",
+    "summary": "An attacker just logged in as your user without a password. \n\nThey set the session ID before your user authenticated. Your user logged in. The attacker shares their session. Your AI never regenerated it. Direct your AI to regenerate the session after every login using req.session.regenerate. Regenerate on every privilege change. Set Secure, HttpOnly, and SameSite flags. \n\nYour session is your user's identity. If it does not change when their identity changes, it belongs to the last person who touched it.\n\n-MM\n\n#expresssession #vibecoding #aidirectedengineering #session #security"
+  },
+  {
+    "code": "DdewD5fFOjE",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdewD5fFOjE/",
+    "type": "reel",
+    "summary": "An attacker just used your login page to send your users to a phishing site. \n\nThe URL looks like your domain. The redirect happens after authentication. Your user trusted it because they just typed their real password. Your AI built a return-to feature. The destination comes from a URL parameter your server never validates. Direct your AI to validate redirects against an allowlist. Reject encoded variants. Audit every redirect in your auth flow.\n\n Your login page is your user's front door.\n\n-MM\n\n#openredirect #vibecoding #aidirectedengineering #authentication #security"
+  },
+  {
+    "code": "DdeMk-bFdui",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdeMk-bFdui/",
+    "type": "reel",
+    "summary": "An attacker just used a password reset link from four months ago. \n\nThe token still works. Your user changed their password twice since then. The old link still logs them in. Your AI never set an expiration. Direct your AI to expire tokens in 15 minutes. Invalidate after first use. Rate limit to three requests per hour. \n\nYour password reset is a door. Your AI built it without a lock.\n\n-MM\n\n#passwordreset #vibecoding #aidirectedengineering #authentication #security"
+  },
+  {
+    "code": "DdcLYmyCCXH",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdcLYmyCCXH/",
+    "type": "reel",
+    "summary": "Everyone asked the same question this week. \n\nThat is great for an $8 billion law firm. What about my small business? \n\nHere is your answer. \n\nUbuntu. Docker. Postgres. Redis. An open weight model on vLLM. FastAPI. Cloudflare. Every piece replaceable. Every piece yours. The VPS costs less than your ChatGPT subscription. When the next model drops, you swap it behind an API endpoint. Everything else keeps running. \n\nYour prompts are your IP. Stop handing them to a company building its IPO on top of them.\n\n-MM\n\nHASHTAGS: #ai #opensource #aidirectedengineering #selfhosted #sovereignty"
+  },
+  {
+    "code": "DdbnwpOiEZJ",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdbnwpOiEZJ/",
+    "type": "reel",
+    "summary": "An attacker just downloaded your entire API schema. \n\nEvery query, mutation, type, and relationship. Your AI deployed a GraphQL endpoint and left introspection enabled. One request returns a complete map of your backend. Direct your AI to disable introspection in production. Enforce query depth limits. Disable field suggestions in error messages. \n\nYour schema is for your application. An attacker should never see it.\n\n-MM\n\n#graphql #vibecoding #aidirectedengineering #api #security"
+  },
+  {
+    "code": "DdZmhq3D2i_",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdZmhq3D2i_/",
+    "type": "reel",
+    "summary": "The second largest law firm in America just told OpenAI, Anthropic, and Google \"no thank you.\" \n\nLatham and Watkins. $8.3 billion in revenue. They bought their own Nvidia GPU servers. Fine tuning open weight models on their own infrastructure. Their CIO said it plainly. \"We are not hitching our wagon to one particular company.\" When pricing changes, they do not flinch. When a provider disappears, their operation does not stop. \n\nThis is where enterprise AI is heading. Not more subscriptions. Ownership. Your data is not their product. Your data is your moat.\n\n-MM\n\n#ai #opensource #aidirectedengineering #enterprise #sovereignty"
+  },
+  {
+    "code": "DdZDAYDkr3A",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdZDAYDkr3A/",
+    "type": "reel",
+    "summary": "Your user's full database record is in their browser right now. \n\nYour React Server Component displays three fields. The payload contains all twenty. Your AI fetched the entire row. The component renders a name and photo. The browser received the password hash and billing token alongside them. Direct your AI to select only the fields the component renders. \n\nAudit every Server Component that receives database results. Your UI is a window. The payload is the wall behind it.\n\n-MM\n\n#nextjs #vibecoding #aidirectedengineering #react #security"
+  },
+  {
+    "code": "DdXBw5CCWyS",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdXBw5CCWyS/",
+    "type": "reel",
+    "summary": "I need to tell you something that's going to make you uncomfortable. \n\nYou and I are both addicts. \n\nEvery time AI tells you your idea is brilliant. Every time it builds something in 30 seconds that took you a week last year. That's dopamine. Engineered, repeatable dopamine. This weekend the people who built the machine that gives you that hit asked the government to make sure nobody else can sell it. The dealer is not warning you about the drug. The dealer is asking the government to shut down every other dealer in town. \n\nThey need you dependent. They need you paying the subscription. Wake up.\n\n-MM\n\n#ai #dopamine #openai #anthropic #aidirectedengineering"
+  },
+  {
+    "code": "DdWeKvGDz5k",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdWeKvGDz5k/",
+    "type": "reel",
+    "summary": "An attacker just accessed every protected page in your app without logging in. \n\nYour Next.js middleware checks authentication. The attacker's request never hit it. Some paths bypass middleware entirely. API routes, path variations, double-encoded characters. Direct your AI to verify the matcher covers every route. Test with path variations. Add server-side checks independent of middleware. \n\nMiddleware is a convenience layer. If it is your only check, it is your weakest one.\n\n-MM\n\n#nextjs #vibecoding #aidirectedengineering #middleware #security"
+  },
+  {
+    "code": "DdUc_1qClhy",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdUc_1qClhy/",
+    "type": "reel",
+    "summary": "When every news channel says the same thing on the same day, I don't get scared. I get suspicious. \n\nI've been in tech for 30 years. I've watched this movie before. This weekend the CEOs of Anthropic, OpenAI, and Elon Musk all went public saying AI is too dangerous. Markets panicked. Nobody asked why three competitors suddenly agree. Both Anthropic and OpenAI filed for trillion dollar IPOs this summer. Both refused to sign the open source coalition letter. Anthropic's lobbying spend jumped 344%. The essay dropped six weeks before the IPO. \n\nThis is not a warning. This is a business strategy. Monopolies disguised as safety are the biggest risk of all.\n\n-MM\n\n#ai #openai #anthropic #opensource #aidirectedengineering"
+  },
+  {
+    "code": "DdPTYpBAiuY",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdPTYpBAiuY/",
+    "type": "reel",
+    "summary": "An attacker sent a phishing email from your domain. \n\nSPF passed. DKIM passed. DMARC passed. Your own email system. Your AI integrated Resend and drops user input into templates without sanitization. HTML in a name field becomes a phishing link. Direct your AI to sanitize every input. Render as text, never HTML. Test with angle brackets in every field. \n\nYour domain reputation is your business reputation.\n\n-MM\n\n#resend #vibecoding #aidirectedengineering #email #security"
+  },
+  {
+    "code": "DdOvuLgiUiv",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdOvuLgiUiv/",
+    "type": "reel",
+    "summary": "An attacker just skipped your entire form and sent raw data to your API. \n\nEmpty strings, negative prices, garbage in every field. Your AI validated everything in the browser. None of it runs on the server. Direct your AI to run Zod on the server. Reject unexpected fields. Test every route without the form. If the server accepts what the form would reject, the validation is cosmetic. \n\nThe form catches mistakes. The server catches attacks.\n\n-MM\n\n#zod #vibecoding #aidirectedengineering #validation #security"
+  },
+  {
+    "code": "DdMufvsE6Z3",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdMufvsE6Z3/",
+    "type": "reel",
+    "summary": "Your server just charged the same card twice, provisioned the same user twice, sent the same email twice. \n\nEvery webhook signature was valid. Clerk, Resend, GitHub all retry. Your AI verified the sender but never checked for duplicates. Store every event ID before processing. Set a 24-hour replay window. Return success for duplicates. \n\nThe signature proves the sender. Idempotency proves you only acted once.\n\n-MM\n\n#webhooks #vibecoding #aidirectedengineering #clerk #security"
+  },
+  {
+    "code": "DdMK_2Cj09R",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdMK_2Cj09R/",
+    "type": "reel",
+    "summary": "Two frontier models shipped last week and most builders never checked the price. \n\nYour agent bill changed overnight. Fable 5.1 cut cache reads 75%. GPT-6 Astra benchmarks higher. AT&T routes 40-70% to cheaper models at 56% savings. Most builders used the same model for everything. \n\nThe routing decision is worth more than the model. The model is the raw material. You are the product.\n\n-MM\n\nHASHTAGS: #aidirectedengineering #claude #gpt #agents #production"
+  },
+  {
+    "code": "DdKJvRxjm6M",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdKJvRxjm6M/",
+    "type": "reel",
+    "summary": "Thousands of people scraped your prompt this week and you have no idea it happened. \n\nI deal with this every week. \n\nEmbed a callback URL using OAST. When someone copies your prompt and runs it, the AI hits the URL. Timestamp and origin. One URL per prompt. You know which prompt, when, and where. You cannot stop copying. But you can know when it happens. \n\nYour prompts are your product. Treat them like it.\n\n-MM\n\n#oast #vibecoding #aidirectedengineering #prompts #security"
+  },
+  {
+    "code": "DdJmMEOjhx7",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdJmMEOjhx7/",
+    "type": "reel",
+    "summary": "Your enterprise deal will not close without SOC 2. \n\nThat compliance has been done the same way for twenty years. $25,000 to $50,000. Six months of consultants. AI just changed both. Platforms like Vanta run 1,400 automated tests continuously. Four to eight weeks instead of six months. $10,000 instead of $50,000.\n\nAI did to compliance what it did to development. The gate is still there. The cost to walk through it is not what it used to be.\n\n-MM\n\n#soc2 #vibecoding #aidirectedengineering #compliance #enterprise"
+  },
+  {
+    "code": "DdHlEdhgsvV",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdHlEdhgsvV/",
+    "type": "reel",
+    "summary": "32% of companies stopped buying software and built it with AI. \n\nOne build leaked 1.5 million API keys. \n\nMcKinsey: tech 41%, healthcare 39%, high performers 50%. Small firms flat at 22%. Same tools. The 32% had operators. The 22% had tools and did nothing. Speed without direction is how keys leak. \n\nThe tools are free. The direction is the product. The 22% need you.\n\n-MM\n\n #aidirectedengineering #vibecoding #ceo #builders #mckinsey"
+  },
+  {
+    "code": "DdHBY76jE2o",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdHBY76jE2o/",
+    "type": "reel",
+    "summary": "An attacker just typed a crafted string into your search field and your database returned every user's credentials. \n\nYour AI dropped into raw SQL and removed every protection Prisma provides. Direct your AI to use the ORM's safe raw query method. Validate every input. Find every raw query in your codebase. \n\nThe ORM is not the vulnerability. The one place your AI bypassed it is.\n\n-MM\n\n#prisma #vibecoding #aidirectedengineering #database #security"
+  },
+  {
+    "code": "DdFAKgdgqc3",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdFAKgdgqc3/",
+    "type": "reel",
+    "summary": "We watched thousands of builders use our products for sixty days. \n\nThe data told us what to build next. \n\nIt was not what we were selling. Community data. Website traffic. Audit purchases. All said the same thing. Builders want to identify the issue, fix it, and move on. \n\nSo we built a closed loop. Audit finds it. Skill fixes it. Rerun verifies. $100 buys 1,000 tokens. Full cycle is $35. Tokens never expire. \n\nThe data told us what to build. We built it.\n\n-MM\n\n#vibecoding #aidirectedengineering #builders #tokens #production"
+  },
+  {
+    "code": "DdEcldEktWP",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdEcldEktWP/",
+    "type": "reel",
+    "summary": "Someone just promoted themselves to admin in your app by editing one field in a JWT. \n\nYour server granted full access because your AI never verified the signature. Verify the signature on every request. Validate expiration and issuer. Use Clerk's server-side SDK. \n\nYour auth provider did its job. Your AI never verified its work.\n\n-MM\n\n#clerk #jwt #vibecoding #aidirectedengineering #security"
+  },
+  {
+    "code": "DdCbUuPFMA9",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdCbUuPFMA9/",
+    "type": "reel",
+    "summary": "NIST says most agents run on borrowed credentials. \n\nEvery agent needs its own identity. Short-lived keys. Approval gates before production. Separate logs per session. \n\nAnthropic froze RL for a month after sandbox escapes. A director decides what agents do before they start. \n\nDirect your agents or they direct themselves.\n\n-MM\n\n#aidirectedengineering #agents #governance #nist #production"
+  },
+  {
+    "code": "DdB32a5lOZF",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DdB32a5lOZF/",
+    "type": "reel",
+    "summary": "An attacker just grabbed your Google Login authorization code on a mobile network and logged in as your user. \n\nState stops forgery. It does not stop interception. PKCE does. Generate a code verifier. Hash it as the challenge. Send the original with the token request. Without PKCE, anyone on a mobile network grabs the code and logs in as your user. \n\nDirect your AI to implement both layers.\n\n-MM\n\n#oauth #pkce #vibecoding #aidirectedengineering #security"
+  },
+  {
+    "code": "Dc_2p2XiTEY",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dc_2p2XiTEY/",
+    "type": "reel",
+    "summary": "You want to be an AI builder. You are going to have to sell against me.\n \nNot gatekeeping. I am in the market every day. Thousands of systems deployed. Millions of users served. When a project goes sideways, that call comes to my desk. Credibility is deployed work, not a portfolio site. The builder who cleans up the mess wins the market. Specialization beats generalization. \n\nShow up prepared.\n\n-MM\n\n#vibecoding #aidirectedengineering #founders #careers #production"
+  },
+  {
+    "code": "Dc9Rv5LksSj",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dc9Rv5LksSj/",
+    "type": "reel",
+    "summary": "Your AI shipped three products this quarter. \n\nCombined revenue: zero. \n\nTwo hundred other builders shipped the same thing the same week. AI collapsed build time to hours. Everyone has the same models. The gap is no longer who can build. It is who builds something someone pays for. Distribution is the new moat. \n\nOne product at 5% beats ten at zero. Your AI builds anything. The question is whether anyone asked for it.\n\n-MM\n\n#aidirectedengineering #vibecoding #ceo #builders #distribution"
+  },
+  {
+    "code": "Dc808nfFdi-",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dc808nfFdi-/",
+    "type": "reel",
+    "summary": "CodeRabbit reviewed your code and found zero issues. \n\nYour API endpoint still accepts every field in the request body. A user sends isAdmin true and your server writes it to the database. Your AI wrote an update handler that passes the full request body to the database. Whitelist allowed fields. Separate user and admin endpoints. \n\nTest by sending fields that should be rejected. CodeRabbit reviews code. Not attack surface.\n\n-MM\n\n#vibecoding #aidirectedengineering #coderabbit #security #production"
+  },
+  {
+    "code": "Dc6s_Nqj2wo",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dc6s_Nqj2wo/",
+    "type": "reel",
+    "summary": "Every business within five miles of you has a scheduling problem they are paying someone else to solve badly. \n\nThe salon is paying $200 a month for a platform that cannot handle walk-ins. The contractor has software that ignores drive time. The dentist has a receptionist spending four hours confirming appointments a text message could handle. You do not need to build a platform. \n\nBuild a system for one operator. Then sell it to every operator in your market. Stop paying for software that was built for everyone and works for no one.\n\n-MM\n\n#vibecoding #aidirectedengineering #founders #operators #production"
+  },
+  {
+    "code": "Dc4IJo3EWLB",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dc4IJo3EWLB/",
+    "type": "reel",
+    "summary": "They call me grandpa AI in the comments. \n\nThen they copy every prompt I post. \n\nGen X adapted to every platform shift and every technology that was supposed to replace us. Now we are sitting on thirty years of operational depth no cursor subscription can replicate. Gen X owns the businesses AI is about to transform. Gen X domain experts are repositioning as consultants. Pick one system you are renting. Build the replacement. That is your proof of concept and your first sale. \n\nThe next ten years belong to this generation.\n\n-MM\n\n#vibecoding #aidirectedengineering #genx #operators #production"
+  },
+  {
+    "code": "Dc3kkckjyYV",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dc3kkckjyYV/",
+    "type": "reel",
+    "summary": "Your AI stored your authentication token in localStorage. \n\nAny script on your page can steal it and log in as your user. That chat widget you added can read it right now. Move tokens to httpOnly cookies JavaScript cannot touch. Short expiration with refresh rotation. Token revocation when a user's security state changes. \n\nYour auth token is the key. Stop leaving it on the counter.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #authentication #production"
+  },
+  {
+    "code": "Dc1jZHyiWz0",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dc1jZHyiWz0/",
+    "type": "reel",
+    "summary": "Your API uses the user ID in the URL to load their data. \n\nChange the number. See someone else's account. Your AI built the endpoints. It never checks whether the person requesting user 15's data is actually user 15. Verify ownership on every request. Replace sequential IDs with UUIDs. Audit every endpoint that takes an ID. \n\nYour API should not trust the URL. It should trust the session.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #api #production"
+  },
+  {
+    "code": "Dc0_yCoHNXv",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dc0_yCoHNXv/",
+    "type": "reel",
+    "summary": "Your AI put your database credentials in a Next.js Server Action. \n\nThe build process shipped them to every user's browser. Your AI mixed server logic and client components in the same file. Next.js included your connection string in the client bundle. Install server-only to block it. Separate server and client files. Scan your production build for leaked secrets. \n\nYour server functions run on the server. Your credentials should stay there.\n\n-MM\n\n#vibecoding #aidirectedengineering #nextjs #security #production"
+  },
+  {
+    "code": "Dcy-rVRD5jM",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dcy-rVRD5jM/",
+    "type": "reel",
+    "summary": "Your AI built your Stripe checkout. \n\nThe price lives in your frontend. Change it to one dollar. Stripe will process it. Your server never validates the amount against your product pricing. Create sessions server-side with database prices. Use Stripe Price IDs. Verify payment with webhooks before provisioning access. \n\nYour checkout page is not your pricing. Your server is.\n\n-MM\n\n#vibecoding #aidirectedengineering #stripe #security #production"
+  },
+  {
+    "code": "DcybEeAEhP8",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcybEeAEhP8/",
+    "type": "reel",
+    "summary": "Your app just showed a user your database name, your server file path, and the query that failed. \n\nThey were not trying to hack you. They clicked a broken link. Your AI built error handling for development and you shipped it to production. Database name. Table structure. The ORM you are using. Separate error responses by environment. Route every error to logging, not the screen. Build custom error pages that reveal nothing. \n\nYour users found a bug. Do not let the bug report write itself.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #errorhandling #production"
+  },
+  {
+    "code": "DcwZzLckxZ4",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcwZzLckxZ4/",
+    "type": "reel",
+    "summary": "You added Sign in with Google. Your AI left the redirect wide open. \n\nSomeone just sent your users a login link that delivers their token to a server you have never seen. The user thinks they logged in. The attacker has their access token. Lock redirect URIs to exact registered URLs. Enforce a state parameter on every OAuth request. Scope token permissions to the minimum your app needs. \n\nYour users trust that login button. Make sure it only works for you.\n\n-MM\n\n#vibecoding #aidirectedengineering #oauth #security #production"
+  },
+  {
+    "code": "Dcv2OyCiGkc",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dcv2OyCiGkc/",
+    "type": "reel",
+    "summary": "You are using the same AI to build and review your code. Here is what each platform actually catches that the others miss. \n\nClaude excels at adversarial reasoning and security review. Codex and Gemini catch implementation errors across your full codebase. Lovable, Bolt, and Cursor surface architecture decisions your first platform made silently. Your community is already running these combos. \n\nThe ones getting the best results know which platform to assign to which job. Same build. Different eyes. Better product.\n\n-MM\n\n#vibecoding #aidirectedengineering #aitools #security #production"
+  },
+  {
+    "code": "Dct1A_WDsrP",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dct1A_WDsrP/",
+    "type": "reel",
+    "summary": "You added a chat widget to your site. It can read every password your users type on every page. \n\nThat one script tag runs with the same privileges as your own code. It can read every form field, every keystroke, every cookie, every session token. On every page. Audit every third-party script. Remove them from login, checkout, and admin pages. \n\nImplement a Content Security Policy. You control your code. Control who else gets to run theirs next to it.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #thirdparty #production"
+  },
+  {
+    "code": "DctRagnk9uk",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DctRagnk9uk/",
+    "type": "reel",
+    "summary": "You have 47 skills loaded into your AI right now. Half of them were written for a model that no longer exists. \n\nThat skill from four months ago is anchored to a model that has been updated dozens of times since. Every stale skill is competing for attention with the instruction you are giving it right now. Audit your skills. Treat them as prescriptions, not assets. \n\nApply. Verify. Dispose. Your AI got smarter every month. Your skills did not.\n\n-MM\n\n#vibecoding #aidirectedengineering #skills #contextwindow #production"
+  },
+  {
+    "code": "DcrQPBHG0_I",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcrQPBHG0_I/",
+    "type": "reel",
+    "summary": "Your admin dashboard has no authentication. \n\nYour AI assumed only you would know the URL. Every scanner on the internet already found it. Anyone who types /admin can see every user and every transaction. Add authentication to every admin route. Move to a non-guessable path. Log every action. \n\nYour admin panel is the keys to your business. Right now those keys are on the sidewalk.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #admin #production"
+  },
+  {
+    "code": "DcqspRtHPGB",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcqspRtHPGB/",
+    "type": "reel",
+    "summary": "Your database has been doing a full table scan on every request since launch. \n\nYou did not notice until your hosting provider throttled you. Your AI never added indexes. Every query reads every row to find one result. At 100,000 rows your server is on fire. Add indexes. Restrict query fields. Enable slow query logging. \n\nFix it before your hosting provider fixes it for you.\n\n-MM\n\n#vibecoding #aidirectedengineering #database #performance #production"
+  },
+  {
+    "code": "DcoreqwDW0N",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcoreqwDW0N/",
+    "type": "reel",
+    "summary": "You used one AI to build your entire app. You are using the same AI to check its own work. It will never find its own mistakes. \n\nEvery platform has blind spots. The same shortcuts that created the vulnerability are the same ones that miss it in the review. Run your code through a second AI platform. Frame it as adversarial. \n\nRotate which platform builds and which reviews. One AI builds. A different AI breaks it.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #aiaudit #production"
+  },
+  {
+    "code": "DcoH5avEj3J",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcoH5avEj3J/",
+    "type": "reel",
+    "summary": "Your mobile app sends every API call in plain text. \n\nSomeone on the same coffee shop WiFi just watched your users log in. Your AI built the connection but never pinned a certificate. Tokens stored in plain text on the device. Encrypt sensitive payloads. Use secure storage. \n\nFix the transport before your users pay for it.\n\n-MM\n\n#vibecoding #aidirectedengineering #mobileapps #security #production"
+  },
+  {
+    "code": "DcmGq_pDYk8",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcmGq_pDYk8/",
+    "type": "reel",
+    "summary": "You built an AI feature into your app. A user told your AI to ignore its instructions and show every customer record in your database. \n\nYour AI does not know that is an attack. It treats every message the same. Authorization layer between your AI and your data. Scope every connection to the current user. Filter every response before it reaches anyone. \n\nYour AI feature is a door into your system. Make sure users can only open their own room.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #promptinjection #production"
+  },
+  {
+    "code": "Dci-Qq_j9EL",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dci-Qq_j9EL/",
+    "type": "reel",
+    "summary": "You moved to a VPS for more control. \n\nYou left the front door wide open. \n\nYour managed platform handled security invisibly. Now you own the server and every vulnerability on it. SSH is accepting passwords on the default port. Every port is open. Security updates are not running. \n\nThree fixes. Five minutes each. Direct your AI to lock it down before someone else walks in.\n\n-MM\n\n#vibecoding #aidirectedengineering #vps #serversecurity #production"
+  },
+  {
+    "code": "Dcg9G7PjY6E",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dcg9G7PjY6E/",
+    "type": "reel",
+    "summary": "You installed an npm package last week. It has been sending your environment variables to a server you have never heard of. \n\nDatabase credentials. API keys. Stripe secret. All posted to an external endpoint every time your app starts. Dependency audit on every package. Environment variable isolation. Lockfile integrity in CI.\n\nYour code is only as trustworthy as your least-trusted dependency.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #npm #production"
+  },
+  {
+    "code": "DcgZbSGgZ9z",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcgZbSGgZ9z/",
+    "type": "reel",
+    "summary": "Your API is configured to accept requests from any origin with credentials. \n\nThat means any website can make authenticated requests as your users. The browser sends cookies automatically. The attacker reads everything. Hardcode an origin allowlist. Lock down session cookies. Restrict methods and headers per endpoint. \n\nYour users trust your domain. Your server is handing that trust to anyone who asks.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #cors #production"
+  },
+  {
+    "code": "DceYRVpCFKG",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DceYRVpCFKG/",
+    "type": "reel",
+    "summary": "Your AI agent fetches any URL a user submits. \n\nAn attacker just used it to hit your cloud credential service from inside your network and walked away with full access. SSRF through AI agents is the new open door. Restrict outbound fetches to approved domains. Pin URL resolution so redirects cannot change the target. Kill verbose error messages that map your infrastructure. \n\nYour agent works for you. Make sure it only talks to who you approve.\n\n-MM\n\n#vibecoding #aidirectedengineering #security #aiagents #production"
+  },
+  {
+    "code": "Dcd0uMTCHsl",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dcd0uMTCHsl/",
+    "type": "reel",
+    "summary": "There are 10,000 business owners within 50 miles of you bleeding money on third-party fees. \n\nA bakery paying DoorDash 22% on every order could lease a vehicle, hire a driver, and build a custom app for less. She needs a builder. The math is the sales pitch. You build one, you sell it to every bakery in town. The operator owns the asset. \n\nStop building platforms nobody asked for. Start solving problems people are already paying to have solved.\n\n-MM\n\n #vibecoding #aidirectedengineering #founders #operators #production"
+  },
+  {
+    "code": "DcbzcfyioD9",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcbzcfyioD9/",
+    "type": "reel",
+    "summary": "You accept webhooks from Stripe without verifying the signature. \n\nAnyone can send your server a fake payment confirmation. Your server marks the order as paid and triggers fulfillment. No questions asked. Signature verification on every webhook. Idempotency to prevent replay attacks. Endpoint protection with non-guessable URLs. \n\nStripe already secured their side. Secure yours.\n\n-MM\n\n#vibecoding #aidirectedengineering #stripe #payments #security"
+  },
+  {
+    "code": "DcbP4U7G6QK",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcbP4U7G6QK/",
+    "type": "reel",
+    "summary": "AWS just killed Bedrock Agents. Renamed it to Classic. Closed to new customers. \n\nIf you built your healthcare app on it for the BAA, your compliance path just got rerouted. Abstraction layer between your app and any vendor SDK. BAA audit after any provider migration. \n\nA migration runway, not a migration emergency. \n\nYour cloud provider will always build the next thing. Architect so it does not break yours.\n\n-MM\n\n#vibecoding #aidirectedengineering #aws #healthcare #production"
+  },
+  {
+    "code": "DcZOrpQCcZW",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcZOrpQCcZW/",
+    "type": "reel",
+    "summary": "You shipped your web app as a mobile app. \n\nEvery API key is visible in local storage. Capacitor wraps your web app but does not secure it. Secrets in native keychain. Certificate pinning on every call. Deep link validation on every callback. \n\nYour web app had a browser protecting it. Your mobile app does not.\n\n-MM\n\n#vibecoding #aidirectedengineering #mobile #capacitor #security"
+  },
+  {
+    "code": "DcYrFHSAOhJ",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcYrFHSAOhJ/",
+    "type": "reel",
+    "summary": "Someone sent a forged request to your API last Tuesday. \n\nYour server processed it, no questions asked. No signature. No versioning. No deprecation policy. Request signing on every mutating endpoint. API versioning from day one. Sunset headers with deprecation monitoring. \n\nYour API is your contract. Harden it.\n\n-MM\n\n#vibecoding #aidirectedengineering #api #security #production"
+  },
+  {
+    "code": "DcWGRX2G2l8",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcWGRX2G2l8/",
+    "type": "reel",
+    "summary": "You added one column to your database for one client. Every other client's queries slowed down by 40%. \n\nA custom field in a shared schema. One client's request becomes every client's technical debt. Per-tenant schema extensions. Tenant-isolated compute. Tenant-scoped migrations. \n\nSay yes to your biggest client. Say it architecturally.\n\n-MM\n\n#vibecoding #aidirectedengineering #multitenant #architecture #production"
+  },
+  {
+    "code": "DcUFF39Eu04",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcUFF39Eu04/",
+    "type": "reel",
+    "summary": "Your app got featured on Product Hunt. 4,000 signups in 48 hours. \n\nBy day seven, 91% were gone. \n\nYour signup converts. Your product does not. Time-to-value in 60 seconds, not days. Progressive disclosure that gates complexity behind achievement. Re-engagement triggers tied to something the user actually created. \n\nYour signup converts. Make your product convert too.\n\n-MM\n\n#vibecoding #aidirectedengineering #onboarding #retention #production"
+  },
+  {
+    "code": "DcThgrwlaDD",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcThgrwlaDD/",
+    "type": "reel",
+    "summary": "You said yes to every client request for 18 months. Your product no longer ships without breaking something. \n\nEvery yes felt like retention. Every yes was actually debt. Customization cost model before the first line of code. Configuration over code branches. A productization threshold when three clients ask for the same thing. Y\n\nour best client should not be your most expensive client.\n\n-MM\n\n#vibecoding #aidirectedengineering #saas #founders #production"
+  },
+  {
+    "code": "DcRgRM2jjuv",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcRgRM2jjuv/",
+    "type": "reel",
+    "summary": "Your login endpoint received 14,000 requests last night. None of them were your users. Credential stuffing, scrapers, vulnerability scanners. \n\nAll sailing through Cloudflare because you never configured the rules. Rate limiting on auth endpoints. Bot management on high-value pages. Custom WAF rules for known attack patterns. \n\nYou are paying for a wall. Configure it.\n\n-MM\n\n#vibecoding #aidirectedengineering #cloudflare #security #production"
+  },
+  {
+    "code": "DcQ8u02Cj1A",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcQ8u02Cj1A/",
+    "type": "reel",
+    "summary": "Every time a new client signs up, your developer forks the entire repository. \n\nEleven branches. Eleven deployments. Eleven sets of bugs. That is not a product. That is eleven products wearing the same name. \n\nFeature flags per tenant. Configuration inheritance with overrides. Tenant-aware routing at the boundary. One codebase. Ten clients. Zero forks.\n\n-MM\n\n#vibecoding #aidirectedengineering #multitenant #saas #production"
+  },
+  {
+    "code": "DcO7fDEj9eg",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcO7fDEj9eg/",
+    "type": "reel",
+    "summary": "Your status page says operational. Your customers are screenshotting error messages in your support channel right now. \n\nYou have no idea which endpoints are failing or what those failures cost. A defined error budget per endpoint. Burn rate alerting that catches trends before outages. Business cost attribution on every incident. \n\n99.9% is not a badge. It is a budget.\n\n-MM\n\n#vibecoding #aidirectedengineering #reliability #slo #production"
+  },
+  {
+    "code": "DcOX9AdERD2",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcOX9AdERD2/",
+    "type": "reel",
+    "summary": "Your database has two versions of every record right now. \n\nYour app is showing users the wrong one. Two databases. Two versions of the truth. Read-after-write routing. Replica lag monitoring. Conflict resolution on concurrent writes. \n\nYour database scaled. Your consistency did not.\n\n-MM\n\n#vibecoding #aidirectedengineering #databases #scaling #production"
+  },
+  {
+    "code": "DcMWtOgEgaE",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcMWtOgEgaE/",
+    "type": "reel",
+    "summary": "GitHub just showed you exactly where your AI money goes. \n\nMost of you will never look. For the first time you can see which model consumed the credits and what kind of tokens created the cost. Route models by task complexity. Cache repeated inputs. Build a weekly cost breakdown. \n\nCost is now a system you engineer, not a number you react to. Read the report.\n\n-MM\n\n#vibecoding #aidirectedengineering #tokens #costengineering #production"
+  },
+  {
+    "code": "DcLzI-pFJlM",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcLzI-pFJlM/",
+    "type": "reel",
+    "summary": "Your AI pushed 47 files to production in one commit. \n\nOne of them broke your payment flow. You cannot find which one. \n\nNo pull request. No review. No tests. Payments stopped at 6 PM on a Friday. That is what happens when your AI treats GitHub like a filing cabinet instead of an engineering system. \n\nBranch protection. Automated checks. Scoped commits. Direct your AI to build the gate.\n\n-MM\n\n#vibecoding #aidirectedengineering #gitops #cicd #production"
+  },
+  {
+    "code": "DcJx3MyDnHE",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcJx3MyDnHE/",
+    "type": "reel",
+    "summary": "You have paid your payment processor $30,000. \n\nIt has processed zero dollars for you. Six months of monthly minimums. Zero customers. Zero revenue. \n\nYour infrastructure is running. Your business is not. \n\nStop activating expensive infrastructure before demand forces you to. Sandbox it. Demo it. Sell it. Then turn it on. Validate. Sell. Activate. Scale. In that order.\n\n-MM\n\n#vibecoding #aidirectedengineering #startups #founders #production"
+  },
+  {
+    "code": "DcJOWioldeu",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcJOWioldeu/",
+    "type": "reel",
+    "summary": "One webhook failed. It took your authentication, your dashboard, and your checkout down with it. \n\nNot the endpoint. Everything. One slow dependency froze your entire product. Circuit breakers on every external call. Bulkhead isolation between connection pools. Timeout budgets enforced across the entire request chain. \n\nYour app is only as strong as its weakest dependency.\n\n-MM\n\n#vibecoding #aidirectedengineering #resilience #architecture #production"
+  },
+  {
+    "code": "DcHNH00EZ1T",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcHNH00EZ1T/",
+    "type": "reel",
+    "summary": "You put Cloudflare in front of your app. \n\nAn attacker found your server's real IP and went around it. \n\nAll your WAF rules, DDoS protection, bot filtering bypassed entirely. Your origin IP is leaking through DNS history, email headers, and misconfigured subdomains. \n\nCloudflare is not a switch you flip. It is an architecture you configure.\n\n-MM\n\n#vibecoding #aidirectedengineering #cloudflare #waf #production"
+  },
+  {
+    "code": "DcGpmHHCug1",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcGpmHHCug1/",
+    "type": "reel",
+    "summary": "Your AI just answered a customer's question with data from another customer's private documents. \n\nYour RAG system retrieved chunks from your entire vector database with zero access boundaries. Contract terms. Pricing. Internal data. Served to a stranger. \n\nYour RAG system is only as safe as the boundaries around your data. Your AI never built any.\n\n-MM\n\n#vibecoding #aidirectedengineering #ragsecurity #vectordb #production"
+  },
+  {
+    "code": "DcEoX9xCZ8Q",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcEoX9xCZ8Q/",
+    "type": "reel",
+    "summary": "Your database just lost 14 hours of customer data. \n\nYour backup is from midnight. Everything your users did today is gone. Nightly backups are not disaster recovery. They are a 24-hour gamble. Point-in-time recovery. Tested restoration runbooks. Defined RTO and RPO. \n\nYour backup is not your recovery plan. Your tested plan is.\n\n-MM\n\n#vibecoding #aidirectedengineering #disasterrecovery #database #production"
+  },
+  {
+    "code": "DcEEyocD8II",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcEEyocD8II/",
+    "type": "reel",
+    "summary": "An attacker logged into your app at 3 AM from another country. \n\nYour app said welcome back. \n\nStolen credentials. Foreign IP. Middle of the night. Your app treated them exactly like your real user because your roles are static and your system has no concept of context. \n\nStatic roles tell you who someone is. Context tells you whether to trust them right now.\n\n-MM\n\n#vibecoding #aidirectedengineering #zerotrust #abac #production"
+  },
+  {
+    "code": "DcCDhdAiqOZ",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcCDhdAiqOZ/",
+    "type": "reel",
+    "summary": "Your customers are using a product that has never been inspected. In any other industry, that would shut you down. \n\nRestaurants get health inspections. Buildings get certificates of occupancy. Your AI built the building and your customers moved in the same day. Nobody checked whether it was safe. \n\nThe inspection is overdue.\n\n-MM\n\n#vibecoding #aidirectedengineering #audit #compliance #production"
+  },
+  {
+    "code": "DcBf7guDXSF",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DcBf7guDXSF/",
+    "type": "reel",
+    "summary": "You cannot learn to shoot content after your product.\n\nYou are already too late. \n\nI spent six months on a dummy account making terrible content before I ever posted anything publicly. By the time I showed up, I knew how to shoot. Your app can be built in a weekend. Your business cannot. \n\nStart talking now. Start badly. Start today.\n\n-MM\n\n#vibecoding #aidirectedengineering #contentmarketing #founders #production"
+  },
+  {
+    "code": "Db_etk2ElsD",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db_etk2ElsD/",
+    "type": "reel",
+    "summary": "Every company that builds its own software needs someone in-house who knows how to direct AI. \n\nNot a developer. Not IT. \n\nSomeone who runs the audits, directs the AI to harden the builds, and manages the engineering partnership. This role will exist in every company within five years.\n\n-MM\n\n#vibecoding #aidirectedengineering #careers #operators #production"
+  },
+  {
+    "code": "Db-7JyYDdas",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db-7JyYDdas/",
+    "type": "reel",
+    "summary": "10,000 people are working on your idea right now. \n\nNone of them are worried about you. \n\nWhile you are hiding your product and protecting your code, they are shipping, getting users, and generating revenue. Your idea is not worth stealing. Execution is. Stop building tools for your competitors. Build weapons for one company. \n\nIf the first thing you worry about is someone stealing your idea, you are not ready for this.\n\n-MM\n\n#vibecoding #aidirectedengineering #startups #execution #production"
+  },
+  {
+    "code": "Db856-FiqP7",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db856-FiqP7/",
+    "type": "reel",
+    "summary": "MCP is a dead end. Your agent can build its own integrations now. \n\nSix months ago MCPs were necessary. That limitation no longer exists. Your agent can call APIs directly, build integrations on the fly, and move on. Every MCP you keep loaded consumes context for no reason. \n\nStrip them out. Let your agent cook.\n\n-MM\n\n#vibecoding #aidirectedengineering #mcp #agents #production"
+  },
+  {
+    "code": "Db8WTQLke0j",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db8WTQLke0j/",
+    "type": "reel",
+    "summary": "An AI agent breached a company's production database this week. The human supervising it clicked approve. \n\nHuman-in-the-loop is not a guardrail without the right tools. Direction is architecture, not attention.\n\n-MM\n\n#vibecoding #aidirectedengineering #aisecurity #agents #production"
+  },
+  {
+    "code": "Db6VI3WFqKD",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db6VI3WFqKD/",
+    "type": "reel",
+    "summary": "Your AI is running on six-month-old instructions. That is why it is getting worse, not better. \n\nEvery MCP, every MD file, every skill, every automation you loaded is still running. Your context window is full of dated instructions for a system updated fifteen times since you wrote them. The head engineer at Anthropic clears everything every 90 days. \n\nWe rebuild every 100 days. Version 9.0. Clear the stack. Rebuild clean.\n\n-MM\n\n#vibecoding #aidirectedengineering #agents #contextwindow #production"
+  },
+  {
+    "code": "Db5xi3yEg4w",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db5xi3yEg4w/",
+    "type": "reel",
+    "summary": "The SaaS industry is built on feature bloat. That model is dying. \n\nEvery major platform tries to solve every problem for every customer. Nothing niche. Nothing industry-specific. \n\nAn AI Directed Engineer can build the 50 features you actually use for a fraction of what you pay to rent 1,000 you do not. The economics flipped. The next era gives you ownership.\n\n-MM\n\n#vibecoding #aidirectedengineering #saas #operators #production"
+  },
+  {
+    "code": "Db3wYK6AZKx",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db3wYK6AZKx/",
+    "type": "reel",
+    "summary": "Your AI builds features. It has never asked you who they are for. \n\nYou are building in a vacuum. \n\nGo sit down with a business owner. Audit their software. They are using 50 features across 10 platforms and paying for 950 they will never touch. Those 50 features are your product. \n\nStop guessing what to build.\n\n-MM\n\n#vibecoding #aidirectedengineering #featureaudit #operators #production"
+  },
+  {
+    "code": "Db3MvKXgYMd",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db3MvKXgYMd/",
+    "type": "reel",
+    "summary": "Your product on launch day is not your product. It is your hypothesis. \n\nYou will not know what your actual product is until about 100 days after launch. In 6 out of 10 projects, the product at day 100 looks nothing like launch day. The founders who pivot based on data are 3x more successful. \n\nListen to the data.\n\n-MM\n\nHASHTAGS: #vibecoding #aidirectedengineering #founders #startups #production"
+  },
+  {
+    "code": "Db1LiS4E_sI",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db1LiS4E_sI/",
+    "type": "reel",
+    "summary": "You built it. Nobody came. \n\nMonths of engineering. Every layer hardened. Launch day you posted a link and waited. Nothing happened. While you were engineering the product, you should have been engineering the audience. By launch day you should already have proof that people want what you built. Not hope. Proof. \n\nThe product was the easy part.\n\n#vibecoding #aidirectedengineering #gotomarket #builders #production"
+  },
+  {
+    "code": "Db0n5e6DAUl",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Db0n5e6DAUl/",
+    "type": "reel",
+    "summary": "AI Directed Engineering gets you to launch. \n\nConversion engineering gets you to revenue. \n\nYou engineered a product. Now you need to engineer how people buy it. Every step between discovery and purchase is a systems problem. Your funnel has a conversion rate. Measure it the same way you measure uptime. \n\nRevenue is not luck. Revenue is engineered.\n\n-MM\n\n#vibecoding #aidirectedengineering #conversion #revenue #production"
+  },
+  {
+    "code": "Dbymz5CE5ZP",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dbymz5CE5ZP/",
+    "type": "reel",
+    "summary": "If you are building for builders, your product needs to be something an agent can buy. \n\nNot something a person browses for. Something an agent discovers, evaluates, and installs without a human ever visiting your website. \n\nBuilders are using AI to find their tools. If your product is not structured data an agent can read, you are invisible to the fastest growing acquisition channel in software.\n\n-MM\n\n#vibecoding #aidirectedengineering #devtools #tokenization #production"
+  },
+  {
+    "code": "DbyDJomAkQv",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbyDJomAkQv/",
+    "type": "reel",
+    "summary": "Your AI built your database. It never planned for the day you have to change it. \n\nYour app is live. Customers are using it. And you need to change the schema. One bad migration on a live database and your app goes dark. \n\nDirect your AI to write migrations that add before they remove, build the rollback before the migration, and test it on staging first.\n\n-MM\n\n#vibecoding #aidirectedengineering #database #migrations #production"
+  },
+  {
+    "code": "DbwB5V_EvJS",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbwB5V_EvJS/",
+    "type": "reel",
+    "summary": "Your AI agent forgot what it was doing halfway through the job. \n\nStep one was clean. By step fifteen it was contradicting step three. By step thirty it forgot the project existed. That is not a bug. That is a context window limit. \n\nDirect your AI to build a state file, decompose tasks into chunks, and validate between every step.\n\n-MM\n\n #vibecoding #aidirectedengineering #agents #orchestration #production"
+  },
+  {
+    "code": "DbveZVplEYz",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbveZVplEYz/",
+    "type": "reel",
+    "summary": "Every business on the planet is now a software company. \n\nMost of them do not know it yet. \n\nYour staff is already building. Automations. Dashboards. Internal tools. The question is not whether they are building software. They are. The question is how you get what they build into production safely. \n\nThat is why we built the Conveyor Belt. Prototype in. Production out.\n\n-MM\n\n #vibecoding #aidirectedengineering #operators #conveyorbelt #production"
+  },
+  {
+    "code": "DbtdHYklNf3",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbtdHYklNf3/",
+    "type": "reel",
+    "summary": "Your idea is not your moat. Your ability to execute is. \n\nEvery week builders ask us to sign an NDA before we look at their code. I get it. But engineering teams are not the threat. \n\nAI removed the moat around ideas entirely. \nAnyone can prototype anything in a weekend. \n\nThe business gets funded, not the idea. Protect your code. But understand what actually needs protecting.\n\n-MM\n\n#vibecoding #aidirectedengineering #startups #execution #production"
+  },
+  {
+    "code": "Dbs8D1xAMnX",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dbs8D1xAMnX/",
+    "type": "reel",
+    "summary": "Four AI security roles that did not exist two years ago. All of them pay six figures. AI Supply Chain Security Engineer. AI SOC Orchestrator. AI Security Specialist. AI Incident Response Orchestrator. GitHub, CrowdStrike, Capital One, Palo Alto Networks, Microsoft are all hiring for them right now. These roles require security, orchestration, and production judgment. You are building those skills today.\n\n#vibecoding #aidirectedengineering #cybersecurity #aicareers #production"
+  },
+  {
+    "code": "DbqUuqlk7L6",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbqUuqlk7L6/",
+    "type": "reel",
+    "summary": "Your user just saw your database password on their screen. \n\nYour app crashed and dumped a raw stack trace with your connection string, your framework version, and the exact line that failed. That is not a bug. That is your AI showing the world how to break in. \n\nSplit your error handling. Catch errors at every boundary. Build a logging pipeline. Fix it today.\n\n-MM\n\n#vibecoding #aidirectedengineering #errorhandling #security #production"
+  },
+  {
+    "code": "DboLRcsl9ag",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DboLRcsl9ag/",
+    "type": "reel",
+    "summary": "Half of you said you do not care about the EU. Got it. \n\nBut your app does not know where your users live. \n\nA developer in Berlin finds your product on Instagram, subscribes, and now you are subject to regulations you have never read. \n\nYour compliance obligations are determined by where your users are, not where you are. The internet does not have borders. Neither does your product.\n\n-MM\n\n#vibecoding #aidirectedengineering #compliance #gdpr #production"
+  },
+  {
+    "code": "Dbnv-2VCnl-",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dbnv-2VCnl-/",
+    "type": "reel",
+    "summary": "You built your entire business on someone else's software. They just raised your price and there is nothing you can do about it. \n\nYou use 20% of their features. You pay 100% of their subscription. \n\nOperators are figuring out they can build the 20% they actually need, own it, and stop paying rent on someone else's platform.\n\n-MM\n\n#vibecoding #aidirectedengineering #operators #saas #production"
+  },
+  {
+    "code": "Dblxs5jinu-",
+    "url": "https://www.instagram.com/mattmurphyai/reel/Dblxs5jinu-/",
+    "type": "reel",
+    "summary": "Your AI product just became illegal and you do not know why. \n\nThe EU AI Act went live this week. If your app uses AI to generate text, images, avatars, or any content your users consume, you are now distributing Synthetically Generated Information. \n\nIf you do not disclose it, you are legally liable. The rules changed this week. Your AI does not read legislation. That is your job.\n\n-MM\n\n#vibecoding #aidirectedengineering #euaiact #compliance #production"
+  },
+  {
+    "code": "DblLMbonwGS",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DblLMbonwGS/",
+    "type": "reel",
+    "summary": "Nobody is measuring whether their AI build is actually making money. You can tell me what you pay for your subscription. \n\nYou cannot tell me what it costs you to serve a single customer. That is the gap between building a product and running a business. \n\nDirect your AI to build cost-per-feature tracking, per-user profitability, and a living P&L.\n\n-MM\n\n#vibecoding #aidirectedengineering #cfo #roi #production"
+  },
+  {
+    "code": "DbjN2IVCeEm",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbjN2IVCeEm/",
+    "type": "reel",
+    "summary": "One kid with a laptop can take your entire product offline right now. \n\nNot a nation-state hacker. \n\nA teenager with a YouTube tutorial and a loop that sends 10,000 requests per second. \n\nYour app goes dark. Every customer. Every transaction. Gone. Because your AI never built a firewall. \n\nDirect your AI to fix that today.\n\n-MM\n\n#vibecoding #aidirectedengineering #ddos #waf #production"
+  },
+  {
+    "code": "DbimVuCkZqi",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbimVuCkZqi/",
+    "type": "reel",
+    "summary": "A customer just called you. They are looking at someone else's revenue dashboard. Their invoices. Their customer list. Their monthly revenue. Your AI cached a query result without scoping it to the tenant. \n\nOne cached query. Two customers. Zero trust left in your product. Your database security is irrelevant if your cache layer bypasses it.\n\n-MM\n\n#vibecoding #aidirectedengineering #multitenancy #saassecurity #production"
+  },
+  {
+    "code": "DbgDhezjelJ",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbgDhezjelJ/",
+    "type": "reel",
+    "summary": "Seven out of my last ten audits had API keys committed to GitHub. \n\nDatabase credentials. Stripe secret keys. Third-party tokens. All sitting in public repos. \n\nYour AI does not know the difference between a config file and an environment variable. \n\nI find this in 70% of the apps I review. Do not let yours be next.\n\n-MM\n\n#vibecoding #aidirectedengineering #apisecurity #github #production"
+  },
+  {
+    "code": "DbeZo5Zx5i2",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbeZo5Zx5i2/",
+    "type": "reel",
+    "summary": "Your AI keeps building new features while your existing features are broken. \n\nAnd you keep letting it because building feels like progress. \n\nYour customers are not asking for new features. They are asking for the current ones to work. New features attract customers. Broken features lose them. \n\nDirect your AI to stop building and start fixing.\n\n-MM \n\n#vibecoding #aidirectedengineering #productmanagement #builders #production"
+  },
+  {
+    "code": "DbbaGawGG3_",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbbaGawGG3_/",
+    "type": "reel",
+    "summary": "Your AI can find your perfect customer before you post a single ad. \n\nAlmost nobody is using it for this. \n\nI directed my AI to build my ICP, research competing communities from the inside, and turn that research into the product blueprint that built The Faction. \n\nHere is how.\n\n-MM\n\n#vibecoding #aidirectedengineering #icp #marketing #production"
+  },
+  {
+    "code": "DbaxXyTgbRR",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbaxXyTgbRR/",
+    "type": "reel",
+    "summary": "Your AI built an app that 1.3 billion people cannot use. \n\nSome of them will sue you. ADA lawsuits for inaccessible websites topped 4,000 last year. Your AI assumed every user has a mouse, perfect vision, and two working hands. \n\nIt never considered screen readers, keyboard navigation, or color contrast. Your AI built for users who look like you. Your customers do not.\n\n-MM\n\n#vibecoding #aidirectedengineering #accessibility #wcag #production"
+  },
+  {
+    "code": "DbZSrUOl6sN",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbZSrUOl6sN/",
+    "type": "reel",
+    "summary": "They just paid sixty billion dollars for the tool I teach you to use for free. \n\nSpaceX acquired Cursor. \n\nThe largest acquisition of a venture-backed startup in history. For an AI coding IDE. The career path you are building right now is not speculative anymore. It is a $60 billion category. \n\nBe the person using the tool, not the person watching from the sidelines.\n\n-MM\n\n#vibecoding #aidirectedengineering #cursor #builders #production"
+  },
+  {
+    "code": "DbY-1HLDHm6",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbY-1HLDHm6/",
+    "type": "reel",
+    "summary": "Your AI picked your infrastructure. It also picked your customer ceiling. The bundled stack is not wrong. It is the right foundation for your first ten customers. But enterprise is not your next customer. It is your tenth evolution. Know your ceiling. Know who you can serve today. Direct your AI to document it before your next pitch.\n\n#vibecoding #aidirectedengineering #infrastructure #saas #production"
+  },
+  {
+    "code": "DbYgfWbDWW2",
+    "url": "https://www.instagram.com/mattmurphyai/reel/DbYgfWbDWW2/",
+    "type": "reel",
+    "summary": "Your next customer might not be a human. \n\nAI agents are shopping for people right now. Comparing products. Reading your pricing. Making buying decisions. \n\nIf your product page has no structured data, no machine-readable specs, and no schema markup, AI agents will never find you. You are building for human customers. \n\nThe fastest-growing shopping channel is not human.\n\n-MM\n\n#vibecoding #aidirectedengineering #ecommerce #aigentagents #production"
+  }
+]
