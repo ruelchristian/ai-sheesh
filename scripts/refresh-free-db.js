@@ -15,6 +15,37 @@ const APP_URL = process.env.APP_URL || 'https://cortex-7rsr.onrender.com';
 const BACKUP_DIR = path.resolve(process.env.BACKUP_DIR || path.join(__dirname, '..', 'backups'));
 const APPLY = process.argv.includes('--apply');
 
+const DISCOVERY_COLUMNS = [
+  'description',
+  'resource_type',
+  'capabilities',
+  'use_when_json',
+  'do_not_use_when',
+  'activation_keywords',
+  'supported_platforms',
+  'installation_instructions',
+  'documentation_url',
+  'related_resources',
+  'secondary_categories',
+  'verification_status',
+  'last_verified_at',
+  'analysis_evidence',
+  'metadata_version'
+];
+const RESTORE_COLUMNS = [
+  'id', 'name', 'link', 'category', 'meta_key', ...DISCOVERY_COLUMNS, 'created_at', 'updated_at'
+];
+const JSON_COLUMNS = new Set([
+  'capabilities',
+  'use_when_json',
+  'do_not_use_when',
+  'activation_keywords',
+  'supported_platforms',
+  'related_resources',
+  'secondary_categories',
+  'analysis_evidence'
+]);
+
 function log(message) {
   console.log(message);
 }
@@ -75,9 +106,14 @@ async function readRows(connectionString) {
   const pool = dbPool(connectionString);
 
   try {
-    const result = await pool.query(
-      'SELECT id, name, link, category, meta_key, created_at, updated_at FROM tools ORDER BY id'
-    );
+    const info = await pool.query(`
+      SELECT column_name
+      FROM information_schema.columns
+      WHERE table_name = 'tools'
+    `);
+    const available = new Set(info.rows.map((row) => row.column_name));
+    const columns = RESTORE_COLUMNS.filter((column) => available.has(column));
+    const result = await pool.query(`SELECT ${columns.join(', ')} FROM tools ORDER BY id`);
     return result.rows;
   } finally {
     await pool.end();
@@ -138,6 +174,21 @@ async function restoreRows(connectionString, rows) {
         link TEXT NOT NULL,
         category TEXT NOT NULL DEFAULT '',
         meta_key TEXT,
+        description TEXT NOT NULL DEFAULT '',
+        resource_type TEXT NOT NULL DEFAULT '',
+        capabilities JSONB NOT NULL DEFAULT '[]'::jsonb,
+        use_when_json JSONB NOT NULL DEFAULT '[]'::jsonb,
+        do_not_use_when JSONB NOT NULL DEFAULT '[]'::jsonb,
+        activation_keywords JSONB NOT NULL DEFAULT '[]'::jsonb,
+        supported_platforms JSONB NOT NULL DEFAULT '[]'::jsonb,
+        installation_instructions TEXT NOT NULL DEFAULT '',
+        documentation_url TEXT NOT NULL DEFAULT '',
+        related_resources JSONB NOT NULL DEFAULT '[]'::jsonb,
+        secondary_categories JSONB NOT NULL DEFAULT '[]'::jsonb,
+        verification_status TEXT NOT NULL DEFAULT '',
+        last_verified_at TIMESTAMPTZ,
+        analysis_evidence JSONB NOT NULL DEFAULT '{}'::jsonb,
+        metadata_version INTEGER NOT NULL DEFAULT 0,
         created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
       )
@@ -149,20 +200,26 @@ async function restoreRows(connectionString, rows) {
       await client.query('BEGIN');
       await client.query('DELETE FROM tools');
 
+      const presentColumns = RESTORE_COLUMNS.filter((column) =>
+        rows.some((row) => Object.prototype.hasOwnProperty.call(row, column))
+      );
+      const placeholders = presentColumns.map((column, index) => `$${index + 1}`).join(', ');
+      const insert = `INSERT INTO tools (${presentColumns.join(', ')}) VALUES (${placeholders})`;
+
       for (const row of rows) {
-        await client.query(
-          `INSERT INTO tools (id, name, link, category, meta_key, created_at, updated_at)
-           VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-          [
-            row.id,
-            row.name,
-            row.link,
-            row.category || '',
-            row.meta_key || row.name,
-            row.created_at,
-            row.updated_at
-          ]
-        );
+        const values = presentColumns.map((column) => {
+          const value = row[column];
+
+          if (column === 'meta_key') return value || row.name;
+          if (column === 'category' && !value) return '';
+          if (JSON_COLUMNS.has(column)) {
+            if (value == null) return column === 'analysis_evidence' ? '{}' : '[]';
+            return typeof value === 'string' ? value : JSON.stringify(value);
+          }
+          return value;
+        });
+
+        await client.query(insert, values);
       }
 
       await client.query(`

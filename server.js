@@ -8,6 +8,10 @@ const { Pool } = require('pg');
 const fs = require('fs');
 const path = require('path');
 
+const discovery = require('./services/discovery');
+const { createDiscoveryService } = require('./services/discovery-service');
+const analyzer = require('./services/analyzer');
+
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString && require.main === module) {
@@ -22,15 +26,53 @@ const pool = new Pool({
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
-const cols = 'id, name, link, category, meta_key, created_at, updated_at';
 const adminPassword = process.env.ADMIN_PASSWORD || '';
 const sessionSecret = `cortex:${adminPassword}`;
 const cookieName = 'cortex_auth';
 const sessionMs = 7 * 24 * 60 * 60 * 1000;
 const loginAttempts = new Map();
 
+const DISCOVERY_FIELDS = {
+  description: 'description',
+  resource_type: 'resource_type',
+  capabilities: 'capabilities',
+  use_when: 'use_when_json',
+  do_not_use_when: 'do_not_use_when',
+  activation_keywords: 'activation_keywords',
+  supported_platforms: 'supported_platforms',
+  installation_instructions: 'installation_instructions',
+  documentation_url: 'documentation_url',
+  related_resources: 'related_resources',
+  secondary_categories: 'secondary_categories',
+  verification_status: 'verification_status',
+  last_verified_at: 'last_verified_at',
+  analysis_evidence: 'analysis_evidence'
+};
+
+const DISCOVERY_KEYS = Object.keys(DISCOVERY_FIELDS);
+const ARRAY_FIELDS = new Set([
+  'capabilities',
+  'use_when',
+  'do_not_use_when',
+  'activation_keywords',
+  'supported_platforms',
+  'related_resources',
+  'secondary_categories'
+]);
+
+const cols = [
+  'id',
+  'name',
+  'link',
+  'category',
+  'meta_key',
+  ...Object.values(DISCOVERY_FIELDS),
+  'created_at',
+  'updated_at'
+].join(', ');
+
 app.set('trust proxy', 1);
-app.use(express.json({ limit: '64kb' }));
+app.use(express.json({ limit: '256kb' }));
 
 function fail(status, message) {
   const error = new Error(message);
@@ -46,6 +88,22 @@ function route(fn) {
 
 function text(value, max) {
   return typeof value === 'string' ? value.trim().slice(0, max) : '';
+}
+
+function listValue(value, max) {
+  const source = Array.isArray(value)
+    ? value
+    : typeof value === 'string'
+      ? value.split(/\r?\n|,/)
+      : [];
+
+  return [...new Set(source
+    .map((item) => text(item, 240))
+    .filter(Boolean))].slice(0, max || 20);
+}
+
+function has(object, key) {
+  return Boolean(object) && Object.prototype.hasOwnProperty.call(object, key);
 }
 
 function normalize(body) {
@@ -72,7 +130,80 @@ function normalize(body) {
     throw fail(400, 'link must be a valid URL.');
   }
 
-  return { name, link, category: text(input.category, 80) };
+  const entry = { name, link };
+  if (has(input, 'category')) entry.category = text(input.category, 80);
+  return entry;
+}
+
+function emptyDiscovery() {
+  return {
+    description: '',
+    resource_type: '',
+    capabilities: [],
+    use_when: [],
+    do_not_use_when: [],
+    activation_keywords: [],
+    supported_platforms: [],
+    installation_instructions: '',
+    documentation_url: '',
+    related_resources: [],
+    secondary_categories: [],
+    verification_status: 'Unverified',
+    last_verified_at: '',
+    analysis_evidence: {}
+  };
+}
+
+function discoveryInput(body) {
+  const input = body || {};
+  const source = input.discovery && typeof input.discovery === 'object' ? input.discovery : input;
+  const output = {};
+
+  for (const key of DISCOVERY_KEYS) {
+    if (has(source, key)) output[key] = source[key];
+  }
+
+  return output;
+}
+
+function discoveryValues(source) {
+  const input = source || {};
+
+  return DISCOVERY_KEYS.map((key) => {
+    const value = input[key];
+
+    if (ARRAY_FIELDS.has(key)) return JSON.stringify(listValue(value, 20));
+
+    if (key === 'analysis_evidence') {
+      return JSON.stringify(value && typeof value === 'object' && !Array.isArray(value) ? value : {});
+    }
+
+    if (key === 'last_verified_at') {
+      if (!value) return null;
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? null : date.toISOString();
+    }
+
+    return text(value, key === 'installation_instructions' ? 4000 : 2000);
+  });
+}
+
+function discoveryFromRow(row) {
+  const output = emptyDiscovery();
+
+  for (const key of DISCOVERY_KEYS) {
+    output[key] = row[DISCOVERY_FIELDS[key]];
+  }
+
+  output.verification_status = output.verification_status || 'Unverified';
+  output.last_verified_at = output.last_verified_at ? new Date(output.last_verified_at).toISOString() : '';
+  return output;
+}
+
+function isEmptyValue(value) {
+  if (Array.isArray(value)) return value.length === 0;
+  if (value && typeof value === 'object') return Object.keys(value).length === 0;
+  return !String(value == null ? '' : value).trim();
 }
 
 function linkMeta(link) {
@@ -97,7 +228,8 @@ function present(row) {
     kind: meta.kind,
     host: meta.host,
     created_at: row.created_at,
-    updated_at: row.updated_at
+    updated_at: row.updated_at,
+    discovery: discoveryFromRow(row)
   };
 }
 
@@ -119,6 +251,45 @@ function loadMeta() {
   if (start < 0 || end < start) return {};
 
   return JSON.parse(source.slice(start, end + 1));
+}
+
+async function loadRows() {
+  const { rows } = await pool.query(`SELECT ${cols} FROM tools ORDER BY lower(name), id`);
+  return rows;
+}
+
+async function loadResources() {
+  return (await loadRows()).map(present);
+}
+
+const discoveryService = createDiscoveryService(loadResources);
+
+async function getRow(id) {
+  const { rows } = await pool.query(`SELECT ${cols} FROM tools WHERE id = $1`, [id]);
+  return rows[0] || null;
+}
+
+function insertEntry(entry, values) {
+  const columns = ['name', 'link', 'category', 'meta_key', ...Object.values(DISCOVERY_FIELDS), 'metadata_version'];
+  const params = [entry.name, entry.link, entry.category || '', entry.meta_key || entry.name, ...discoveryValues(values), 1];
+  const placeholders = columns.map((column, index) => `$${index + 1}`).join(', ');
+
+  return pool.query(
+    `INSERT INTO tools (${columns.join(', ')}) VALUES (${placeholders}) RETURNING ${cols}`,
+    params
+  );
+}
+
+function updateEntry(id, entry, values) {
+  const columns = ['name', 'link', 'category', ...Object.values(DISCOVERY_FIELDS)];
+  const params = [entry.name, entry.link, entry.category || '', ...discoveryValues(values)];
+  const assignments = columns.map((column, index) => `${column} = $${index + 1}`).join(', ');
+  params.push(id);
+
+  return pool.query(
+    `UPDATE tools SET ${assignments}, updated_at = now() WHERE id = $${params.length} RETURNING ${cols}`,
+    params
+  );
 }
 
 async function init() {
@@ -162,6 +333,25 @@ async function init() {
     await pool.query(`ALTER TABLE tools ADD COLUMN category TEXT NOT NULL DEFAULT ''`);
   }
 
+  await pool.query(`
+    ALTER TABLE tools
+    ADD COLUMN IF NOT EXISTS description TEXT NOT NULL DEFAULT '',
+    ADD COLUMN IF NOT EXISTS resource_type TEXT NOT NULL DEFAULT '',
+    ADD COLUMN IF NOT EXISTS capabilities JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS use_when_json JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS do_not_use_when JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS activation_keywords JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS supported_platforms JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS installation_instructions TEXT NOT NULL DEFAULT '',
+    ADD COLUMN IF NOT EXISTS documentation_url TEXT NOT NULL DEFAULT '',
+    ADD COLUMN IF NOT EXISTS related_resources JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS secondary_categories JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS verification_status TEXT NOT NULL DEFAULT '',
+    ADD COLUMN IF NOT EXISTS last_verified_at TIMESTAMPTZ,
+    ADD COLUMN IF NOT EXISTS analysis_evidence JSONB NOT NULL DEFAULT '{}'::jsonb,
+    ADD COLUMN IF NOT EXISTS metadata_version INTEGER NOT NULL DEFAULT 0
+  `);
+
   const meta = loadMeta();
   const byId = new Map();
   const byLink = new Map();
@@ -193,6 +383,24 @@ async function init() {
     }
   }
 
+  const { rows: needsMetadata } = await pool.query(`
+    SELECT id, meta_key, name FROM tools WHERE metadata_version = 0
+  `);
+
+  for (const row of needsMetadata) {
+    const key = row.meta_key || row.name;
+    const values = discoveryValues(meta[key] || {});
+    const params = [...values, row.id];
+    const assignments = Object.values(DISCOVERY_FIELDS)
+      .map((column, index) => {
+        if (column === 'description') return `description = CASE WHEN description = '' THEN $${index + 1} ELSE description END`;
+        return `${column} = $${index + 1}`;
+      })
+      .join(', ');
+
+    await pool.query(`UPDATE tools SET ${assignments}, metadata_version = 1 WHERE id = $${params.length}`, params);
+  }
+
   const client = await pool.connect();
 
   try {
@@ -205,9 +413,9 @@ async function init() {
       const seed = seedData();
 
       for (const row of seed) {
-        await client.query(
-          'INSERT INTO tools (name, link, category, meta_key) VALUES ($1, $2, $3, $4)',
-          [row.name, row.link, meta[row.name] ? meta[row.name].category : '', row.name]
+        await insertEntry(
+          { name: row.name, link: row.link, category: meta[row.name] ? meta[row.name].category : '', meta_key: row.name },
+          meta[row.name] || {}
         );
       }
     }
@@ -328,16 +536,72 @@ app.post('/api/logout', (req, res) => {
 });
 
 app.get('/api/tools', route(async (req, res) => {
-  const { rows } = await pool.query(`SELECT ${cols} FROM tools ORDER BY lower(name), id`);
-  res.json(rows.map(present));
+  res.json(await loadResources());
+}));
+
+app.get('/api/search', route(async (req, res) => {
+  const limit = Number(req.query.limit) || 20;
+  res.json(await discoveryService.searchResources(req.query.q || '', { limit }));
+}));
+
+app.post('/api/discover/task', route(async (req, res) => {
+  const limit = Number(req.body && req.body.limit) || 10;
+  res.json(await discoveryService.findResourcesForTask(req.body && req.body.task, { limit }));
+}));
+
+app.get('/api/resources/:id', route(async (req, res) => {
+  const resource = await discoveryService.getResourceDetails(req.params.id);
+  if (!resource) throw fail(404, 'Entry not found.');
+  res.json(resource);
+}));
+
+app.post('/api/resources/:id/analyze', requireAuth, route(async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) throw fail(400, 'Invalid id.');
+
+  const resources = await loadResources();
+  const resource = discovery.getResourceDetails(resources, id);
+  if (!resource) throw fail(404, 'Entry not found.');
+
+  const analysis = await analyzer.analyzeRepository(resource, { resources });
+  res.json({ resource, analysis });
+}));
+
+app.post('/api/resources/:id/analyze/apply', requireAuth, route(async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) throw fail(400, 'Invalid id.');
+
+  const row = await getRow(id);
+  if (!row) throw fail(404, 'Entry not found.');
+
+  const body = req.body || {};
+  const updates = body.updates || body.fields || {};
+  const overwrite = Array.isArray(body.overwrite) ? body.overwrite : [];
+  const incoming = discoveryInput({ discovery: updates });
+  const current = discoveryFromRow(row);
+  const merged = Object.assign({}, current);
+  const applied = [];
+
+  for (const key of DISCOVERY_KEYS) {
+    if (!has(incoming, key)) continue;
+    if (!isEmptyValue(current[key]) && !overwrite.includes(key)) continue;
+    merged[key] = incoming[key];
+    applied.push(key);
+  }
+
+  const { rows } = await updateEntry(
+    id,
+    { name: row.name, link: row.link, category: row.category },
+    merged
+  );
+
+  res.json({ applied, resource: present(rows[0]) });
 }));
 
 app.post('/api/tools', requireAuth, route(async (req, res) => {
   const entry = normalize(req.body);
-  const { rows } = await pool.query(
-    `INSERT INTO tools (name, link, category, meta_key) VALUES ($1, $2, $3, $4) RETURNING ${cols}`,
-    [entry.name, entry.link, entry.category, entry.name]
-  );
+  const values = Object.assign(emptyDiscovery(), discoveryInput(req.body));
+  const { rows } = await insertEntry(entry, values);
   res.status(201).json(present(rows[0]));
 }));
 
@@ -345,14 +609,13 @@ app.put('/api/tools/:id', requireAuth, route(async (req, res) => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id) || id < 1) throw fail(400, 'Invalid id.');
 
+  const row = await getRow(id);
+  if (!row) throw fail(404, 'Entry not found.');
+
   const entry = normalize(req.body);
-  const { rows } = await pool.query(
-    `UPDATE tools SET name = $1, link = $2, category = $3, updated_at = now() WHERE id = $4 RETURNING ${cols}`,
-    [entry.name, entry.link, entry.category, id]
-  );
-
-  if (!rows.length) throw fail(404, 'Entry not found.');
-
+  if (!has(req.body, 'category')) entry.category = row.category;
+  const values = Object.assign(discoveryFromRow(row), discoveryInput(req.body));
+  const { rows } = await updateEntry(id, entry, values);
   res.json(present(rows[0]));
 }));
 
@@ -386,5 +649,3 @@ if (require.main === module) {
       process.exit(1);
     });
 }
-
-module.exports = { app, init, pool };
