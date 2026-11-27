@@ -1,7 +1,6 @@
 'use strict';
 
 const MAX_FILE_BYTES = 200000;
-const MAX_FILES = 12;
 const TIMEOUT_MS = 10000;
 
 const CANDIDATE_FILES = [
@@ -218,7 +217,7 @@ async function analyzeRepository(resource, options) {
   let sourceBranch = branches[0];
 
   for (const branch of branches) {
-    const fetched = await Promise.all(CANDIDATE_FILES.slice(0, MAX_FILES).map(async (file) => {
+    const fetched = await Promise.all(CANDIDATE_FILES.map(async (file) => {
       const raw = await fetchWithTimeout(
         `https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${branch}/${file}`,
         { headers: { Accept: 'text/plain' } }
@@ -318,6 +317,15 @@ async function analyzeRepository(resource, options) {
       installation_instructions: installationInstructions,
       documentation_url: documentationUrl,
       related_resources: relatedFromText(allText, opts.resources, resource.id),
+      analysis_evidence: {
+        source: {
+          repository: repo.htmlUrl,
+          branch: sourceBranch,
+          files: files.map((file) => file.path)
+        },
+        evidence,
+        warnings
+      },
       verification_status: files.length ? 'Partially Verified' : 'Unverified',
       last_verified_at: new Date().toISOString()
     },

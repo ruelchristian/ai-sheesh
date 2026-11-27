@@ -354,18 +354,24 @@ var REVIEW_FIELDS=[
  {key:"do_not_use_when",label:"When Not to Use (one per line)"},{key:"activation_keywords",label:"Activation Keywords (one per line)"},
  {key:"supported_platforms",label:"Supported Platforms (one per line)"},{key:"installation_instructions",label:"Installation Instructions"},
  {key:"documentation_url",label:"Documentation URL"},{key:"related_resources",label:"Related Resources (one per line)"},
- {key:"secondary_categories",label:"Secondary Categories (one per line)"},{key:"verification_status",label:"Verification Status"}
+ {key:"secondary_categories",label:"Secondary Categories (one per line)"},{key:"analysis_evidence",label:"Analysis Evidence (JSON)"},
+ {key:"verification_status",label:"Verification Status"},{key:"last_verified_at",label:"Last Verified At"}
 ];
 var REVIEW_ARRAYS={capabilities:1,use_when:1,do_not_use_when:1,activation_keywords:1,supported_platforms:1,related_resources:1,secondary_categories:1};
+var REVIEW_JSON={analysis_evidence:1};
+function reviewText(value){
+ if(Array.isArray(value))return value.join("\n");
+ if(value&&typeof value==="object")return JSON.stringify(value,null,2);
+ return value||"";
+}
 function renderReview(data){
  reviewData=data;var a=data.analysis||{},s=a.suggestions||{};
  $("review-source").textContent="Source: "+((a.source&&a.source.repository)||"unknown")+" · files: "+(((a.source&&a.source.files)||[]).join(", ")||"none");
  $("review-fields").innerHTML=REVIEW_FIELDS.map(function(f){
-  var suggested=s[f.key]||"",current=(reviewResource.discovery||{})[f.key]||"";
-  var suggestedText=Array.isArray(suggested)?suggested.join("\n"):suggested;
-  var currentText=Array.isArray(current)?current.join("\n"):current;
+  var suggestedText=reviewText(s[f.key]),currentText=reviewText((reviewResource.discovery||{})[f.key]);
   var existing=currentText?'<label class="check"><input type="checkbox" data-overwrite="'+f.key+'">Overwrite saved value</label><div class="current">Saved: '+esc(currentText)+"</div>":"";
-  return'<div class="field"><label>'+f.label+'<textarea data-field="'+f.key+'" rows="'+(f.key==="installation_instructions"?6:3)+'">'+esc(suggestedText)+"</textarea></label>"+existing+"</div>";
+  var rows=(f.key==="installation_instructions"||f.key==="analysis_evidence")?6:3;
+  return'<div class="field"><label>'+f.label+'<textarea data-field="'+f.key+'" rows="'+rows+'">'+esc(suggestedText)+"</textarea></label>"+existing+"</div>";
  }).join("");
  $("review-evidence").innerHTML=(a.evidence||[]).map(function(v){return"<li>"+esc(v)+"</li>"}).join("")||"<li>No evidence excerpts.</li>";
  $("review-error").textContent=(a.warnings||[]).join(" ");
@@ -378,13 +384,17 @@ function openReview(r){
  api("/api/resources/"+r.id+"/analyze",{method:"POST",body:"{}"}).then(renderReview).catch(function(err){$("review-source").textContent="Analysis failed.";$("review-error").textContent=err.message});
 }
 function applyReview(e){
- e.preventDefault();var updates={},overwrite=[];
+ e.preventDefault();var updates={},overwrite=[],invalid=null;
  Array.prototype.forEach.call(document.querySelectorAll("#review-fields [data-field]"),function(el){
   var key=el.getAttribute("data-field"),value=el.value.trim();
-  updates[key]=REVIEW_ARRAYS[key]?value.split(/\r?\n/).map(function(v){return v.trim()}).filter(Boolean):value;
+  if(REVIEW_JSON[key]){
+   if(!value)updates[key]={};
+   else try{updates[key]=JSON.parse(value)}catch(err){invalid=key}
+  }else updates[key]=REVIEW_ARRAYS[key]?value.split(/\r?\n/).map(function(v){return v.trim()}).filter(Boolean):value;
   var box=document.querySelector('#review-fields [data-overwrite="'+key+'"]');
   if(box&&box.checked)overwrite.push(key);
  });
+ if(invalid){$("review-error").textContent=invalid+" must be valid JSON.";return}
  var btn=e.target.querySelector('button[type="submit"]');btn.disabled=true;
  api("/api/resources/"+reviewResource.id+"/analyze/apply",{method:"POST",body:JSON.stringify({updates:updates,overwrite:overwrite})}).then(function(data){
   $("review").close();return load().then(function(){

@@ -269,12 +269,12 @@ async function getRow(id) {
   return rows[0] || null;
 }
 
-function insertEntry(entry, values) {
+function insertEntry(entry, values, client) {
   const columns = ['name', 'link', 'category', 'meta_key', ...Object.values(DISCOVERY_FIELDS), 'metadata_version'];
   const params = [entry.name, entry.link, entry.category || '', entry.meta_key || entry.name, ...discoveryValues(values), 1];
   const placeholders = columns.map((column, index) => `$${index + 1}`).join(', ');
 
-  return pool.query(
+  return (client || pool).query(
     `INSERT INTO tools (${columns.join(', ')}) VALUES (${placeholders}) RETURNING ${cols}`,
     params
   );
@@ -415,7 +415,8 @@ async function init() {
       for (const row of seed) {
         await insertEntry(
           { name: row.name, link: row.link, category: meta[row.name] ? meta[row.name].category : '', meta_key: row.name },
-          meta[row.name] || {}
+          meta[row.name] || {},
+          client
         );
       }
     }
@@ -649,3 +650,5 @@ if (require.main === module) {
       process.exit(1);
     });
 }
+
+module.exports = { app, init, pool };
