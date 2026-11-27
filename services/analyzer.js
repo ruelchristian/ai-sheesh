@@ -288,7 +288,8 @@ async function analyzeRepository(resource, options) {
   const sections = docFiles.length
     ? docFiles.flatMap((file) => parseSections(file.content).map((section) => Object.assign({ file: file.path }, section)))
     : parseSections(allText);
-  const featureText = sectionText(sections, /feature|capabilit|what (?:it|this) does|overview|about/i);
+  const productSections = sections.filter((section) => !/(^|\/)(AGENTS|CLAUDE)\.md$/i.test(section.file || ''));
+  const featureText = sectionText(productSections, /feature|capabilit|what (?:it|this) does|how it works|commands?|tools?|rules?|overview|about|workflow|method/i);
   const useText = sectionText(sections, /use when|when to use|use case|when should/i);
   const avoidText = sectionText(sections, /do not use|not for|limitation|caveat|avoid when/i);
   const installText = sectionText(sections, /install|getting started|quick ?start|setup|usage/i);
@@ -315,12 +316,15 @@ async function analyzeRepository(resource, options) {
     ...repoTopics,
     ...packageKeywords,
     ...capabilities.slice(0, 8).map((capability) => capability.split(/\s+/).slice(0, 5).join(' ')),
-    ...sections.filter((section) => /feature|capabilit|use case/i.test(section.heading)).map((section) => section.heading)
+    ...productSections.filter((section) => /feature|capabilit|use case|commands?|tools?|rules?|how it works/i.test(section.heading)).map((section) => section.heading)
   ]).slice(0, 20);
 
-  const supportedPlatforms = PLATFORM_PATTERNS
+  const platformNames = PLATFORM_PATTERNS
     .filter(([, pattern]) => pattern.test(allText))
     .map(([name]) => name);
+  const supportedPlatforms = platformNames.includes('Claude Code')
+    ? platformNames.filter((name) => name !== 'Claude')
+    : platformNames;
 
   const installationInstructions = unique([
     ...codeBlocks(installText).map((block) => block.slice(0, 400)),
