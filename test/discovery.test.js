@@ -27,7 +27,12 @@ const cases = [
   ['Find a tool that analyzes codebase architecture.', 'Floorplan'],
   ['Find a skill that reduces token consumption.', 'caveman'],
   ['Find a resource for editing videos with FFmpeg.', 'ffmpeg-skill'],
-  ['Find skills for startup planning.', 'founder']
+  ['Find skills for startup planning.', 'founder'],
+  ['Which skill can help me remember previous sessions?', 'Claude-mem'],
+  ['I need an animation library for React', 'Framer Motion (Motion)'],
+  ['find a resource to plan a startup', 'founder'],
+  ['how can I reduce context token usage?', 'context-monitor'],
+  ['recommend a tool for website design critique', 'Impeccable']
 ];
 
 for (const [query, expected] of cases) {
@@ -38,6 +43,22 @@ for (const [query, expected] of cases) {
     assert.ok(results[0].reasons.length > 0 || results[0].matching_capabilities.length > 0);
   });
 }
+
+test('results explain capability and use-case matches', () => {
+  const found = discovery.searchResources(resources, 'Which skill can help me remember previous sessions?', { limit: 1 })[0];
+  assert.ok(found.reasons.some((reason) => reason.startsWith('Capability:')));
+  assert.ok(found.reasons.some((reason) => reason.startsWith('Use case:')));
+  assert.ok(found.matching_use_cases.length > 0);
+});
+
+test('tokenize normalizes inflections through synonyms', () => {
+  assert.deepEqual(discovery.tokenize('animated animations'), ['animation']);
+  assert.deepEqual(discovery.tokenize('remembered remembering'), ['memory']);
+});
+
+test('cleanQuery strips conversational phrasing', () => {
+  assert.equal(discovery.cleanQuery('Could you recommend a skill for video editing?'), 'video editing?');
+});
 
 test('findResourcesForTask strips request phrasing', () => {
   const found = discovery.findResourcesForTask(resources, 'Find skills for startup planning.', { limit: 3 });

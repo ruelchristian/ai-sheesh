@@ -1,10 +1,11 @@
 'use strict';
 
 const STOP_WORDS = new Set([
-  'a', 'an', 'and', 'are', 'can', 'do', 'does', 'find', 'for', 'from', 'get', 'help',
-  'create', 'generated', 'generating', 'helps', 'i', 'in', 'is', 'it', 'make', 'making', 'me', 'my', 'need', 'of', 'on',
-  'or', 'resource', 'resources', 'skill', 'skills', 'some', 'something', 'that',
-  'the', 'to', 'tool', 'tools', 'want', 'with', 'you', 'your'
+  'a', 'an', 'and', 'are', 'about', 'anything', 'best', 'can', 'could', 'do', 'does', 'find', 'for', 'from', 'get', 'give',
+  'create', 'generated', 'generating', 'helps', 'help', 'how', 'i', 'in', 'into', 'is', 'it', 'look', 'looking', 'make',
+  'making', 'me', 'my', 'need', 'of', 'on', 'or', 'please', 'recommend', 'recommendation', 'recommendations', 'resource',
+  'resources', 'should', 'skill', 'skills', 'some', 'someone', 'something', 'that', 'the', 'this', 'to', 'tool', 'tools',
+  'top', 'using', 'used', 'want', 'what', 'which', 'who', 'where', 'would', 'with', 'you', 'your'
 ]);
 
 const SYNONYMS = {
@@ -62,7 +63,69 @@ const SYNONYMS = {
   videos: 'video',
   web: 'website',
   website: 'website',
-  websites: 'website'
+  websites: 'website',
+  agent: 'agent',
+  agents: 'agent',
+  animate: 'animation',
+  animated: 'animation',
+  animating: 'animation',
+  audios: 'audio',
+  backend: 'backend',
+  codebase: 'codebase',
+  contexts: 'context',
+  design: 'design',
+  designer: 'design',
+  designing: 'design',
+  diagrams: 'visualization',
+  diagram: 'visualization',
+  doc: 'documentation',
+  docs: 'documentation',
+  documentation: 'documentation',
+  edited: 'edit',
+  editor: 'edit',
+  editing: 'edit',
+  edits: 'edit',
+  entrepreneur: 'startup',
+  entrepreneurship: 'startup',
+  founders: 'startup',
+  frontend: 'frontend',
+  mcp: 'mcp',
+  ocr: 'ocr',
+  organize: 'organization',
+  organized: 'organization',
+  planning: 'plan',
+  plans: 'plan',
+  products: 'product',
+  readme: 'documentation',
+  recording: 'video',
+  remembered: 'memory',
+  remembering: 'memory',
+  recalls: 'memory',
+  recalled: 'memory',
+  roadmap: 'plan',
+  scanning: 'security',
+  scanner: 'security',
+  searching: 'search',
+  secure: 'security',
+  securing: 'security',
+  security: 'security',
+  sfx: 'audio',
+  sound: 'audio',
+  sounds: 'audio',
+  tested: 'test',
+  tester: 'test',
+  tests: 'test',
+  testing: 'test',
+  ui: 'design',
+  ux: 'design',
+  video: 'video',
+  videos: 'video',
+  visualize: 'visualization',
+  visualise: 'visualization',
+  vulnerabilities: 'security',
+  vulnerability: 'security',
+  writing: 'write',
+  writer: 'write'
 };
 
 const FIELD_WEIGHTS = [
@@ -133,7 +196,8 @@ function cleanQuery(value) {
     .trim()
     .toLowerCase()
     .replace(/^(?:hey|ok|please)\s+/, '')
-    .replace(/^(?:find|show|get|give me|i need|i want|i'm looking for|im looking for|looking for)\s+/, '')
+    .replace(/^(?:could|would|can) you (?:please )?/, '')
+    .replace(/^(?:i'd like|id like|i would like|find|show|get|give me|recommend(?: me)?|i need|i want|i'm looking for|im looking for|looking for|looking to)\s+/, '')
     .replace(/^(?:a|an|the|some|something|tool|skill|resource|resources)\s+(?:tool|skill|resource|resources)?\s*(?:for|that|to|which)?\s*/, '')
     .replace(/^(?:that|which)\s+(?:helps|can|is for)\s+/, '')
     .trim();
@@ -195,6 +259,7 @@ function scoreResource(resource, query, weights) {
   const discovery = normalized.discovery;
   const reasons = [];
   const matchingCapabilities = [];
+  const matchingUseCases = [];
   const whenToUse = [];
   const compatibilityNotes = [];
   let score = 0;
@@ -219,9 +284,14 @@ function scoreResource(resource, query, weights) {
 
       if (!matched && !exact) continue;
 
-      if (field === 'capabilities') matchingCapabilities.push(value);
-      else if (field === 'use_when') whenToUse.push(value);
-      else if (field === 'activation_keywords') reasons.push(`${label}: ${value}`);
+      if (field === 'capabilities') {
+        matchingCapabilities.push(value);
+        reasons.push(`Capability: ${value}`);
+      } else if (field === 'use_when') {
+        matchingUseCases.push(value);
+        whenToUse.push(value);
+        reasons.push(`Use case: ${value}`);
+      } else if (field === 'activation_keywords') reasons.push(`${label}: ${value}`);
       else if (field === 'name') reasons.push(`Name match: ${value}`);
       else if (field === 'resource_type') reasons.push(`Type: ${value}`);
       else if (field === 'supported_platforms') reasons.push(`Platform: ${value}`);
@@ -240,14 +310,15 @@ function scoreResource(resource, query, weights) {
   if (discovery.supported_platforms.length) {
     compatibilityNotes.push(`Platforms: ${discovery.supported_platforms.join(', ')}`);
   }
-  if (discovery.verification_status === 'Deprecated') {
-    compatibilityNotes.push('Status: Deprecated');
+  if (discovery.verification_status && discovery.verification_status !== 'Unverified') {
+    compatibilityNotes.push(`Status: ${discovery.verification_status}`);
   }
 
   return Object.assign({}, normalized, {
     score,
     reasons: [...new Set(reasons)].slice(0, 6),
     matching_capabilities: [...new Set(matchingCapabilities)].slice(0, 5),
+    matching_use_cases: [...new Set(matchingUseCases)].slice(0, 3),
     when_to_use: [...new Set(whenToUse.length ? whenToUse : discovery.use_when.slice(0, 1))].slice(0, 3),
     compatibility_notes: [...new Set(compatibilityNotes)].slice(0, 4)
   });

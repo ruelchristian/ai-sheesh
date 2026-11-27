@@ -315,9 +315,10 @@ function visibleRows(){
 }
 function reasonBlock(r){
  var parts=[];
- if(r.reasons&&r.reasons.length)parts.push("<div><b>Why:</b> "+esc(r.reasons.slice(0,3).join(" · "))+"</div>");
+ if(r.reasons&&r.reasons.length)parts.push("<div><b>Why:</b> "+esc(r.reasons.slice(0,4).join(" · "))+"</div>");
  if(r.matching_capabilities&&r.matching_capabilities.length)parts.push("<div><b>Capabilities:</b> "+esc(r.matching_capabilities.slice(0,4).join(" · "))+"</div>");
- if(r.when_to_use&&r.when_to_use.length)parts.push("<div><b>Use when:</b> "+esc(r.when_to_use[0])+"</div>");
+ if(r.matching_use_cases&&r.matching_use_cases.length)parts.push("<div><b>Matched use case:</b> "+esc(r.matching_use_cases[0])+"</div>");
+  if(r.when_to_use&&r.when_to_use.length)parts.push("<div><b>Use when:</b> "+esc(r.when_to_use[0])+"</div>");
  if(r.compatibility_notes&&r.compatibility_notes.length)parts.push("<div><b>Limits:</b> "+esc(r.compatibility_notes.slice(0,2).join(" · "))+"</div>");
  return parts.length?'<div class="match">'+parts.join("")+"</div>":"";
 }
