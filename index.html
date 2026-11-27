@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Cortex — Skills &amp; Tools Library</title>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("cortex-theme")||"cobalt"}catch(e){document.documentElement.dataset.theme="cobalt"}</script>
 <style>
-/* Palette direction from unslop by Damir Sokolovsky (CC BY 4.0): quiet ink surfaces, one cobalt accent. */
-:root{color-scheme:dark;--bg:#0b0d14;--card:#11141c;--tx:#eef0f5;--mu:#a3a9b8;--bd:rgba(238,240,245,.08);--ac:#60a5fa;--onac:#07080d;--chip:#1a1e28;--raised:#232830;--gh:#7a8296;--site:#60a5fa;--danger:#e5484d}
+/* Palette directions follow unslop by Damir Sokolovsky (CC BY 4.0): quiet surfaces, one accent per theme. */
+:root{color-scheme:dark}
+:root,[data-theme="cobalt"]{--bg:#0b0d14;--card:#11141c;--tx:#eef0f5;--mu:#a3a9b8;--bd:rgba(238,240,245,.08);--ac:#60a5fa;--onac:#07080d;--chip:#1a1e28;--raised:#232830;--gh:#7a8296;--site:#60a5fa;--site-tint:rgba(96,165,250,.12);--danger:#e5484d}
+[data-theme="ember"]{--bg:#161513;--card:#1c1a18;--tx:#efe9de;--mu:#aaa398;--bd:rgba(239,233,222,.08);--ac:#f97316;--onac:#1a0f05;--chip:#262421;--raised:#302c27;--gh:#8a847a;--site:#fbbf24;--site-tint:rgba(251,191,36,.12);--danger:#f0575c}
+[data-theme="teal"]{--bg:#0b0d14;--card:#11141c;--tx:#eef0f5;--mu:#a3a9b8;--bd:rgba(238,240,245,.08);--ac:#2dd4bf;--onac:#04110f;--chip:#1a1e28;--raised:#232830;--gh:#7a8296;--site:#a3e635;--site-tint:rgba(163,230,53,.12);--danger:#e5484d}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 main{max-width:1100px;margin:0 auto;padding:36px 16px 64px}
@@ -10,6 +14,7 @@ h1{font-size:1.9rem;margin:0 0 6px;font-weight:700;letter-spacing:-.025em}
 .sub{color:var(--mu);margin:0 0 22px}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .topacts{display:flex;gap:8px;flex-wrap:wrap}
+.topacts select{width:auto;padding:8px 10px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx);font:inherit;font-size:.88rem}
 .bar{margin-bottom:18px}
 input,select,textarea{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx);font:inherit}
 input:focus,select:focus{outline:2px solid var(--ac);outline-offset:1px}
@@ -31,7 +36,7 @@ input:focus,select:focus{outline:2px solid var(--ac);outline-offset:1px}
 .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--mu);font-size:.78rem}
 .pill{font-size:.7rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;padding:1px 8px;border-radius:99px;background:var(--chip);color:var(--tx)}
 .pill.github{background:var(--chip);color:var(--tx)}
-.pill.site{background:rgba(96,165,250,.12);color:var(--site)}
+.pill.site{background:var(--site-tint);color:var(--site)}
 .foot{margin-top:auto;display:flex;justify-content:flex-end;gap:8px;padding-top:4px}
 .empty{color:var(--mu);padding:40px 0;text-align:center}
 button.primary,button.secondary{border:1px solid var(--bd);background:var(--bg);color:var(--tx);padding:8px 14px;border-radius:6px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer}
@@ -76,7 +81,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .evidence li{overflow-wrap:anywhere}
 </style></head>
 <body><main>
-<div class="top"><div><h1>Cortex</h1><p class="sub">Agent skills, CLIs and open-source tools. One name, one link.</p></div><div class="topacts"><button class="secondary" id="auth" type="button">Log in</button><button class="secondary" id="export" type="button">Export JSON</button><button class="primary" id="new" type="button" disabled>+ New link</button></div></div>
+<div class="top"><div><h1>Cortex</h1><p class="sub">Agent skills, CLIs and open-source tools. One name, one link.</p></div><div class="topacts"><select id="theme" aria-label="Color theme"><option value="cobalt">Cobalt</option><option value="ember">Ember</option><option value="teal">Teal</option></select><button class="secondary" id="auth" type="button">Log in</button><button class="primary" id="new" type="button" disabled>+ New link</button></div></div>
 <div id="status" class="status" role="status"></div>
 <div class="bar"><input id="q" type="search" placeholder="Ask in plain language: “Find a skill for animating React”…" aria-label="Search resources"></div>
 <div class="count" id="count">Loading…</div><div class="grid" id="grid"></div>
@@ -235,6 +240,17 @@ var activeResource=null,reviewResource=null,reviewData=null;
 var DISCOVERY_INPUTS={description:"f-description",resource_type:"f-resource-type",capabilities:"f-capabilities",use_when:"f-use-when",do_not_use_when:"f-do-not-use-when",activation_keywords:"f-activation-keywords",supported_platforms:"f-supported-platforms",installation_instructions:"f-installation-instructions",documentation_url:"f-documentation-url",related_resources:"f-related-resources",secondary_categories:"f-secondary-categories",verification_status:"f-verification-status",last_verified_at:"f-last-verified-at",analysis_evidence:"f-analysis-evidence"};
 var DISCOVERY_LIST_FIELDS={capabilities:1,use_when:1,do_not_use_when:1,activation_keywords:1,supported_platforms:1,related_resources:1,secondary_categories:1};
 var $=function(i){return document.getElementById(i)};
+var THEME_KEY="cortex-theme";
+function syncTheme(){
+  var saved;try{saved=localStorage.getItem(THEME_KEY)}catch(e){}
+  var theme=["cobalt","ember","teal"].indexOf(saved)>=0?saved:"cobalt";
+  document.documentElement.dataset.theme=theme;
+  $("theme").value=theme;
+}
+function setTheme(theme){
+  document.documentElement.dataset.theme=theme;
+  try{localStorage.setItem(THEME_KEY,theme)}catch(e){}
+}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function prepare(value){
  var link=String(value||"").trim();
@@ -477,9 +493,7 @@ $("detail-edit").onclick=function(){if(activeResource){$("detail").close();openE
 $("detail-analyze").onclick=function(){if(activeResource)openReview(activeResource)};
 $("review-cancel").onclick=function(){$("review").close()};
 $("review-form").onsubmit=applyReview;
-$("export").onclick=function(){
- var a=document.createElement("a"),url=URL.createObjectURL(new Blob([JSON.stringify(rows,null,2)],{type:"application/json"}));
- a.href=url;a.download="cortex-links.json";a.click();URL.revokeObjectURL(url);
-};
+$("theme").onchange=function(){setTheme(this.value)};
+syncTheme();
 load();
 </script></body></html>

@@ -6,7 +6,7 @@ The library now supports AI-style discovery. Search accepts plain-language reque
 
 ## Files
 
-- `index.html` — page, natural-language search, cards, detail view, review screen, CRUD UI, login UI, JSON export.
+- `index.html` — page, natural-language search, cards, detail view, review screen, CRUD UI, login UI, saved color theme switcher.
 - `server.js` — Express API, signed-cookie auth, static hosting, additive migrations, REST discovery endpoints.
 - `services/discovery.js` — pure ranking logic. No UI or HTTP dependencies.
 - `services/discovery-service.js` — DB-backed `searchResources(query)`, `getResourceDetails(id)`, `findResourcesForTask(taskDescription)` wrappers for REST or MCP use.
@@ -16,7 +16,7 @@ The library now supports AI-style discovery. Search accepts plain-language reque
 - `render.yaml` — Render Blueprint for the web service. Database env vars are set outside the Blueprint.
 - `scripts/refresh-free-db.js` — backup-first free database rotation. Backs up and restores all discovery metadata.
 - `scripts/enrich-metadata.js` — backup-first metadata enrichment from GitHub evidence. Fills empty fields and appends evidence-based list items.
-- `test/discovery.test.js` — seven requested queries plus service normalization tests.
+- `test/discovery.test.js` — natural-language query cases, ranking rules, and service normalization tests.
 - `data/*.json`, `MATT_MURPHY_*.md`, `TOOL_RANKINGS.md` — research archives and notes.
 
 ## Discovery metadata
