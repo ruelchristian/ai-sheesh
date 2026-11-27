@@ -1,5 +1,5 @@
 {
-  "name": "ai-sheesh",
+  "name": "cortex",
   "version": "1.0.0",
   "private": true,
   "description": "Static library UI with a small Express CRUD API and Render Postgres.",

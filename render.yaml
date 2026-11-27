@@ -1,12 +1,12 @@
 databases:
-  - name: ai-sheesh-db
+  - name: cortex-db
     plan: free
-    databaseName: ai_sheesh
-    user: ai_sheesh
+    databaseName: cortex
+    user: cortex
 
 services:
   - type: web
-    name: ai-sheesh
+    name: cortex
     runtime: node
     plan: free
     buildCommand: npm install
@@ -15,5 +15,5 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: ai-sheesh-db
+          name: cortex-db
           property: connectionString

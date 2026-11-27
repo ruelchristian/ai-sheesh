@@ -173,7 +173,7 @@ app.use((error, req, res, next) => {
 if (require.main === module) {
   init()
     .then(() => {
-      app.listen(port, () => console.log(`AI Sheesh running on port ${port}`));
+      app.listen(port, () => console.log(`Cortex running on port ${port}`));
     })
     .catch((error) => {
       console.error('Startup failed:', error);

@@ -1,4 +1,4 @@
-# Skills & Tools Library
+# Cortex
 
 Vanilla HTML/CSS/JS UI with a small Express CRUD API. Entries live in Postgres. The app runs as one Render Web Service.
 
