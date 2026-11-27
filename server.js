@@ -22,7 +22,7 @@ const pool = new Pool({
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
-const cols = 'id, name, link, meta_key, created_at, updated_at';
+const cols = 'id, name, link, category, meta_key, created_at, updated_at';
 const adminPassword = process.env.ADMIN_PASSWORD || '';
 const sessionSecret = `cortex:${adminPassword}`;
 const cookieName = 'cortex_auth';
@@ -72,7 +72,7 @@ function normalize(body) {
     throw fail(400, 'link must be a valid URL.');
   }
 
-  return { name, link };
+  return { name, link, category: text(input.category, 80) };
 }
 
 function linkMeta(link) {
@@ -92,6 +92,7 @@ function present(row) {
     id: row.id,
     name: row.name,
     link: row.link,
+    category: row.category,
     meta_key: row.meta_key,
     kind: meta.kind,
     host: meta.host,
@@ -152,6 +153,15 @@ async function init() {
   await pool.query(`ALTER TABLE tools ALTER COLUMN link SET NOT NULL`);
   await pool.query('ALTER TABLE tools ADD COLUMN IF NOT EXISTS meta_key TEXT');
 
+  const categoryColumn = await pool.query(`
+    SELECT 1 FROM information_schema.columns
+    WHERE table_name = 'tools' AND column_name = 'category'
+  `);
+
+  if (!categoryColumn.rowCount) {
+    await pool.query(`ALTER TABLE tools ADD COLUMN category TEXT NOT NULL DEFAULT ''`);
+  }
+
   const meta = loadMeta();
   const byId = new Map();
   const byLink = new Map();
@@ -170,6 +180,19 @@ async function init() {
     await pool.query('UPDATE tools SET meta_key = $1 WHERE id = $2', [key, row.id]);
   }
 
+  if (!categoryColumn.rowCount) {
+    const { rows: needsCategory } = await pool.query(`SELECT id, meta_key, name FROM tools`);
+
+    for (const row of needsCategory) {
+      const key = row.meta_key || row.name;
+      const category = meta[key] ? meta[key].category : '';
+
+      if (category) {
+        await pool.query('UPDATE tools SET category = $1 WHERE id = $2', [category, row.id]);
+      }
+    }
+  }
+
   const client = await pool.connect();
 
   try {
@@ -183,8 +206,8 @@ async function init() {
 
       for (const row of seed) {
         await client.query(
-          'INSERT INTO tools (name, link, meta_key) VALUES ($1, $2, $3)',
-          [row.name, row.link, row.name]
+          'INSERT INTO tools (name, link, category, meta_key) VALUES ($1, $2, $3, $4)',
+          [row.name, row.link, meta[row.name] ? meta[row.name].category : '', row.name]
         );
       }
     }
@@ -312,8 +335,8 @@ app.get('/api/tools', route(async (req, res) => {
 app.post('/api/tools', requireAuth, route(async (req, res) => {
   const entry = normalize(req.body);
   const { rows } = await pool.query(
-    `INSERT INTO tools (name, link, meta_key) VALUES ($1, $2, $3) RETURNING ${cols}`,
-    [entry.name, entry.link, entry.name]
+    `INSERT INTO tools (name, link, category, meta_key) VALUES ($1, $2, $3, $4) RETURNING ${cols}`,
+    [entry.name, entry.link, entry.category, entry.name]
   );
   res.status(201).json(present(rows[0]));
 }));
@@ -324,8 +347,8 @@ app.put('/api/tools/:id', requireAuth, route(async (req, res) => {
 
   const entry = normalize(req.body);
   const { rows } = await pool.query(
-    `UPDATE tools SET name = $1, link = $2, updated_at = now() WHERE id = $3 RETURNING ${cols}`,
-    [entry.name, entry.link, id]
+    `UPDATE tools SET name = $1, link = $2, category = $3, updated_at = now() WHERE id = $4 RETURNING ${cols}`,
+    [entry.name, entry.link, entry.category, id]
   );
 
   if (!rows.length) throw fail(404, 'Entry not found.');

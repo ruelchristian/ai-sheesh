@@ -2,7 +2,7 @@
 
 Vanilla HTML/CSS/JS UI with a small Express CRUD API. Entries live in Postgres. The app runs as one Render Web Service.
 
-CRUD edits only name and link. Categories and descriptions are AI-written and hardcoded in `data/meta.js`. Links are detected as GitHub repos or custom sites; the icon is the clickable link. No raw URL appears on the card.
+CRUD edits name, link, and category. The editor lists existing categories and accepts a new one. Descriptions stay AI-written and hardcoded in `data/meta.js`. Links are detected as GitHub repos or custom sites; the icon is the clickable link. No raw URL appears on the card.
 
 ## Files
 
@@ -81,9 +81,9 @@ Log in from the page with `ADMIN_PASSWORD`. The cookie lasts 7 days. Five failed
 Entry shape:
 
 ```
-{name, link}
+{name, link, category}
 ```
 
-`name` and `link` are required. A link may be `owner/repo`, a bare domain, or a full `http(s)` URL. The server normalizes it before saving. The UI adds the GitHub or website icon from the final URL host.
+`name` and `link` are required. `category` is optional. A link may be `owner/repo`, a bare domain, or a full `http(s)` URL. The server normalizes it before saving. The UI adds the GitHub or website icon from the final URL host.
 
-Category and description come from `data/meta.js`. They are not editable in the UI and not accepted by the API. Each row has a hidden `meta_key` set at creation, so renaming or relinking an entry keeps its metadata. On first startup, existing rows get a key from seed id, name, or original link. New entries without a matching key show no metadata until AI adds it to `data/meta.js`.
+Category is stored per entry. Editor options come from hardcoded categories in `data/meta.js` plus categories already used in the library. Choose **+ New category** to type a new one. Description stays hardcoded in `data/meta.js` and is not editable. Each row has a hidden `meta_key` set at creation, so renaming or relinking an entry keeps its description. On first startup, existing rows get a key and category from seed id, name, or original link.

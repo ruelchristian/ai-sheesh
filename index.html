@@ -10,8 +10,10 @@ h1{font-size:1.9rem;margin:0 0 6px;font-weight:700;letter-spacing:-.025em}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .topacts{display:flex;gap:8px;flex-wrap:wrap}
 .bar{margin-bottom:18px}
-input{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx);font:inherit}
-input:focus{outline:2px solid var(--mu);outline-offset:1px}
+input,select{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx);font:inherit}
+input:focus,select:focus{outline:2px solid var(--mu);outline-offset:1px}
+[hidden]{display:none!important}
+.hint{font-size:.8rem;color:var(--mu)}
 ::placeholder{color:var(--mu)}
 .count{color:var(--mu);font-size:.88rem;margin-bottom:12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
@@ -63,6 +65,9 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <input id="f-id" type="hidden">
 <label>Name <input id="f-name" required maxlength="200"></label>
 <label>Link <input id="f-link" required maxlength="2000" placeholder="owner/repo or https://example.com"></label>
+<label>Category <select id="f-category-select"></select></label>
+<div class="hint">Pick an existing category, or choose “+ New category”.</div>
+<label id="new-category-label" hidden>New category <input id="f-category-new" maxlength="80" placeholder="Type a category"></label>
 <div id="detected" class="detected">Detected: waiting for link</div>
 <div class="actions"><button id="cancel" class="secondary" type="button">Cancel</button><button id="save" class="primary" type="submit">Save</button></div>
 </form>
@@ -188,7 +193,24 @@ function icon(kind){
 }
 function metaFor(r){
   var p=prepare(r.link),m=(window.META||{})[r.meta_key||r.name]||(window.META||{})[r.name]||(window.META||{})[p.link]||{};
-  return{link:p.link,host:p.host,kind:p.kind,category:m.category||"",description:m.description||""};
+  return{link:p.link,host:p.host,kind:p.kind,category:r.category||m.category||"",description:m.description||""};
+}
+function categoryOptions(){
+  var seen={};
+  Object.keys(window.META||{}).forEach(function(k){var c=window.META[k].category;if(c)seen[c]=1});
+  rows.forEach(function(r){if(r.category)seen[r.category]=1});
+  return Object.keys(seen).sort(function(a,b){return a.toLowerCase().localeCompare(b.toLowerCase())});
+}
+function fillCategory(value){
+  var sel=$("f-category-select"),options=categoryOptions(),known=options.indexOf(value)>-1,useNew=Boolean(value)&&!known;
+  sel.innerHTML='<option value="">No category</option>'+options.map(function(c){return'<option value="'+esc(c)+'">'+esc(c)+'</option>'}).join("")+'<option value="__new__">+ New category…</option>';
+  sel.value=useNew?"__new__":(value||"");
+  $("new-category-label").hidden=!useNew;
+  $("f-category-new").value=useNew?value:"";
+}
+function selectedCategory(){
+  var value=$("f-category-select").value;
+  return value==="__new__"?$("f-category-new").value.trim():value;
 }
 function say(msg,err){var s=$("status");s.textContent=msg||"";s.className="status"+(err?" err":"")}
 function api(path,opt){
@@ -244,11 +266,12 @@ function openEditor(r){
  $("f-name").value=r?r.name||"":"";
  $("f-link").value=r?r.link||"":"";
  updateDetected();
+ fillCategory(r?metaFor(r).category:"");
  if(!$("editor").open)$("editor").showModal();
  $("f-name").focus();
 }
 function closeEditor(){$("editor").close()}
-function collect(){return{name:$("f-name").value.trim(),link:$("f-link").value.trim()}}
+function collect(){return{name:$("f-name").value.trim(),link:$("f-link").value.trim(),category:selectedCategory()}}
 function removeEntry(r){
  if(!window.confirm("Delete "+r.name+"?"))return;
  api("/api/tools/"+r.id,{method:"DELETE"}).then(load).then(function(){say("Link deleted.")}).catch(function(e){say(e.message,true)});
@@ -269,6 +292,11 @@ $("auth").onclick=function(){
 };
 $("login-cancel").onclick=function(){$("login").close()};
 $("f-link").oninput=updateDetected;
+$("f-category-select").onchange=function(){
+ var useNew=this.value==="__new__";
+ $("new-category-label").hidden=!useNew;
+ if(useNew)$("f-category-new").focus();
+};
 $("q").oninput=function(e){q=e.target.value.toLowerCase();render()};
 $("new").onclick=function(){openEditor(null)};
 $("cancel").onclick=closeEditor;
