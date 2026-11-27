@@ -17,20 +17,19 @@ input:focus{outline:2px solid var(--mu);outline-offset:1px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(0,0,0,.4)}
 .cardhead{display:flex;gap:12px;align-items:center}
-.icon{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:9px;background:var(--chip);color:var(--tx)}
+.icon{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:9px;background:var(--chip);color:var(--tx);text-decoration:none}
+.icon:hover{background:#3f3f46}
 .icon.github{color:var(--tx)}
 .icon.site{color:var(--site)}
 .icon svg{width:21px;height:21px;fill:currentColor}
 .icon.site svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .card h2{margin:0;font-size:1.05rem;font-weight:600;letter-spacing:-.01em;overflow-wrap:anywhere}
+.desc{color:var(--mu);font-size:.88rem;margin:0;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--mu);font-size:.78rem}
 .pill{font-size:.7rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;padding:1px 8px;border-radius:99px;background:var(--chip);color:var(--tx)}
 .pill.github{background:#1f242c;color:#e6edf3}
 .pill.site{background:#17263a;color:#93c5fd}
-.url{color:var(--mu);font-size:.84rem;overflow-wrap:anywhere;text-decoration:none}
-.url:hover{color:var(--tx);text-decoration:underline}
-.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:4px}
-.tag{color:var(--mu);font-size:.75rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.foot{margin-top:auto;display:flex;justify-content:flex-end;gap:8px;padding-top:4px}
 .empty{color:var(--mu);padding:40px 0;text-align:center}
 button.primary,button.secondary{border:1px solid var(--bd);background:var(--bg);color:var(--tx);padding:8px 14px;border-radius:6px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer}
 button.primary{background:var(--ac);color:var(--onac);border-color:var(--ac)}
@@ -55,7 +54,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <body><main>
 <div class="top"><div><h1>Cortex</h1><p class="sub">Agent skills, CLIs and open-source tools. One name, one link.</p></div><div class="topacts"><button class="secondary" id="auth" type="button">Log in</button><button class="secondary" id="export" type="button">Export JSON</button><button class="primary" id="new" type="button" disabled>+ New link</button></div></div>
 <div id="status" class="status" role="status"></div>
-<div class="bar"><input id="q" type="search" placeholder="Search by name, link, or host…" aria-label="Search"></div>
+<div class="bar"><input id="q" type="search" placeholder="Search name, link, category, or description…" aria-label="Search"></div>
 <div class="count" id="count">Loading…</div><div class="grid" id="grid"></div>
 </main>
 <dialog id="editor" class="editor">
@@ -76,6 +75,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <div class="actions"><button id="login-cancel" class="secondary" type="button">Cancel</button><button class="primary" type="submit">Log in</button></div>
 </form>
 </dialog>
+<script src="/data/meta.js"></script>
 <script>
 window.TOOLS = [
   {"name":"Impeccable","link":"https://github.com/search?type=repositories&q=Impeccable"},
@@ -186,6 +186,10 @@ function icon(kind){
  if(kind==="github")return'<svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';
  return'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>';
 }
+function metaFor(r){
+  var p=prepare(r.link),m=(window.META||{})[r.name]||(window.META||{})[p.link]||{};
+  return{link:p.link,host:p.host,kind:p.kind,category:m.category||"",description:m.description||""};
+}
 function say(msg,err){var s=$("status");s.textContent=msg||"";s.className="status"+(err?" err":"")}
 function api(path,opt){
  return fetch(path,Object.assign({headers:{"Content-Type":"application/json"}},opt||{})).then(function(res){
@@ -213,12 +217,13 @@ function load(){
 function render(){
  var b=$("auth");b.textContent=auth.authenticated?"Log out":"Log in";b.disabled=!auth.enabled;b.title=auth.enabled?"":"ADMIN_PASSWORD is not configured";
  $("new").disabled=!editable;
- var l=rows.filter(function(r){var p=prepare(r.link);return(r.name+" "+r.link+" "+p.host).toLowerCase().indexOf(q)>-1});
+ var l=rows.filter(function(r){var m=metaFor(r);return(r.name+" "+r.link+" "+m.host+" "+m.category+" "+m.description).toLowerCase().indexOf(q)>-1});
  $("count").textContent=l.length+" of "+rows.length+" links";
  var g=$("grid");g.innerHTML=l.length?"":'<div class="empty">No matches.</div>';
- l.forEach(function(r){var p=prepare(r.link),k=p.kind==="github"?"github":"site",c=document.createElement("article");c.className="card";
+ l.forEach(function(r){var m=metaFor(r),k=m.kind==="github"?"github":"site",c=document.createElement("article");c.className="card";
   var ops=editable?'<div class="ops"><button type="button" data-act="edit">Edit</button><button type="button" class="del" data-act="del">Delete</button></div>':"";
-  c.innerHTML='<div class="cardhead"><span class="icon '+k+'" aria-hidden="true">'+icon(k)+'</span><div><h2>'+esc(r.name)+'</h2><div class="meta"><span class="pill '+k+'">'+(k==="github"?"GitHub repo":"Custom site")+'</span><span>'+esc(p.host||"unknown host")+'</span></div></div></div><a class="url" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+esc(p.link)+' ↗</a><div class="foot"><span class="tag">'+esc(k==="github"?"github":"website")+'</span>'+ops+'</div>';
+  var pill=m.category?'<span class="pill">'+esc(m.category)+'</span>':'<span class="pill '+k+'">'+(k==="github"?"GitHub repo":"Custom site")+'</span>';
+  c.innerHTML='<div class="cardhead"><a class="icon '+k+'" href="'+esc(m.link)+'" target="_blank" rel="noopener" aria-label="Open '+esc(r.name)+' on '+(k==="github"?"GitHub":"website")+'" title="'+esc(m.host||k)+'">'+icon(k)+'</a><div><h2>'+esc(r.name)+'</h2><div class="meta">'+pill+'</div></div></div>'+(m.description?'<p class="desc">'+esc(m.description)+'</p>':'')+(ops?'<div class="foot">'+ops+'</div>':'');
   var edit=c.querySelector('[data-act="edit"]'),del=c.querySelector('[data-act="del"]');
   if(edit)edit.onclick=function(){openEditor(r)};
   if(del)del.onclick=function(){removeEntry(r)};

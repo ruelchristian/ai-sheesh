@@ -2,13 +2,14 @@
 
 Vanilla HTML/CSS/JS UI with a small Express CRUD API. Entries live in Postgres. The app runs as one Render Web Service.
 
-Each entry has only a name and a link. Links are detected as GitHub repos or custom sites, and the card shows the matching icon.
+CRUD edits only name and link. Categories and descriptions are AI-written and hardcoded in `data/meta.js`. Links are detected as GitHub repos or custom sites; the icon is the clickable link. No raw URL appears on the card.
 
 ## Files
 
 - `index.html` — page, search, add/edit/delete UI, login UI, JSON export.
 - `server.js` — Express API, signed-cookie auth, static file serving, first-run database seed.
 - `data/tools.js` — seed dataset. Used only when the database is empty.
+- `data/meta.js` — hardcoded category and description by entry name. Not editable through CRUD.
 - `render.yaml` — Render Blueprint for the web service. Database env vars are set outside the Blueprint.
 - `scripts/refresh-free-db.js` — backup-first free database rotation.
 - `data/*.json`, `MATT_MURPHY_*.md`, `TOOL_RANKINGS.md` — research archives and notes.
@@ -84,3 +85,5 @@ Entry shape:
 ```
 
 `name` and `link` are required. A link may be `owner/repo`, a bare domain, or a full `http(s)` URL. The server normalizes it before saving. The UI adds the GitHub or website icon from the final URL host.
+
+Category and description come from `data/meta.js`. They are not stored in Postgres, not editable in the UI, and not accepted by the API. New entries without a matching name show no metadata until AI adds it to `data/meta.js`.
