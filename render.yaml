@@ -1,0 +1,19 @@
+databases:
+  - name: ai-sheesh-db
+    plan: free
+    databaseName: ai_sheesh
+    user: ai_sheesh
+
+services:
+  - type: web
+    name: ai-sheesh
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ai-sheesh-db
+          property: connectionString

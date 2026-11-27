@@ -36,14 +36,47 @@ a.gh:hover{background:var(--chip)}
 .tag{color:var(--mu);font-size:.75rem}
 .empty{color:var(--mu);padding:40px 0;text-align:center}
 body.hidecardtags .tl{display:none}
+button.primary,button.secondary{border:1px solid var(--bd);background:var(--bg);color:var(--tx);padding:8px 14px;border-radius:6px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer}
+button.primary{background:var(--ac);color:var(--onac);border-color:var(--ac)}
+button.primary:hover{opacity:.9}
+button.secondary:hover{background:var(--chip)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.topacts{display:flex;gap:8px}
+.status{color:var(--mu);font-size:.85rem;margin:-6px 0 12px;min-height:1.2em}
+.status.err{color:#fca5a5}
+.ops{display:flex;gap:6px}
+.ops button{border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;font-size:.78rem;padding:4px 9px;border-radius:6px;cursor:pointer}
+.ops button:hover{background:var(--chip)}
+.ops button.del{color:#fca5a5}
+.editor{border:1px solid var(--bd);border-radius:12px;background:var(--bg);color:var(--tx);max-width:560px;width:calc(100% - 32px);padding:20px}
+.editor::backdrop{background:rgba(0,0,0,.7)}
+.editor form{display:grid;gap:10px}
+.editor h2{margin:0 0 4px;font-size:1.15rem}
+.editor label{display:grid;gap:4px;font-size:.85rem;color:var(--mu)}
+.editor textarea{min-height:84px}
+.editor .actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
 </style></head>
 <body class="hidecardtags"><main>
-<div class="top"><div><h1>Skills &amp; Tools Library</h1><p class="sub">Agent skills, CLIs and open-source tools: what they are, when to use them, and where the repo is.</p></div></div>
+<div class="top"><div><h1>Skills &amp; Tools Library</h1><p class="sub">Agent skills, CLIs and open-source tools: what they are, when to use them, and where the repo is.</p></div><div class="topacts"><button class="secondary" id="export" type="button">Export JSON</button><button class="primary" id="new" type="button">+ New entry</button></div></div>
+<div id="status" class="status" role="status"></div>
 <div class="bar"><input id="q" type="search" placeholder="Search by name, purpose, or use case…" aria-label="Search">
 <div class="lbl">Category</div><div class="chips" id="chips"></div>
 <div id="tagwrap"><div class="lbl">Tag</div><div class="chips" id="tagchips"></div></div></div>
 <div class="count" id="count">Loading…</div><div class="grid" id="grid"></div>
 </main>
+<dialog id="editor" class="editor">
+<form id="form">
+<h2 id="editor-title">New entry</h2>
+<input id="f-id" type="hidden">
+<label>Name <input id="f-name" required maxlength="200"></label>
+<label>Category <input id="f-category" maxlength="100"></label>
+<label>Description <textarea id="f-description" maxlength="1000"></textarea></label>
+<label>Use when <textarea id="f-use" maxlength="500"></textarea></label>
+<label>Repo <input id="f-repo" maxlength="300" placeholder="owner/repo, or blank"></label>
+<label>Tags <input id="f-tags" placeholder="comma, separated, tags"></label>
+<div class="actions"><button id="cancel" class="secondary" type="button">Cancel</button><button id="save" class="primary" type="submit">Save</button></div>
+</form>
+</dialog>
 <script>
 window.TOOLS = [
   {"name": "Impeccable", "category": "Design & UI", "description": "Frontend design skill and CLI with design vocabulary, critiques, audits and anti-pattern detection for agents.", "use_when": "Your AI-built UI looks generic and you want it critiqued and polished.", "repo": null, "tags": ["Verified", "Frontend", "Design critique"]},
@@ -139,14 +172,30 @@ window.TOOLS = [
   {"name": "thirteen-layer-audit", "category": "Coding Workflow", "description": "Matt Murphy's (@mattmurphyai) 13-Layer AI-Directed Engineering Standard: automated audit scanner and runbook covering 13 production layers from frontend to disaster recovery, plus the 7 Daily Standing Plays for AI agents.", "use_when": "Auditing vibe-coded apps, preventing production collapse, running pre-release checks, or directing coding agents with the 7 Daily Standing Plays.", "repo": "ruelchristian/software-factory", "tags": ["Verified", "Code audit", "Planning & TDD", "Templates & registry"]}
 ];
 
-var rows=(window.TOOLS||[]).slice().sort(function(a,b){return a.name.localeCompare(b.name)}),sel="All",tsel="",q="";
+var rows=[],sel="All",tsel="",q="",editable=true;
 var $=function(i){return document.getElementById(i)};
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function link(r){return r.repo?["https://github.com/"+encodeURI(r.repo),"GitHub repo ↗","verified link"]:["https://github.com/search?type=repositories&q="+encodeURIComponent(r.name),"Find on GitHub ↗","search link, confirm repo"]}
+function say(msg,err){var s=$("status");s.textContent=msg||"";s.className="status"+(err?" err":"")}
+function api(path,opt){
+ return fetch(path,Object.assign({headers:{"Content-Type":"application/json"}},opt||{})).then(function(res){
+  return res.json().catch(function(){return {}}).then(function(data){
+   if(!res.ok)throw new Error(data.error||("Request failed ("+res.status+")"));
+   return data;
+  });
+ });
+}
+function load(){
+ return api("/api/tools").then(function(data){rows=data;editable=true;say("")}).catch(function(e){
+  rows=(window.TOOLS||[]).map(function(r,i){r=Object.assign({},r);r.id=-(i+1);return r});
+  editable=false;say("API unavailable. Read-only seed data. "+e.message,true);
+ }).then(render);
+}
 function chip(t,on,f,sm){var b=document.createElement("button");b.className="chip"+(sm?" sm":"")+(on?" on":"");b.textContent=t;b.onclick=f;return b}
 function render(){
  var cats=["All"];rows.forEach(function(r){if(cats.indexOf(r.category)<0)cats.push(r.category)});
  if(cats.indexOf(sel)<0)sel="All";
+ $("new").disabled=!editable;
  var ch=$("chips");ch.innerHTML="";
  cats.forEach(function(c){ch.appendChild(chip(c,c===sel,function(){sel=c;render()}))});
  var tc={};rows.forEach(function(r){if(sel==="All"||r.category===sel)(r.tags||[]).forEach(function(t){tc[t]=(tc[t]||0)+1})});
@@ -159,10 +208,45 @@ function render(){
  $("count").textContent=l.length+" of "+rows.length+" entries";
  var g=$("grid");g.innerHTML=l.length?"":'<div class="empty">No matches.</div>';
  l.forEach(function(r){var k=link(r),c=document.createElement("article");c.className="card";
-  c.innerHTML='<div class="cat">'+esc(r.category)+'</div><h2>'+esc(r.name)+'</h2><p>'+esc(r.description)+'</p><div class="use"><b>Use when:</b> '+esc(r.use_when)+'</div><div class="tl">'+(r.tags||[]).map(function(t){return'<button class="t" data-t="'+esc(t)+'">#'+esc(t)+'</button>'}).join("")+'</div><div class="foot"><a class="gh" href="'+esc(k[0])+'" target="_blank" rel="noopener">'+k[1]+'</a><span class="tag">'+k[2]+'</span></div>';
+  var ops=editable?'<div class="ops"><button type="button" data-act="edit">Edit</button><button type="button" class="del" data-act="del">Delete</button></div>':"";
+  c.innerHTML='<div class="cat">'+esc(r.category)+'</div><h2>'+esc(r.name)+'</h2><p>'+esc(r.description)+'</p><div class="use"><b>Use when:</b> '+esc(r.use_when)+'</div><div class="tl">'+(r.tags||[]).map(function(t){return'<button class="t" data-t="'+esc(t)+'">#'+esc(t)+'</button>'}).join("")+'</div><div class="foot"><a class="gh" href="'+esc(k[0])+'" target="_blank" rel="noopener">'+k[1]+'</a>'+ops+'<span class="tag">'+k[2]+'</span></div>';
   c.querySelectorAll(".t").forEach(function(b){b.onclick=function(){tsel=b.dataset.t;render();scrollTo(0,0)}});
+  var edit=c.querySelector('[data-act="edit"]'),del=c.querySelector('[data-act="del"]');
+  if(edit)edit.onclick=function(){openEditor(r)};
+  if(del)del.onclick=function(){removeEntry(r)};
   g.appendChild(c)});
 }
+function openEditor(r){
+ $("editor-title").textContent=r?"Edit entry":"New entry";
+ $("f-id").value=r?r.id:"";
+ $("f-name").value=r?r.name||"":"";
+ $("f-category").value=r?r.category||"":"";
+ $("f-description").value=r?r.description||"":"";
+ $("f-use").value=r?r.use_when||"":"";
+ $("f-repo").value=r?r.repo||"":"";
+ $("f-tags").value=r&&r.tags?r.tags.join(", "):"";
+ if(!$("editor").open)$("editor").showModal();
+ $("f-name").focus();
+}
+function closeEditor(){$("editor").close()}
+function collect(){
+ return{name:$("f-name").value,category:$("f-category").value,description:$("f-description").value,use_when:$("f-use").value,repo:$("f-repo").value,tags:$("f-tags").value.split(",").map(function(t){return t.trim()}).filter(Boolean)};
+}
+function removeEntry(r){
+ if(!window.confirm("Delete "+r.name+"?"))return;
+ api("/api/tools/"+r.id,{method:"DELETE"}).then(load).then(function(){say("Entry deleted.")}).catch(function(e){say(e.message,true)});
+}
+$("form").onsubmit=function(e){
+ e.preventDefault();
+ var id=$("f-id").value,btn=$("save");btn.disabled=true;
+ api(id?"/api/tools/"+id:"/api/tools",{method:id?"PUT":"POST",body:JSON.stringify(collect())}).then(function(){closeEditor();return load()}).then(function(){say(id?"Entry updated.":"Entry added.")}).catch(function(e){say(e.message,true)}).then(function(){btn.disabled=false});
+};
 $("q").oninput=function(e){q=e.target.value.toLowerCase();render()};
-render();
+$("new").onclick=function(){openEditor(null)};
+$("cancel").onclick=closeEditor;
+$("export").onclick=function(){
+ var a=document.createElement("a"),url=URL.createObjectURL(new Blob([JSON.stringify(rows,null,2)],{type:"application/json"}));
+ a.href=url;a.download="tools.json";a.click();URL.revokeObjectURL(url);
+};
+load();
 </script></body></html>

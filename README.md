@@ -1,37 +1,58 @@
 # Skills & Tools Library
 
-Static site. No database, no auth, no backend, no API calls.
+Vanilla HTML/CSS/JS UI with a small Express CRUD API. Entries live in Postgres. The app runs as one Render Web Service.
 
 ## Files
 
-- `index.html` — page, search, category and tag filters.
-- `data/tools.js` — 91 entries in `window.TOOLS`.
+- `index.html` — page, search, filters, add/edit/delete UI, JSON export.
+- `server.js` — Express API, static file serving, first-run database seed.
+- `data/tools.js` — seed dataset. Used only when the database is empty.
+- `render.yaml` — Render Blueprint: web service plus Postgres.
 - `data/*.json`, `MATT_MURPHY_*.md`, `TOOL_RANKINGS.md` — research archives and notes.
-- `scripts/` — offline Python helpers for those archives. Not used by the site.
+- `scripts/` — offline Python helpers. Not used by the app.
+
+## Deploy to Render
+
+1. Push the repo to GitHub.
+2. In Render, click **New** -> **Blueprint Instance**.
+3. Connect the repo and click **Apply**.
+
+`render.yaml` creates the Web Service and Postgres database, then sets `DATABASE_URL` automatically. First deploy seeds the database from `data/tools.js`. Edits made in the UI persist in Postgres.
+
+Render's free Postgres plan expires 30 days after creation. Upgrade the database before then, or export JSON from the page and restore it later.
 
 ## Run locally
 
-Open `index.html` in a browser, or serve the folder:
+Needs Node 20+ and Postgres.
 
 ```
-python3 -m http.server 8000
+npm install
+createdb ai_sheesh
+cp .env.example .env
 ```
 
-Then visit `http://localhost:8000/`.
+Set `DATABASE_URL` in `.env` to your local Postgres connection string. Then run:
 
-## Deploy
+```
+npm start
+```
 
-Push repo to GitHub, then Settings -> Pages -> Deploy from branch -> `main` / root.
-Site URL: `https://<username>.github.io/<repo>/`.
+Open `http://localhost:3000/`.
 
-## Edit entries
+## API
 
-Edit `data/tools.js`. Each entry has this shape:
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/health` | Health check |
+| `GET` | `/api/tools` | List all entries |
+| `POST` | `/api/tools` | Create entry |
+| `PUT` | `/api/tools/:id` | Update entry |
+| `DELETE` | `/api/tools/:id` | Delete entry |
+
+Entry shape:
 
 ```
 {name, category, description, use_when, repo, tags}
 ```
 
-`repo` is `owner/repo` or `null`. `tags` is an array of strings.
-Save and reload; no build step and no server required.
-# ai-sheesh
+`repo` is `owner/repo` or `null`. `tags` is an array of strings. `name` is required.
