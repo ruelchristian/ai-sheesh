@@ -76,7 +76,7 @@ async function readRows(connectionString) {
 
   try {
     const result = await pool.query(
-      'SELECT id, name, link, created_at, updated_at FROM tools ORDER BY id'
+      'SELECT id, name, link, meta_key, created_at, updated_at FROM tools ORDER BY id'
     );
     return result.rows;
   } finally {
@@ -136,6 +136,7 @@ async function restoreRows(connectionString, rows) {
         id SERIAL PRIMARY KEY,
         name TEXT NOT NULL,
         link TEXT NOT NULL,
+        meta_key TEXT,
         created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
       )
@@ -149,9 +150,9 @@ async function restoreRows(connectionString, rows) {
 
       for (const row of rows) {
         await client.query(
-          `INSERT INTO tools (id, name, link, created_at, updated_at)
-           VALUES ($1, $2, $3, $4, $5)`,
-          [row.id, row.name, row.link, row.created_at, row.updated_at]
+          `INSERT INTO tools (id, name, link, meta_key, created_at, updated_at)
+           VALUES ($1, $2, $3, $4, $5, $6)`,
+          [row.id, row.name, row.link, row.meta_key || row.name, row.created_at, row.updated_at]
         );
       }
 

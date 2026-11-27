@@ -22,7 +22,7 @@ const pool = new Pool({
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
-const cols = 'id, name, link, created_at, updated_at';
+const cols = 'id, name, link, meta_key, created_at, updated_at';
 const adminPassword = process.env.ADMIN_PASSWORD || '';
 const sessionSecret = `cortex:${adminPassword}`;
 const cookieName = 'cortex_auth';
@@ -92,6 +92,7 @@ function present(row) {
     id: row.id,
     name: row.name,
     link: row.link,
+    meta_key: row.meta_key,
     kind: meta.kind,
     host: meta.host,
     created_at: row.created_at,
@@ -105,6 +106,16 @@ function seedData() {
   const end = source.lastIndexOf(']');
 
   if (start < 0 || end < start) throw new Error('Could not read seed data.');
+
+  return JSON.parse(source.slice(start, end + 1));
+}
+
+function loadMeta() {
+  const source = fs.readFileSync(path.join(__dirname, 'data', 'meta.js'), 'utf8');
+  const start = source.indexOf('{');
+  const end = source.lastIndexOf('}');
+
+  if (start < 0 || end < start) return {};
 
   return JSON.parse(source.slice(start, end + 1));
 }
@@ -139,6 +150,25 @@ async function init() {
 
   await pool.query(`DELETE FROM tools WHERE link IS NULL OR link = ''`);
   await pool.query(`ALTER TABLE tools ALTER COLUMN link SET NOT NULL`);
+  await pool.query('ALTER TABLE tools ADD COLUMN IF NOT EXISTS meta_key TEXT');
+
+  const meta = loadMeta();
+  const byId = new Map();
+  const byLink = new Map();
+
+  Object.keys(meta).forEach((key) => {
+    byId.set(meta[key].id, key);
+    if (meta[key].link && !byLink.has(meta[key].link)) byLink.set(meta[key].link, key);
+  });
+
+  const { rows: needsKey } = await pool.query(
+    `SELECT id, name, link FROM tools WHERE meta_key IS NULL OR meta_key = ''`
+  );
+
+  for (const row of needsKey) {
+    const key = byId.get(row.id) || (meta[row.name] ? row.name : null) || byLink.get(row.link) || row.name;
+    await pool.query('UPDATE tools SET meta_key = $1 WHERE id = $2', [key, row.id]);
+  }
 
   const client = await pool.connect();
 
@@ -153,8 +183,8 @@ async function init() {
 
       for (const row of seed) {
         await client.query(
-          'INSERT INTO tools (name, link) VALUES ($1, $2)',
-          [row.name, row.link]
+          'INSERT INTO tools (name, link, meta_key) VALUES ($1, $2, $3)',
+          [row.name, row.link, row.name]
         );
       }
     }
@@ -282,8 +312,8 @@ app.get('/api/tools', route(async (req, res) => {
 app.post('/api/tools', requireAuth, route(async (req, res) => {
   const entry = normalize(req.body);
   const { rows } = await pool.query(
-    `INSERT INTO tools (name, link) VALUES ($1, $2) RETURNING ${cols}`,
-    [entry.name, entry.link]
+    `INSERT INTO tools (name, link, meta_key) VALUES ($1, $2, $3) RETURNING ${cols}`,
+    [entry.name, entry.link, entry.name]
   );
   res.status(201).json(present(rows[0]));
 }));

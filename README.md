@@ -86,4 +86,4 @@ Entry shape:
 
 `name` and `link` are required. A link may be `owner/repo`, a bare domain, or a full `http(s)` URL. The server normalizes it before saving. The UI adds the GitHub or website icon from the final URL host.
 
-Category and description come from `data/meta.js`. They are not stored in Postgres, not editable in the UI, and not accepted by the API. New entries without a matching name show no metadata until AI adds it to `data/meta.js`.
+Category and description come from `data/meta.js`. They are not editable in the UI and not accepted by the API. Each row has a hidden `meta_key` set at creation, so renaming or relinking an entry keeps its metadata. On first startup, existing rows get a key from seed id, name, or original link. New entries without a matching key show no metadata until AI adds it to `data/meta.js`.
