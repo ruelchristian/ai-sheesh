@@ -1,47 +1,42 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Cortex — Skills &amp; Tools Library</title>
 <style>
-:root{color-scheme:dark;--bg:#09090b;--card:#09090b;--tx:#fafafa;--mu:#a1a1aa;--bd:#27272a;--ac:#fafafa;--onac:#18181b;--chip:#27272a;--use:#18181b}
+:root{color-scheme:dark;--bg:#09090b;--card:#111113;--tx:#fafafa;--mu:#a1a1aa;--bd:#27272a;--ac:#fafafa;--onac:#18181b;--chip:#27272a;--gh:#6e7681;--site:#60a5fa}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 main{max-width:1100px;margin:0 auto;padding:36px 16px 64px}
 h1{font-size:1.9rem;margin:0 0 6px;font-weight:700;letter-spacing:-.025em}
 .sub{color:var(--mu);margin:0 0 22px}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
-.bar{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
-input,textarea{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx);font:inherit}
-textarea{min-height:70px}
-input:focus,textarea:focus{outline:2px solid var(--mu);outline-offset:1px}
+.topacts{display:flex;gap:8px;flex-wrap:wrap}
+.bar{margin-bottom:18px}
+input{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx);font:inherit}
+input:focus{outline:2px solid var(--mu);outline-offset:1px}
 ::placeholder{color:var(--mu)}
-.lbl{font-size:.8rem;font-weight:500;color:var(--mu);margin-bottom:-4px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--bd);background:var(--bg);color:var(--tx);padding:5px 12px;border-radius:6px;font:inherit;font-size:.88rem;font-weight:500;cursor:pointer}
-.chip:hover{background:var(--chip)}
-.chip.on{background:var(--ac);color:var(--onac);border-color:var(--ac)}
-.chip.sm{padding:2px 10px;font-size:.8rem}
 .count{color:var(--mu);font-size:.88rem;margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 2px rgba(0,0,0,.4)}
-.cat{align-self:flex-start;font-size:.74rem;font-weight:600;color:var(--tx);background:var(--chip);border-radius:99px;padding:1px 9px}
-.card h2{margin:0;font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
-.card p{margin:0;color:var(--mu)}
-.use{font-size:.9rem;background:var(--use);border:1px solid var(--bd);border-radius:8px;padding:9px 11px}
-.use b{font-weight:600}
-.tl{display:flex;flex-wrap:wrap;gap:6px}
-.t{border:1px solid var(--bd);background:var(--bg);color:var(--mu);font:inherit;font-size:.76rem;padding:1px 8px;border-radius:99px;cursor:pointer}
-.t:hover{color:var(--tx);background:var(--chip)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(0,0,0,.4)}
+.cardhead{display:flex;gap:12px;align-items:center}
+.icon{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:9px;background:var(--chip);color:var(--tx)}
+.icon.github{color:var(--tx)}
+.icon.site{color:var(--site)}
+.icon svg{width:21px;height:21px;fill:currentColor}
+.icon.site svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h2{margin:0;font-size:1.05rem;font-weight:600;letter-spacing:-.01em;overflow-wrap:anywhere}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--mu);font-size:.78rem}
+.pill{font-size:.7rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;padding:1px 8px;border-radius:99px;background:var(--chip);color:var(--tx)}
+.pill.github{background:#1f242c;color:#e6edf3}
+.pill.site{background:#17263a;color:#93c5fd}
+.url{color:var(--mu);font-size:.84rem;overflow-wrap:anywhere;text-decoration:none}
+.url:hover{color:var(--tx);text-decoration:underline}
 .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:4px}
-a.gh{color:var(--tx);text-decoration:none;font-weight:500;font-size:.85rem;border:1px solid var(--bd);border-radius:6px;padding:5px 11px}
-a.gh:hover{background:var(--chip)}
-.tag{color:var(--mu);font-size:.75rem}
+.tag{color:var(--mu);font-size:.75rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .empty{color:var(--mu);padding:40px 0;text-align:center}
-body.hidecardtags .tl{display:none}
 button.primary,button.secondary{border:1px solid var(--bd);background:var(--bg);color:var(--tx);padding:8px 14px;border-radius:6px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer}
 button.primary{background:var(--ac);color:var(--onac);border-color:var(--ac)}
 button.primary:hover{opacity:.9}
 button.secondary:hover{background:var(--chip)}
 button:disabled{opacity:.5;cursor:not-allowed}
-.topacts{display:flex;gap:8px}
 .status{color:var(--mu);font-size:.85rem;margin:-6px 0 12px;min-height:1.2em}
 .status.err{color:#fca5a5}
 .ops{display:flex;gap:6px}
@@ -53,129 +48,144 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .editor form{display:grid;gap:10px}
 .editor h2{margin:0 0 4px;font-size:1.15rem}
 .editor label{display:grid;gap:4px;font-size:.85rem;color:var(--mu)}
-.editor textarea{min-height:84px}
 .editor .actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
+.detected{font-size:.82rem;color:var(--mu);min-height:1.2em}
+.formerr{font-size:.82rem;color:#fca5a5;min-height:1.2em}
 </style></head>
-<body class="hidecardtags"><main>
-<div class="top"><div><h1>Cortex</h1><p class="sub">Agent skills, CLIs and open-source tools: what they are, when to use them, and where the repo is.</p></div><div class="topacts"><button class="secondary" id="export" type="button">Export JSON</button><button class="primary" id="new" type="button">+ New entry</button></div></div>
+<body><main>
+<div class="top"><div><h1>Cortex</h1><p class="sub">Agent skills, CLIs and open-source tools. One name, one link.</p></div><div class="topacts"><button class="secondary" id="auth" type="button">Log in</button><button class="secondary" id="export" type="button">Export JSON</button><button class="primary" id="new" type="button" disabled>+ New link</button></div></div>
 <div id="status" class="status" role="status"></div>
-<div class="bar"><input id="q" type="search" placeholder="Search by name, purpose, or use case…" aria-label="Search">
-<div class="lbl">Category</div><div class="chips" id="chips"></div>
-<div id="tagwrap"><div class="lbl">Tag</div><div class="chips" id="tagchips"></div></div></div>
+<div class="bar"><input id="q" type="search" placeholder="Search by name, link, or host…" aria-label="Search"></div>
 <div class="count" id="count">Loading…</div><div class="grid" id="grid"></div>
 </main>
 <dialog id="editor" class="editor">
 <form id="form">
-<h2 id="editor-title">New entry</h2>
+<h2 id="editor-title">New link</h2>
 <input id="f-id" type="hidden">
 <label>Name <input id="f-name" required maxlength="200"></label>
-<label>Category <input id="f-category" maxlength="100"></label>
-<label>Description <textarea id="f-description" maxlength="1000"></textarea></label>
-<label>Use when <textarea id="f-use" maxlength="500"></textarea></label>
-<label>Repo <input id="f-repo" maxlength="300" placeholder="owner/repo, or blank"></label>
-<label>Tags <input id="f-tags" placeholder="comma, separated, tags"></label>
+<label>Link <input id="f-link" required maxlength="2000" placeholder="owner/repo or https://example.com"></label>
+<div id="detected" class="detected">Detected: waiting for link</div>
 <div class="actions"><button id="cancel" class="secondary" type="button">Cancel</button><button id="save" class="primary" type="submit">Save</button></div>
+</form>
+</dialog>
+<dialog id="login" class="editor">
+<form id="login-form">
+<h2>Admin login</h2>
+<label>Password <input id="f-password" type="password" required autocomplete="current-password"></label>
+<div id="login-error" class="formerr"></div>
+<div class="actions"><button id="login-cancel" class="secondary" type="button">Cancel</button><button class="primary" type="submit">Log in</button></div>
 </form>
 </dialog>
 <script>
 window.TOOLS = [
-  {"name": "Impeccable", "category": "Design & UI", "description": "Frontend design skill and CLI with design vocabulary, critiques, audits and anti-pattern detection for agents.", "use_when": "Your AI-built UI looks generic and you want it critiqued and polished.", "repo": null, "tags": ["Verified", "Frontend", "Design critique"]},
-  {"name": "taste-skill", "category": "Design & UI", "description": "Gives coding agents art direction, curated styling rules, real photography and browser checks.", "use_when": "You want a distinctive landing page or site, not a template-looking one.", "repo": null, "tags": ["Verified", "Frontend", "Visual style"]},
-  {"name": "anti-slop", "category": "Design & UI", "description": "Rulebook that stops agents from producing AI-shaped UI, robotic boilerplate and cliché copy.", "use_when": "Output keeps sounding or looking “AI-generated” and you want it cleaned up.", "repo": "miqdadbadjuber/anti-slop", "tags": ["Verified", "Visual style", "Copywriting", "Design critique"]},
-  {"name": "ui-ux pro max", "category": "Design & UI", "description": "Searchable database of design systems, palettes, typography and UX guidelines across frontend frameworks.", "use_when": "You need quick, sensible design decisions (colors, fonts, layouts) before coding.", "repo": null, "tags": ["Verified", "Frontend", "Visual style"]},
-  {"name": "Emil Kowalski motion skill", "category": "Design & UI", "description": "Guides agents to build restrained micro-interactions, animations and state transitions using Emil Kowalski’s principles.", "use_when": "You want UI motion that feels fluid, not flashy.", "repo": null, "tags": ["Verified", "Animation", "Frontend"]},
-  {"name": "Framer Motion (Motion)", "category": "Design & UI", "description": "Production-ready React animation library: springs, layout transitions, gestures, scroll-linked effects.", "use_when": "You are animating a React app and want a declarative API.", "repo": "motiondivision/motion", "tags": ["Verified", "Animation", "Components", "Frontend"]},
-  {"name": "21st.dev", "category": "Design & UI", "description": "Community registry of copy-paste React + Tailwind components, installable via the shadcn CLI.", "use_when": "You need ready-made, good-looking components fast.", "repo": null, "tags": ["Verified", "Components", "Frontend", "Templates & registry"]},
-  {"name": "page-mascot", "category": "Design & UI", "description": "Sprite-based character for a web page that follows the cursor and reacts to clicks.", "use_when": "You want a playful touch on a portfolio or landing page.", "repo": "nilbuild/page-mascot", "tags": ["Verified", "Animation", "Components"]},
-  {"name": "superpowers", "category": "Coding Workflow", "description": "Opinionated agent methodology: requirements discovery, Socratic brainstorming, worktree isolation, TDD.", "use_when": "Starting a non-trivial feature and you want the agent to plan and test first.", "repo": null, "tags": ["Verified", "Planning & TDD"]},
-  {"name": "Matt Pocock skills", "category": "Coding Workflow", "description": "Production-tested skills, including a requirements-interrogation routine (grill-me) and strict TypeScript workflows.", "use_when": "Requirements are vague, or you work heavily in TypeScript.", "repo": null, "tags": ["Verified", "Planning & TDD", "TypeScript"]},
-  {"name": "Karpathy skills", "category": "Coding Workflow", "description": "Guidelines inspired by Andrej Karpathy: minimal assumptions, clean abstractions, direct implementations.", "use_when": "The agent over-engineers or makes too many assumptions.", "repo": null, "tags": ["Verified", "Code style"]},
-  {"name": "ponytail", "category": "Coding Workflow", "description": "Pushes agents toward the smallest complete diffs and reuse of existing helpers.", "use_when": "Diffs are bloated and you want pragmatic, minimal changes.", "repo": null, "tags": ["Verified", "Code style"]},
-  {"name": "caveman", "category": "Coding Workflow", "description": "Cuts output tokens and latency by dropping filler and articles while keeping technical accuracy.", "use_when": "You are burning tokens or want terse, fast replies.", "repo": null, "tags": ["Verified", "Token saving"]},
-  {"name": "Claude Code best practice", "category": "Coding Workflow", "description": "Reference repo of production patterns, commands, subagents, workflows and hooks for Claude Code.", "use_when": "Learning Claude Code or tightening up your setup.", "repo": "shanraisshan/claude-code-best-practice", "tags": ["Verified", "Learning"]},
-  {"name": "wshobson/agents", "category": "Coding Workflow", "description": "Huge catalog of specialized agent personas, skills and slash commands for Claude Code, Cursor, Codex CLI and more.", "use_when": "You want ready-made specialist agents instead of writing your own.", "repo": "wshobson/agents", "tags": ["Verified", "Templates & registry"]},
-  {"name": "AITMPL", "category": "Coding Workflow", "description": "Registry and CLI of templates, subagents, skills, slash commands and MCP servers for Claude Code.", "use_when": "Browsing or installing Claude Code add-ons from one place.", "repo": null, "tags": ["Verified", "Templates & registry"]},
-  {"name": "Anthropic skills", "category": "Coding Workflow", "description": "Official reference skills for document generation, API patterns and design workflows.", "use_when": "You want authoritative examples of how skills should be written.", "repo": "anthropics/skills", "tags": ["Verified", "Official", "Learning"]},
-  {"name": "Find Skills (Vercel Labs)", "category": "Coding Workflow", "description": "Meta-skill (npx skills find) that lets agents search and install skills from the skills.sh registry.", "use_when": "The agent needs a capability it doesn’t have yet.", "repo": null, "tags": ["Verified", "Templates & registry"]},
-  {"name": "Orca (stablyai)", "category": "Coding Workflow", "description": "Orchestrator and agentic IDE to run fleets of CLI agents in parallel across isolated Git worktrees.", "use_when": "Running several coding agents on different tasks at once.", "repo": "stablyai/orca", "tags": ["Verified", "Parallel agents"]},
-  {"name": "Hindsight", "category": "Agent Tools & Memory", "description": "Bi-directional memory and reflection architecture that reviews past runs and feedback to self-correct.", "use_when": "Your agent repeats the same mistakes across sessions.", "repo": null, "tags": ["Verified", "Memory"]},
-  {"name": "graphify", "category": "Agent Tools & Memory", "description": "Parses code, docs, schemas and media into a local knowledge graph using deterministic ASTs, not vectors.", "use_when": "You need a queryable map of a large codebase or doc set.", "repo": null, "tags": ["Verified", "Code search", "Memory"]},
-  {"name": "Agent-Reach", "category": "Agent Tools & Memory", "description": "CLI and skill giving agents free read/search across X, Reddit, YouTube, GitHub and more, with no paid API keys.", "use_when": "Your agent needs web and social research access cheaply.", "repo": null, "tags": ["Verified", "Web research"]},
-  {"name": "Unlimited OCR", "category": "Docs & Media", "description": "Local-first OCR that runs vision-language models on your machine to turn images and PDFs into Markdown.", "use_when": "Digitizing scans or PDFs without API limits or cost.", "repo": null, "tags": ["Verified", "OCR", "Self-hosted"]},
-  {"name": "ppt-master", "category": "Docs & Media", "description": "Turns documents or prompts into fully editable native PowerPoint decks with vector shapes and speaker notes.", "use_when": "You need real, editable .pptx files, not flattened images.", "repo": "hugohe3/ppt-master", "tags": ["Verified", "Slides"]},
-  {"name": "Claude Cybersecurity", "category": "Security", "description": "Claude Code plugin mapping 18+ security domains to frameworks like NIST and MITRE ATT&CK.", "use_when": "Incident response, threat intel or cloud security work with framework alignment.", "repo": null, "tags": ["Verified", "Defensive", "Compliance"]},
-  {"name": "vbsec", "category": "Security", "description": "Audits codebases for common vulnerabilities and insecure patterns in AI-generated code.", "use_when": "You shipped “vibe-coded” code and want a security pass.", "repo": null, "tags": ["Verified", "Defensive", "Code audit"]},
-  {"name": "Security Audit", "category": "Security", "description": "Audits repos and agent configs for secret leaks, supply-chain risks and prompt injection vectors.", "use_when": "Pre-release check of a repo or agent setup.", "repo": null, "tags": ["Verified", "Defensive", "Code audit"]},
-  {"name": "Defending Code", "category": "Security", "description": "Anthropic reference pipeline for threat modeling, static scanning, triage and patch generation.", "use_when": "Building an automated find-and-fix security pipeline.", "repo": null, "tags": ["Verified", "Defensive", "Threat modeling", "Code audit", "Official"]},
-  {"name": "Trail of Bits Skills", "category": "Security", "description": "Security engineering skills: Semgrep, CodeQL, variant analysis, smart contracts and secure code review.", "use_when": "Deep code review or static analysis with an agent.", "repo": null, "tags": ["Verified", "Defensive", "Code audit"]},
-  {"name": "OWASP Agentic Skills Top 10", "category": "Security", "description": "Reference and evaluation skill applying OWASP’s top 10 risks to agent workflows and tool calls.", "use_when": "Assessing whether your agent setup is safe.", "repo": null, "tags": ["Verified", "Defensive", "Compliance", "Guardrails"]},
-  {"name": "AgentGuard", "category": "Security", "description": "Zero-trust runtime framework that monitors and enforces access policies on agents around tool execution.", "use_when": "Agents touch sensitive systems and need guardrails.", "repo": null, "tags": ["Verified", "Defensive", "Guardrails"]},
-  {"name": "cc-safety-net", "category": "Security", "description": "Pre-execution guardrail for AI coding CLIs that blocks destructive shell commands and credential access.", "use_when": "Preventing an agent from running rm -rf or reading secrets.", "repo": null, "tags": ["Verified", "Defensive", "Guardrails"]},
-  {"name": "Ghost Security", "category": "Security", "description": "AppSec platform and proxy toolkit (e.g. Reaper) to intercept, inspect and validate web app and API traffic.", "use_when": "Testing web app and API vulnerabilities, by hand or with agents.", "repo": null, "tags": ["Verified", "Verified-Pentest", "Offensive", "Web & API testing"]},
-  {"name": "Bug Hunter", "category": "Security", "description": "Offensive skill guiding agents through attack-surface recon, endpoint chaining and finding verification.", "use_when": "Authorized bug bounty or pentest work.", "repo": null, "tags": ["Verified", "Verified-Pentest", "Offensive", "Web & API testing"]},
-  {"name": "Claude-Red", "category": "Security", "description": "Offensive framework turning Claude Code into a red-team assistant for recon and guided pentesting.", "use_when": "Authorized penetration testing only.", "repo": "SnailSploit/Claude-Red", "tags": ["Verified", "Verified-Pentest", "Offensive"]},
-  {"name": "Wardrobe", "category": "Apps", "description": "Self-hosted web app to catalog clothes, track laundry and get weather-based outfit suggestions.", "use_when": "You want a personal, self-hosted closet manager.", "repo": null, "tags": ["Verified", "Self-hosted"]},
-  {"name": "headroom", "category": "Agent Tools & Memory", "description": "Context compression layer for AI agents: compresses tool outputs, logs, files, and conversation history before they reach the LLM.", "use_when": "Your agent hits context limits or burns excessive tokens on logs, large tool returns and big codebases.", "repo": "headroomlabs-ai/headroom", "tags": ["Verified", "Token saving", "Memory"]},
-  {"name": "Claude-mem", "category": "Agent Tools & Memory", "description": "Persistent memory across agent sessions: captures actions, compresses them with AI, and injects relevant context into future sessions.", "use_when": "Your agent repeats mistakes or forgets project decisions and architectural context between sessions.", "repo": "thedotmack/claude-mem", "tags": ["Verified", "Memory", "Learning"]},
-  {"name": "motionmaxxing", "category": "Docs & Media", "description": "Motion graphics agent skill that turns AI slop videos into polished launch films, promos and kinetic typography with measured eases.", "use_when": "You want high-quality programmatic motion graphics, product launch films, or brand stings.", "repo": "Tejashmakwana/motionmaxxing", "tags": ["Verified", "Animation", "Visual style"]},
-  {"name": "stack diagram", "category": "Docs & Media", "description": "Turns a one-sentence stack description into clean architecture and monorepo diagrams with official technology logos.", "use_when": "You need a clean architecture diagram for your README, pitch deck, or technical documentation.", "repo": "caru-ini/stack-diagram", "tags": ["Verified", "Visual style", "Learning"]},
-  {"name": "animated shorts", "category": "Docs & Media", "description": "Agent skill for making 55–70s vertical animated story shorts (2D characters in a 3D world) with Three.js and Remotion locally.", "use_when": "You want to create faceless animated story shorts and reels without paying for AI video generators.", "repo": "mromidev/claude-animated-shorts", "tags": ["Verified", "Animation", "Self-hosted"]},
-  {"name": "Teardown", "category": "Docs & Media", "description": "Claude Code skill that turns any machine or physical mechanism into an interactive 3D HTML simulator you can take apart.", "use_when": "You want to visualize, interactively explain, or demo how complex machines or mechanisms work in 3D.", "repo": "elvarofficial/teardown", "tags": ["Verified", "Animation", "Learning"]},
-  {"name": "Stageshow", "category": "Design & UI", "description": "React kit and agent skill by Benji Taylor for generating realistic faux product UIs, feature cards, cursor demos and bento grids.", "use_when": "You need polished product illustrations, hero section visuals, or interactive cursor demo walkthroughs.", "repo": "benjitaylor/skills", "tags": ["Verified", "Components", "Frontend", "Visual style", "Animation"]},
-  {"name": "Floorplan", "category": "Coding Workflow", "description": "Analyzes your codebase and draws an interactive, plain-English architectural map showing how files, routes and services connect.", "use_when": "You need to navigate an unfamiliar codebase or see the whole picture of how your app fits together.", "repo": "haydenschmitty/floorplan", "tags": ["Verified", "Code search", "Learning"]},
-  {"name": "tstack", "category": "Coding Workflow", "description": "Theo's (t3.gg) daily agent skills: automated PR workflows (full-send, full-stop), multi-model council review, and CI babysitting.", "use_when": "You want hands-off PR creation, multi-model consensus review, or automated CI bug fixing.", "repo": "t3dotgg/tstack", "tags": ["Verified", "Planning & TDD", "Code audit"]},
-  {"name": "earshot", "category": "Docs & Media", "description": "Procedural sound design engine for agents: 922 sound designs, CPU-only audio generation, audio inspection, and an MCP server.", "use_when": "Your agent builds web apps, games or videos and needs to generate or evaluate sound effects without external APIs.", "repo": "Leonxlnx/earshot", "tags": ["Verified", "Self-hosted"]},
-  {"name": "reavideo", "category": "Docs & Media", "description": "Video forensics and reverse-engineering skill: breaks videos down shot-by-shot, extracting pacing, camera moves, audio, and recreation prompts.", "use_when": "You want to dissect a reference video, study its pacing/editing, or generate prompts to recreate it.", "repo": "JuneYaooo/rea-video", "tags": ["Verified", "Learning", "Web research"]},
-  {"name": "unslop", "category": "Design & UI", "description": "Agent skill and plugin that audits and cleans AI-generated UI: removes purple gradients, emoji clutter, and AI clichés with designer passes.", "use_when": "Your vibe-coded interface looks recognizably AI-generated and needs a cohesive, professional design pass.", "repo": "heydamir/unslop", "tags": ["Verified", "Visual style", "Design critique", "Frontend"]},
-  {"name": "pixelfx", "category": "Design & UI", "description": "244 procedural pixel art VFX and animations (code-based) plus a Claude Code skill to draft, inspect, and refine custom pixel effects.", "use_when": "You are building a 2D web or canvas game and need lightweight, high-quality pixel animations or combat VFX.", "repo": "patch-gg/pixelfx", "tags": ["Verified", "Animation", "Components", "Frontend"]},
-  {"name": "openverse", "category": "Docs & Media", "description": "Open-source search engine and API for over 700 million Creative Commons and public-domain images and audio tracks.", "use_when": "You or your agent need legal, attribution-ready CC/public-domain stock media, illustrations, or audio.", "repo": "WordPress/openverse", "tags": ["Verified", "Web research"]},
-  {"name": "real sfx", "category": "Docs & Media", "description": "Agent skill by Clipwing that sound-designs motion videos with real recorded SFX placed on exact frames while preserving voice/music.", "use_when": "You have an animated or edited video and want automated, frame-accurate sound effects added.", "repo": "Clipwing/skills", "tags": ["Verified", "Animation"]},
-  {"name": "breakscale", "category": "Coding Workflow", "description": "System design simulator: design architectures, push load until bottlenecks occur, and watch retry storms, saturation and queues fail.", "use_when": "You are studying distributed systems or want to load-test and stress-test architecture patterns interactively.", "repo": "workersio/breakscale", "tags": ["Verified", "Learning", "Planning & TDD"]},
-  {"name": "i hate editing", "category": "Docs & Media", "description": "Automated talking-head video editing skill: transcribes with local whisper.cpp, cuts silences, and generates proof cards, zoom-ins, and captions.", "use_when": "You have raw talking-head recordings and want to output a finished, punchy reel/short without manual timeline editing.", "repo": "ranahaani/i-hate-editing", "tags": ["Verified", "Copywriting", "Self-hosted"]},
-  {"name": "HexSTRIKE", "category": "Security", "description": "MCP server and autonomous agent framework for offensive security: orchestrates 150+ cybersecurity tools for pentesting and bug bounty.", "use_when": "You need AI agents to conduct authorized vulnerability scanning, network recon, and automated pentesting.", "repo": "0x4m4/hexstrike-ai", "tags": ["Verified", "Verified-Pentest", "Offensive", "Web & API testing", "Code audit"]},
-  {"name": "founder", "category": "Coding Workflow", "description": "Collection of 11 Claude skills acting as a virtual board of directors, CFO, marketing lead, and simulated consumer buyer panel.", "use_when": "You want to validate a startup idea, model unit economics, analyze competitors, and simulate customer reactions.", "repo": "Jakeschincariol/founder-skill", "tags": ["Verified", "Planning & TDD", "Learning"]},
-  {"name": "make-an-anime", "category": "Docs & Media", "description": "Claude Code plugin that directs an end-to-end anime production pipeline: character sheets, storyboard frames, voices, music, and subtitles.", "use_when": "You want to direct and produce an animated scene or episode from a written story markdown file.", "repo": "makevoid/claude-make-an-anime", "tags": ["Verified", "Animation", "Visual style"]},
-  {"name": "gstack", "category": "Coding Workflow", "description": "Garry Tan's complete software factory setup for Claude Code: 23 specialist roles (CEO, Designer, Eng Manager, QA browser testing, Release).", "use_when": "You want an opinionated, end-to-end virtual engineering team to plan, review, browser-QA, and ship PRs.", "repo": "garrytan/gstack", "tags": ["Verified", "Planning & TDD", "Code audit", "Parallel agents", "Design critique"]},
-  {"name": "remocn", "category": "Docs & Media", "description": "Library of 900+ shadcn-style motion components, animations, transitions and scenes for Remotion, with Claude Code video agent workflows.", "use_when": "You are creating programmatic video or product demos with Remotion and want pre-built animated UI and motion components.", "repo": "Remocn/remocn", "tags": ["Verified", "Animation", "Components", "Frontend"]},
-  {"name": "SkillSpector", "category": "Security", "description": "NVIDIA security scanner for AI agent skills: detects vulnerabilities, malicious code, prompt injection, data exfiltration, and supply-chain risks before installing skills.", "use_when": "You are auditing third-party agent skills or MCP servers before giving them tool access to your codebase.", "repo": "NVIDIA/SkillSpector", "tags": ["Verified", "Code audit", "Guardrails", "Threat modeling"]},
-  {"name": "modern-web-guidance", "category": "Coding Workflow", "description": "Google Chrome guidance embedding modern web platform standards, browser compatibility, and performance best practices into coding agents.", "use_when": "You want your agent to write modern standards-compliant web code instead of deprecated APIs, unnecessary polyfills, or obsolete DOM patterns.", "repo": "GoogleChrome/modern-web-guidance", "tags": ["Verified", "Official", "Frontend", "Learning"]},
-  {"name": "elephant-goldfish-model", "category": "Coding Workflow", "description": "Google open-source plugin for designing and reviewing software with agents: design with an elephant (deep context), review with a goldfish (fresh, unbiased eyes).", "use_when": "You are drafting complex technical specifications and need unbiased review loops to expose blind spots and unstated assumptions.", "repo": "google/elephant-goldfish-model", "tags": ["Verified", "Official", "Planning & TDD", "Code audit"]},
-  {"name": "reverse-engineer-marketing", "category": "Docs & Media", "description": "Reverse-engineering marketing engine: paste any URL to analyze the full marketing funnel, paid ads, SEO, organic social, backlinks, and tech stack.", "use_when": "You want to reverse-engineer a competitor's growth playbook, tech stack, or advertising strategy.", "repo": "dansugc/reverse-engineer-marketing", "tags": ["Verified", "Web research", "Learning"]},
-  {"name": "clearcam", "category": "Apps", "description": "Open-source computer vision system: adds object detection, tracking, mobile notifications, and visual search to any security camera.", "use_when": "You want to build or self-host an intelligent camera vision and object-tracking surveillance hub.", "repo": "roryclear/clearcam", "tags": ["Verified", "Self-hosted"]},
-  {"name": "PentestingEverything", "category": "Security", "description": "Comprehensive reference guide and methodology for VAPT/AppSec across Web, Mobile, API, and Thick Client attack surfaces.", "use_when": "You need structured checklists, test cases, and recon methodology for application security assessments.", "repo": "m14r41/PentestingEverything", "tags": ["Verified", "Verified-Pentest", "Offensive", "Web & API testing", "Code audit"]},
-  {"name": "astryx", "category": "Design & UI", "description": "Meta's open-source, fully customizable, agent-ready design system built with accessible tokens and component primitives.", "use_when": "You need an enterprise-grade, accessible design system tailored for AI coding agents to build user interfaces.", "repo": "meta/astryx", "tags": ["Verified", "Components", "Frontend", "Visual style"]},
-  {"name": "system-design-primer", "category": "Coding Workflow", "description": "Definitive open-source guide and interactive roadmap for learning large-scale distributed systems design and architecture patterns.", "use_when": "You are designing scalable distributed systems or need reference patterns for caching, replication, and sharding.", "repo": "donnemartin/system-design-primer", "tags": ["Verified", "Learning", "Planning & TDD"]},
-  {"name": "VibeVoice", "category": "Docs & Media", "description": "Microsoft open-source frontier voice AI: expressive, low-latency synthetic speech generation and conversational audio.", "use_when": "You need expressive, high-fidelity local or frontier voice generation and speech synthesis for audio agents.", "repo": "microsoft/VibeVoice", "tags": ["Verified", "Self-hosted"]},
-  {"name": "ai-engineering-from-scratch", "category": "Coding Workflow", "description": "Zero-dependency roadmap and educational repo for implementing LLM architectures, fine-tuning, RAG, and agent frameworks from scratch.", "use_when": "You want to understand the foundational code and mathematics behind neural networks, transformers, and agent runtimes.", "repo": "rohitg00/ai-engineering-from-scratch", "tags": ["Verified", "Learning", "Official"]},
-  {"name": "bulletproof-react", "category": "Coding Workflow", "description": "Scalable architecture blueprint for building production-ready React applications with clean feature folder structures and testing patterns.", "use_when": "Starting a production React or Next.js app and you want a battle-tested folder and state architecture.", "repo": "alan2207/bulletproof-react", "tags": ["Verified", "Frontend", "TypeScript", "Planning & TDD"]},
-  {"name": "rea", "category": "Agent Tools & Memory", "description": "Universal reverse-engineering framework for agents: disassembles and analyzes software behavior from network protocols down to native binaries.", "use_when": "You need agents to inspect, decompile, or reverse-engineer compiled binaries, mobile apps, or opaque network APIs.", "repo": "morluto/rea", "tags": ["Verified", "Code search", "Learning"]},
-  {"name": "agentic-awesome-skills", "category": "Coding Workflow", "description": "Massive catalog of 3,000+ curated and categorized reusable agent skills compatible with Claude Code, Codex, Cursor, and Gemini CLI.", "use_when": "You need niche or domain-specific skills across specialized frameworks, languages, or developer tools.", "repo": "sickn33/agentic-awesome-skills", "tags": ["Verified", "Templates & registry", "Learning"]},
-  {"name": "zabbix-mcp-server", "category": "Agent Tools & Memory", "description": "Model Context Protocol (MCP) server for Zabbix enterprise monitoring: exposes 237 tools for real-time infrastructure metrics and alerting.", "use_when": "Your agents need real-time monitoring, telemetry inspection, and incident triage over cloud or server clusters.", "repo": "initMAX/zabbix-mcp-server", "tags": ["Verified", "Self-hosted", "Web research"]},
-  {"name": "system-design-notes", "category": "Coding Workflow", "description": "Concise architectural summaries and diagrams covering high-scale system design patterns (rate limiters, KV stores, chat systems, search).", "use_when": "Quick reference for architectural blueprints, trade-offs, and scaling numbers during system design.", "repo": "liquidslr/system-design-notes", "tags": ["Verified", "Learning", "Planning & TDD"]},
-  {"name": "openhuman", "category": "Coding Workflow", "description": "High-efficiency open-source agent harness designed to run fleets of 500+ parallel autonomous agents with minimal memory overhead.", "use_when": "You want to run large-scale swarm simulations or massive multi-agent pipelines on local hardware.", "repo": "tinyhumansai/openhuman", "tags": ["Verified", "Parallel agents", "Self-hosted"]},
-  {"name": "dotnet-skills", "category": "Coding Workflow", "description": "Microsoft official agent skills for .NET and C#: clean architecture, Roslyn analyzers, dependency injection, and Entity Framework patterns.", "use_when": "Working with C# or .NET solutions and you want Microsoft-grade coding and refactoring conventions.", "repo": "dotnet/skills", "tags": ["Verified", "Official", "Code style"]},
-  {"name": "aspnetboilerplate", "category": "Coding Workflow", "description": "Enterprise application framework for ASP.NET Core: implements Domain Driven Design (DDD), multi-tenancy, and modular architecture out of the box.", "use_when": "Building complex, enterprise multi-tenant SaaS backends with strict DDD conventions.", "repo": "aspnetboilerplate/aspnetboilerplate", "tags": ["Verified", "Official", "Templates & registry"]},
-  {"name": "css-reels", "category": "Design & UI", "description": "Curated collection of eye-catching pure CSS animations, micro-interactions, and visual components designed for video reels and landing pages.", "use_when": "You need punchy, lightweight CSS visual effects or UI animations without heavy JavaScript dependencies.", "repo": "frontend-joe/css-reels", "tags": ["Verified", "Animation", "Components", "Frontend"]},
-  {"name": "database-architect", "category": "Coding Workflow", "description": "Senior DBA agent for schema design and online migrations: zero table locks (CREATE INDEX CONCURRENTLY, NOT VALID constraints), multi-tenant composite FKs and RLS, and scratch Postgres test proof.", "use_when": "Designing schemas, modifying tables, writing online migrations, or enforcing strict multi-tenant Row-Level Security.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Planning & TDD", "Code audit"]},
-  {"name": "code-reviewer", "category": "Coding Workflow", "description": "Forensic pre-merge diff reviewer: reads beyond diff hunks to check all external callers, hunts subtle language bugs (TypeScript, Python, Go, SQL), and strictly requires a concrete failure scenario before reporting.", "use_when": "Auditing pull requests, branches, or staged diffs for real bugs, regressions, and security holes before merging.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Code audit", "Official"]},
-  {"name": "prompt-engineer", "category": "Agent Tools & Memory", "description": "Senior prompt engineering agent: optimizes prompt architecture, XML tagging, token compression, and few-shot examples across Claude, OpenAI/Codex, and Gemini models.", "use_when": "Designing, optimizing, or evaluating system prompts, subagent instructions, and LLM feature templates.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Memory", "Learning"]},
-  {"name": "devops-engineer", "category": "Coding Workflow", "description": "DevOps and infrastructure specialist: generates full GitHub Actions CI/CD pipelines, multi-arch Docker builds, blue-green deployment scripts, Terraform IaC, and Prometheus alerting.", "use_when": "Setting up automated build/test/deploy pipelines, containerizing apps, or provisioning cloud infrastructure.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Templates & registry", "Planning & TDD"]},
-  {"name": "generate-tests", "category": "Coding Workflow", "description": "Complete test-suite generator: crafts unit, edge case, and boundary test files matching repo conventions (Jest, Vitest, Pytest, Go) for any target source file.", "use_when": "You want comprehensive, production-grade test suites generated before or after writing code.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Planning & TDD", "Official"]},
-  {"name": "ultra-think", "category": "Coding Workflow", "description": "Multi-framework structured analysis: surfaces hidden assumptions, analyzes trade-offs, and drafts competing solutions through adversarial reasoning before coding.", "use_when": "Designing complex algorithms, distributed state, or ambiguous requirements where you need deep pre-flight reasoning.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Planning & TDD", "Learning"]},
-  {"name": "context-monitor", "category": "Agent Tools & Memory", "description": "Real-time token context usage monitor: displays visual progress bars, color-coded alerts, and auto-compact warnings in the terminal statusline.", "use_when": "Monitoring agent context window consumption to prevent context exhaustion and agent amnesia.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Token saving", "Memory"]},
-  {"name": "safe-dev-permissions", "category": "Coding Workflow", "description": "Pre-approved developer execution profile: authorizes safe routine commands (test, lint, build, git status, git diff) to eliminate repetitive permission prompts.", "use_when": "You want your coding agent to run test and verify loops autonomously without asking for permission on every command.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Templates & registry", "Guardrails"]},
-  {"name": "run-tests-after-changes", "category": "Coding Workflow", "description": "Post-tool test hook: silently executes fast unit tests immediately after any file edit to catch syntax errors and regressions in the same turn.", "use_when": "Enforcing strict TDD feedback loops so regressions are caught and fixed immediately during development.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Planning & TDD", "Code audit"]},
-  {"name": "simple-notifications", "category": "Agent Tools & Memory", "description": "Native desktop OS notification hook: triggers sound and banner alerts (via notify-send on Linux or osascript on macOS) when agent tasks complete or need input.", "use_when": "Running long-running agent workflows so you can step away and get notified when the task finishes.", "repo": "davila7/claude-code-templates", "tags": ["Verified", "Templates & registry"]},
-  {"name": "context7", "category": "Agent Tools & Memory", "description": "Upstash Context7 MCP server: dynamically fetches real-time, version-specific official documentation (Next.js 15, Tailwind v4, Drizzle) directly into prompts to stop API hallucinations.", "use_when": "Working with modern or rapidly evolving libraries where the model may hallucinate deprecated APIs.", "repo": "upstash/context7", "tags": ["Verified", "Web research", "Official"]},
-  {"name": "postgresql-mcp", "category": "Agent Tools & Memory", "description": "Model Context Protocol (MCP) server for PostgreSQL: provides read-only SQL queries, table schema introspection, and foreign key inspection directly to coding agents.", "use_when": "Giving agents read-only database introspection to inspect live schemas and verify SQL migrations.", "repo": "modelcontextprotocol/servers", "tags": ["Verified", "Code search", "Self-hosted"]},
-  {"name": "ffmpeg-skill", "category": "Docs & Media", "description": "Production-grade local video and audio editor: 40+ Python 3.10+ contract scripts for cutting, reframing (9:16 vertical), silence removal, LUFS loudness normalization, animated captions (SRT/ASS), and platform exports (YouTube, Reels, TikTok).", "use_when": "You need to edit, slice, reframe, caption, normalize audio, or automate video processing locally with FFmpeg without API keys.", "repo": "kajisho5/ffmpeg-skill", "tags": ["Verified", "Self-hosted", "Templates & registry"]},
-  {"name": "thirteen-layer-audit", "category": "Coding Workflow", "description": "Matt Murphy's (@mattmurphyai) 13-Layer AI-Directed Engineering Standard: automated audit scanner and runbook covering 13 production layers from frontend to disaster recovery, plus the 7 Daily Standing Plays for AI agents.", "use_when": "Auditing vibe-coded apps, preventing production collapse, running pre-release checks, or directing coding agents with the 7 Daily Standing Plays.", "repo": "ruelchristian/software-factory", "tags": ["Verified", "Code audit", "Planning & TDD", "Templates & registry"]}
+  {"name":"Impeccable","link":"https://github.com/search?type=repositories&q=Impeccable"},
+  {"name":"taste-skill","link":"https://github.com/search?type=repositories&q=taste-skill"},
+  {"name":"anti-slop","link":"https://github.com/miqdadbadjuber/anti-slop"},
+  {"name":"ui-ux pro max","link":"https://github.com/search?type=repositories&q=ui-ux%20pro%20max"},
+  {"name":"Emil Kowalski motion skill","link":"https://github.com/search?type=repositories&q=Emil%20Kowalski%20motion%20skill"},
+  {"name":"Framer Motion (Motion)","link":"https://github.com/motiondivision/motion"},
+  {"name":"21st.dev","link":"https://github.com/search?type=repositories&q=21st.dev"},
+  {"name":"page-mascot","link":"https://github.com/nilbuild/page-mascot"},
+  {"name":"superpowers","link":"https://github.com/search?type=repositories&q=superpowers"},
+  {"name":"Matt Pocock skills","link":"https://github.com/search?type=repositories&q=Matt%20Pocock%20skills"},
+  {"name":"Karpathy skills","link":"https://github.com/search?type=repositories&q=Karpathy%20skills"},
+  {"name":"ponytail","link":"https://github.com/search?type=repositories&q=ponytail"},
+  {"name":"caveman","link":"https://github.com/search?type=repositories&q=caveman"},
+  {"name":"Claude Code best practice","link":"https://github.com/shanraisshan/claude-code-best-practice"},
+  {"name":"wshobson/agents","link":"https://github.com/wshobson/agents"},
+  {"name":"AITMPL","link":"https://github.com/search?type=repositories&q=AITMPL"},
+  {"name":"Anthropic skills","link":"https://github.com/anthropics/skills"},
+  {"name":"Find Skills (Vercel Labs)","link":"https://github.com/search?type=repositories&q=Find%20Skills%20(Vercel%20Labs)"},
+  {"name":"Orca (stablyai)","link":"https://github.com/stablyai/orca"},
+  {"name":"Hindsight","link":"https://github.com/search?type=repositories&q=Hindsight"},
+  {"name":"graphify","link":"https://github.com/search?type=repositories&q=graphify"},
+  {"name":"Agent-Reach","link":"https://github.com/search?type=repositories&q=Agent-Reach"},
+  {"name":"Unlimited OCR","link":"https://github.com/search?type=repositories&q=Unlimited%20OCR"},
+  {"name":"ppt-master","link":"https://github.com/hugohe3/ppt-master"},
+  {"name":"Claude Cybersecurity","link":"https://github.com/search?type=repositories&q=Claude%20Cybersecurity"},
+  {"name":"vbsec","link":"https://github.com/search?type=repositories&q=vbsec"},
+  {"name":"Security Audit","link":"https://github.com/search?type=repositories&q=Security%20Audit"},
+  {"name":"Defending Code","link":"https://github.com/search?type=repositories&q=Defending%20Code"},
+  {"name":"Trail of Bits Skills","link":"https://github.com/search?type=repositories&q=Trail%20of%20Bits%20Skills"},
+  {"name":"OWASP Agentic Skills Top 10","link":"https://github.com/search?type=repositories&q=OWASP%20Agentic%20Skills%20Top%2010"},
+  {"name":"AgentGuard","link":"https://github.com/search?type=repositories&q=AgentGuard"},
+  {"name":"cc-safety-net","link":"https://github.com/search?type=repositories&q=cc-safety-net"},
+  {"name":"Ghost Security","link":"https://github.com/search?type=repositories&q=Ghost%20Security"},
+  {"name":"Bug Hunter","link":"https://github.com/search?type=repositories&q=Bug%20Hunter"},
+  {"name":"Claude-Red","link":"https://github.com/SnailSploit/Claude-Red"},
+  {"name":"Wardrobe","link":"https://github.com/search?type=repositories&q=Wardrobe"},
+  {"name":"headroom","link":"https://github.com/headroomlabs-ai/headroom"},
+  {"name":"Claude-mem","link":"https://github.com/thedotmack/claude-mem"},
+  {"name":"motionmaxxing","link":"https://github.com/Tejashmakwana/motionmaxxing"},
+  {"name":"stack diagram","link":"https://github.com/caru-ini/stack-diagram"},
+  {"name":"animated shorts","link":"https://github.com/mromidev/claude-animated-shorts"},
+  {"name":"Teardown","link":"https://github.com/elvarofficial/teardown"},
+  {"name":"Stageshow","link":"https://github.com/benjitaylor/skills"},
+  {"name":"Floorplan","link":"https://github.com/haydenschmitty/floorplan"},
+  {"name":"tstack","link":"https://github.com/t3dotgg/tstack"},
+  {"name":"earshot","link":"https://github.com/Leonxlnx/earshot"},
+  {"name":"reavideo","link":"https://github.com/JuneYaooo/rea-video"},
+  {"name":"unslop","link":"https://github.com/heydamir/unslop"},
+  {"name":"pixelfx","link":"https://github.com/patch-gg/pixelfx"},
+  {"name":"openverse","link":"https://github.com/WordPress/openverse"},
+  {"name":"real sfx","link":"https://github.com/Clipwing/skills"},
+  {"name":"breakscale","link":"https://github.com/workersio/breakscale"},
+  {"name":"i hate editing","link":"https://github.com/ranahaani/i-hate-editing"},
+  {"name":"HexSTRIKE","link":"https://github.com/0x4m4/hexstrike-ai"},
+  {"name":"founder","link":"https://github.com/Jakeschincariol/founder-skill"},
+  {"name":"make-an-anime","link":"https://github.com/makevoid/claude-make-an-anime"},
+  {"name":"gstack","link":"https://github.com/garrytan/gstack"},
+  {"name":"remocn","link":"https://github.com/Remocn/remocn"},
+  {"name":"SkillSpector","link":"https://github.com/NVIDIA/SkillSpector"},
+  {"name":"modern-web-guidance","link":"https://github.com/GoogleChrome/modern-web-guidance"},
+  {"name":"elephant-goldfish-model","link":"https://github.com/google/elephant-goldfish-model"},
+  {"name":"reverse-engineer-marketing","link":"https://github.com/dansugc/reverse-engineer-marketing"},
+  {"name":"clearcam","link":"https://github.com/roryclear/clearcam"},
+  {"name":"PentestingEverything","link":"https://github.com/m14r41/PentestingEverything"},
+  {"name":"astryx","link":"https://github.com/meta/astryx"},
+  {"name":"system-design-primer","link":"https://github.com/donnemartin/system-design-primer"},
+  {"name":"VibeVoice","link":"https://github.com/microsoft/VibeVoice"},
+  {"name":"ai-engineering-from-scratch","link":"https://github.com/rohitg00/ai-engineering-from-scratch"},
+  {"name":"bulletproof-react","link":"https://github.com/alan2207/bulletproof-react"},
+  {"name":"rea","link":"https://github.com/morluto/rea"},
+  {"name":"agentic-awesome-skills","link":"https://github.com/sickn33/agentic-awesome-skills"},
+  {"name":"zabbix-mcp-server","link":"https://github.com/initMAX/zabbix-mcp-server"},
+  {"name":"system-design-notes","link":"https://github.com/liquidslr/system-design-notes"},
+  {"name":"openhuman","link":"https://github.com/tinyhumansai/openhuman"},
+  {"name":"dotnet-skills","link":"https://github.com/dotnet/skills"},
+  {"name":"aspnetboilerplate","link":"https://github.com/aspnetboilerplate/aspnetboilerplate"},
+  {"name":"css-reels","link":"https://github.com/frontend-joe/css-reels"},
+  {"name":"database-architect","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"code-reviewer","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"prompt-engineer","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"devops-engineer","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"generate-tests","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"ultra-think","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"context-monitor","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"safe-dev-permissions","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"run-tests-after-changes","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"simple-notifications","link":"https://github.com/davila7/claude-code-templates"},
+  {"name":"context7","link":"https://github.com/upstash/context7"},
+  {"name":"postgresql-mcp","link":"https://github.com/modelcontextprotocol/servers"},
+  {"name":"ffmpeg-skill","link":"https://github.com/kajisho5/ffmpeg-skill"},
+  {"name":"thirteen-layer-audit","link":"https://github.com/ruelchristian/software-factory"}
 ];
 
-var rows=[],sel="All",tsel="",q="",editable=true;
+var rows=[],q="",auth={enabled:false,authenticated:false},editable=false;
 var $=function(i){return document.getElementById(i)};
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-function link(r){return r.repo?["https://github.com/"+encodeURI(r.repo),"GitHub repo ↗","verified link"]:["https://github.com/search?type=repositories&q="+encodeURIComponent(r.name),"Find on GitHub ↗","search link, confirm repo"]}
+function prepare(value){
+ var link=String(value||"").trim();
+ if(/^[^\s/]+\/[^\s/]+$/.test(link))link="https://github.com/"+link;
+ else if(!/^https?:\/\//i.test(link))link="https://"+link;
+ var host="",kind="link";
+ try{var u=new URL(link);host=u.hostname.toLowerCase().replace(/^www\./,"");kind=(host==="github.com"||host==="gist.github.com")?"github":"site"}catch(e){}
+ return{link:link,host:host,kind:kind};
+}
+function icon(kind){
+ if(kind==="github")return'<svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';
+ return'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>';
+}
 function say(msg,err){var s=$("status");s.textContent=msg||"";s.className="status"+(err?" err":"")}
 function api(path,opt){
  return fetch(path,Object.assign({headers:{"Content-Type":"application/json"}},opt||{})).then(function(res){
@@ -185,68 +195,81 @@ function api(path,opt){
   });
  });
 }
-function load(){
- return api("/api/tools").then(function(data){rows=data;editable=true;say("")}).catch(function(e){
-  rows=(window.TOOLS||[]).map(function(r,i){r=Object.assign({},r);r.id=-(i+1);return r});
-  editable=false;say("API unavailable. Read-only seed data. "+e.message,true);
- }).then(render);
+function authStatus(){
+ return api("/api/auth/status").then(function(data){auth=data||auth}).catch(function(){auth={enabled:false,authenticated:false}}).then(function(){
+  editable=Boolean(auth.authenticated);
+ });
 }
-function chip(t,on,f,sm){var b=document.createElement("button");b.className="chip"+(sm?" sm":"")+(on?" on":"");b.textContent=t;b.onclick=f;return b}
+function load(){
+ var apiOk=true;
+ return api("/api/tools").then(function(data){rows=data||[];say("")}).catch(function(e){
+  apiOk=false;rows=(window.TOOLS||[]).map(function(r,i){r=Object.assign({},r);r.id=-(i+1);return r});
+  editable=false;say("API unavailable. Read-only seed data. "+e.message,true);
+ }).then(authStatus).then(function(){
+  if(apiOk&&auth.enabled&&!auth.authenticated)say("Read only. Log in to add, edit, or delete links.");
+  render();
+ });
+}
 function render(){
- var cats=["All"];rows.forEach(function(r){if(cats.indexOf(r.category)<0)cats.push(r.category)});
- if(cats.indexOf(sel)<0)sel="All";
+ var b=$("auth");b.textContent=auth.authenticated?"Log out":"Log in";b.disabled=!auth.enabled;b.title=auth.enabled?"":"ADMIN_PASSWORD is not configured";
  $("new").disabled=!editable;
- var ch=$("chips");ch.innerHTML="";
- cats.forEach(function(c){ch.appendChild(chip(c,c===sel,function(){sel=c;render()}))});
- var tc={};rows.forEach(function(r){if(sel==="All"||r.category===sel)(r.tags||[]).forEach(function(t){tc[t]=(tc[t]||0)+1})});
- if(sel==="All")tc={};
- if(tsel&&!tc[tsel])tsel="";
- $("tagwrap").style.display=sel==="All"?"none":"";
- var tg=$("tagchips");tg.innerHTML="";
- Object.keys(tc).sort().forEach(function(t){tg.appendChild(chip(t+" ("+tc[t]+")",t===tsel,function(){tsel=tsel===t?"":t;render()},1))});
- var l=rows.filter(function(r){var t=r.tags||[];return(sel==="All"||r.category===sel)&&(!tsel||t.indexOf(tsel)>-1)&&([r.name,r.category,r.description,r.use_when].concat(t).join(" ").toLowerCase().indexOf(q)>-1)});
- $("count").textContent=l.length+" of "+rows.length+" entries";
+ var l=rows.filter(function(r){var p=prepare(r.link);return(r.name+" "+r.link+" "+p.host).toLowerCase().indexOf(q)>-1});
+ $("count").textContent=l.length+" of "+rows.length+" links";
  var g=$("grid");g.innerHTML=l.length?"":'<div class="empty">No matches.</div>';
- l.forEach(function(r){var k=link(r),c=document.createElement("article");c.className="card";
+ l.forEach(function(r){var p=prepare(r.link),k=p.kind==="github"?"github":"site",c=document.createElement("article");c.className="card";
   var ops=editable?'<div class="ops"><button type="button" data-act="edit">Edit</button><button type="button" class="del" data-act="del">Delete</button></div>':"";
-  c.innerHTML='<div class="cat">'+esc(r.category)+'</div><h2>'+esc(r.name)+'</h2><p>'+esc(r.description)+'</p><div class="use"><b>Use when:</b> '+esc(r.use_when)+'</div><div class="tl">'+(r.tags||[]).map(function(t){return'<button class="t" data-t="'+esc(t)+'">#'+esc(t)+'</button>'}).join("")+'</div><div class="foot"><a class="gh" href="'+esc(k[0])+'" target="_blank" rel="noopener">'+k[1]+'</a>'+ops+'<span class="tag">'+k[2]+'</span></div>';
-  c.querySelectorAll(".t").forEach(function(b){b.onclick=function(){tsel=b.dataset.t;render();scrollTo(0,0)}});
+  c.innerHTML='<div class="cardhead"><span class="icon '+k+'" aria-hidden="true">'+icon(k)+'</span><div><h2>'+esc(r.name)+'</h2><div class="meta"><span class="pill '+k+'">'+(k==="github"?"GitHub repo":"Custom site")+'</span><span>'+esc(p.host||"unknown host")+'</span></div></div></div><a class="url" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+esc(p.link)+' ↗</a><div class="foot"><span class="tag">'+esc(k==="github"?"github":"website")+'</span>'+ops+'</div>';
   var edit=c.querySelector('[data-act="edit"]'),del=c.querySelector('[data-act="del"]');
   if(edit)edit.onclick=function(){openEditor(r)};
   if(del)del.onclick=function(){removeEntry(r)};
   g.appendChild(c)});
 }
+function updateDetected(){
+ var p=prepare($("f-link").value);
+ $("detected").textContent=p.link?("Detected: "+(p.kind==="github"?"GitHub repo":"Custom site")+" ("+(p.host||"invalid URL")+")"):"Detected: waiting for link";
+}
+function openLogin(){
+ $("login-error").textContent="";$("f-password").value="";
+ if(!$("login").open)$("login").showModal();
+ $("f-password").focus();
+}
 function openEditor(r){
- $("editor-title").textContent=r?"Edit entry":"New entry";
+ $("editor-title").textContent=r?"Edit link":"New link";
  $("f-id").value=r?r.id:"";
  $("f-name").value=r?r.name||"":"";
- $("f-category").value=r?r.category||"":"";
- $("f-description").value=r?r.description||"":"";
- $("f-use").value=r?r.use_when||"":"";
- $("f-repo").value=r?r.repo||"":"";
- $("f-tags").value=r&&r.tags?r.tags.join(", "):"";
+ $("f-link").value=r?r.link||"":"";
+ updateDetected();
  if(!$("editor").open)$("editor").showModal();
  $("f-name").focus();
 }
 function closeEditor(){$("editor").close()}
-function collect(){
- return{name:$("f-name").value,category:$("f-category").value,description:$("f-description").value,use_when:$("f-use").value,repo:$("f-repo").value,tags:$("f-tags").value.split(",").map(function(t){return t.trim()}).filter(Boolean)};
-}
+function collect(){return{name:$("f-name").value.trim(),link:$("f-link").value.trim()}}
 function removeEntry(r){
  if(!window.confirm("Delete "+r.name+"?"))return;
- api("/api/tools/"+r.id,{method:"DELETE"}).then(load).then(function(){say("Entry deleted.")}).catch(function(e){say(e.message,true)});
+ api("/api/tools/"+r.id,{method:"DELETE"}).then(load).then(function(){say("Link deleted.")}).catch(function(e){say(e.message,true)});
 }
 $("form").onsubmit=function(e){
  e.preventDefault();
  var id=$("f-id").value,btn=$("save");btn.disabled=true;
- api(id?"/api/tools/"+id:"/api/tools",{method:id?"PUT":"POST",body:JSON.stringify(collect())}).then(function(){closeEditor();return load()}).then(function(){say(id?"Entry updated.":"Entry added.")}).catch(function(e){say(e.message,true)}).then(function(){btn.disabled=false});
+ api(id?"/api/tools/"+id:"/api/tools",{method:id?"PUT":"POST",body:JSON.stringify(collect())}).then(function(){closeEditor();return load()}).then(function(){say(id?"Link updated.":"Link added.")}).catch(function(e){say(e.message,true)}).then(function(){btn.disabled=false});
 };
+$("login-form").onsubmit=function(e){
+ e.preventDefault();$("login-error").textContent="";
+ var btn=e.target.querySelector('button[type="submit"]');btn.disabled=true;
+ api("/api/login",{method:"POST",body:JSON.stringify({password:$("f-password").value})}).then(function(){return authStatus()}).then(function(){$("login").close();render();say("Logged in.")}).catch(function(err){$("login-error").textContent=err.message}).then(function(){btn.disabled=false});
+};
+$("auth").onclick=function(){
+ if(auth.authenticated)api("/api/logout",{method:"POST"}).then(authStatus).then(function(){render();say("Logged out.")}).catch(function(e){say(e.message,true)});
+ else openLogin();
+};
+$("login-cancel").onclick=function(){$("login").close()};
+$("f-link").oninput=updateDetected;
 $("q").oninput=function(e){q=e.target.value.toLowerCase();render()};
 $("new").onclick=function(){openEditor(null)};
 $("cancel").onclick=closeEditor;
 $("export").onclick=function(){
  var a=document.createElement("a"),url=URL.createObjectURL(new Blob([JSON.stringify(rows,null,2)],{type:"application/json"}));
- a.href=url;a.download="tools.json";a.click();URL.revokeObjectURL(url);
+ a.href=url;a.download="cortex-links.json";a.click();URL.revokeObjectURL(url);
 };
 load();
 </script></body></html>

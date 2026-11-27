@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 
+const crypto = require('crypto');
 const express = require('express');
 const { Pool } = require('pg');
 const fs = require('fs');
@@ -21,8 +22,14 @@ const pool = new Pool({
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
-const cols = 'id, name, category, description, use_when, repo, tags, created_at, updated_at';
+const cols = 'id, name, link, created_at, updated_at';
+const adminPassword = process.env.ADMIN_PASSWORD || '';
+const sessionSecret = `cortex:${adminPassword}`;
+const cookieName = 'cortex_auth';
+const sessionMs = 7 * 24 * 60 * 60 * 1000;
+const loginAttempts = new Map();
 
+app.set('trust proxy', 1);
 app.use(express.json({ limit: '64kb' }));
 
 function fail(status, message) {
@@ -47,23 +54,49 @@ function normalize(body) {
 
   if (!name) throw fail(400, 'name is required.');
 
-  const rawTags = Array.isArray(input.tags) ? input.tags : String(input.tags || '').split(',');
-  const tags = rawTags.map((tag) => text(tag, 60)).filter(Boolean).slice(0, 30);
+  let link = text(input.link, 2000);
 
-  return {
-    name,
-    category: text(input.category, 100),
-    description: text(input.description, 1000),
-    use_when: text(input.use_when, 500),
-    repo: text(input.repo, 300) || null,
-    tags
-  };
+  if (!link) throw fail(400, 'link is required.');
+
+  if (/^[^\s/]+\/[^\s/]+$/.test(link)) {
+    link = `https://github.com/${link}`;
+  } else if (!/^https?:\/\//i.test(link)) {
+    link = `https://${link}`;
+  }
+
+  try {
+    const url = new URL(link);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') throw new Error();
+    if (!url.hostname) throw new Error();
+  } catch (error) {
+    throw fail(400, 'link must be a valid URL.');
+  }
+
+  return { name, link };
 }
 
-function toolId(req) {
-  const id = Number(req.params.id);
-  if (!Number.isInteger(id) || id < 1) throw fail(400, 'Invalid id.');
-  return id;
+function linkMeta(link) {
+  try {
+    const url = new URL(link);
+    const host = url.hostname.toLowerCase().replace(/^www\./, '');
+    const github = host === 'github.com' || host === 'gist.github.com';
+    return { kind: github ? 'github' : 'site', host };
+  } catch (error) {
+    return { kind: 'link', host: '' };
+  }
+}
+
+function present(row) {
+  const meta = linkMeta(row.link);
+  return {
+    id: row.id,
+    name: row.name,
+    link: row.link,
+    kind: meta.kind,
+    host: meta.host,
+    created_at: row.created_at,
+    updated_at: row.updated_at
+  };
 }
 
 function seedData() {
@@ -81,15 +114,31 @@ async function init() {
     CREATE TABLE IF NOT EXISTS tools (
       id SERIAL PRIMARY KEY,
       name TEXT NOT NULL,
-      category TEXT NOT NULL DEFAULT '',
-      description TEXT NOT NULL DEFAULT '',
-      use_when TEXT NOT NULL DEFAULT '',
-      repo TEXT,
-      tags TEXT[] NOT NULL DEFAULT '{}',
+      link TEXT,
       created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
       updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
     )
   `);
+
+  const legacy = await pool.query(`
+    SELECT 1 FROM information_schema.columns
+    WHERE table_name = 'tools' AND column_name = 'repo'
+  `);
+
+  if (legacy.rowCount) {
+    await pool.query('ALTER TABLE tools ADD COLUMN IF NOT EXISTS link TEXT');
+    await pool.query(`
+      UPDATE tools
+      SET link = CASE
+        WHEN repo IS NOT NULL AND repo <> '' THEN 'https://github.com/' || repo
+        ELSE 'https://github.com/search?type=repositories&q=' || regexp_replace(name, ' ', '%20', 'g')
+      END
+      WHERE link IS NULL OR link = ''
+    `);
+  }
+
+  await pool.query(`DELETE FROM tools WHERE link IS NULL OR link = ''`);
+  await pool.query(`ALTER TABLE tools ALTER COLUMN link SET NOT NULL`);
 
   const client = await pool.connect();
 
@@ -104,8 +153,8 @@ async function init() {
 
       for (const row of seed) {
         await client.query(
-          'INSERT INTO tools (name, category, description, use_when, repo, tags) VALUES ($1, $2, $3, $4, $5, $6)',
-          [row.name, row.category || '', row.description || '', row.use_when || '', row.repo || null, row.tags || []]
+          'INSERT INTO tools (name, link) VALUES ($1, $2)',
+          [row.name, row.link]
         );
       }
     }
@@ -119,42 +168,146 @@ async function init() {
   }
 }
 
+function sign(expiry) {
+  return crypto.createHmac('sha256', sessionSecret).update(String(expiry)).digest('base64url');
+}
+
+function makeSession() {
+  const expiry = Date.now() + sessionMs;
+  return `${expiry}.${sign(expiry)}`;
+}
+
+function cookieValue(req, name) {
+  const header = req.headers.cookie || '';
+
+  for (const part of header.split(';')) {
+    const index = part.indexOf('=');
+    if (index < 0) continue;
+    if (part.slice(0, index).trim() === name) {
+      return decodeURIComponent(part.slice(index + 1).trim());
+    }
+  }
+
+  return '';
+}
+
+function validSession(req) {
+  if (!adminPassword) return false;
+
+  const token = cookieValue(req, cookieName);
+  const [expiry, signature] = token.split('.');
+  const expiresAt = Number(expiry);
+
+  if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) return false;
+
+  const expected = Buffer.from(sign(expiry));
+  const actual = Buffer.from(signature || '');
+
+  return actual.length === expected.length && crypto.timingSafeEqual(actual, expected);
+}
+
+function sessionCookie(req, value, maxAge) {
+  const secure = req.secure || req.headers['x-forwarded-proto'] === 'https';
+  return `${cookieName}=${encodeURIComponent(value)}; Max-Age=${maxAge}; Path=/; HttpOnly; SameSite=Strict${secure ? '; Secure' : ''}`;
+}
+
+function clientIp(req) {
+  const forwarded = req.headers['x-forwarded-for'];
+  return (typeof forwarded === 'string' ? forwarded.split(',')[0] : req.ip || 'unknown').trim();
+}
+
+function loginAllowed(req) {
+  const key = clientIp(req);
+  const now = Date.now();
+  const record = loginAttempts.get(key);
+
+  if (loginAttempts.size > 1000) loginAttempts.clear();
+
+  if (!record || now > record.reset) {
+    loginAttempts.set(key, { count: 1, reset: now + 10 * 60 * 1000 });
+    return true;
+  }
+
+  if (record.count >= 5) return false;
+
+  record.count += 1;
+  return true;
+}
+
+function failedLogin(req) {
+  const key = clientIp(req);
+  const record = loginAttempts.get(key);
+  if (record) record.count += 1;
+}
+
+function requireAuth(req, res, next) {
+  if (!adminPassword) return res.status(503).json({ error: 'ADMIN_PASSWORD is not configured.' });
+  if (!validSession(req)) return res.status(401).json({ error: 'Unauthorized.' });
+  return next();
+}
+
 app.get('/api/health', (req, res) => res.json({ ok: true }));
+
+app.get('/api/auth/status', (req, res) => {
+  res.json({ enabled: Boolean(adminPassword), authenticated: validSession(req) });
+});
+
+app.post('/api/login', (req, res) => {
+  if (!adminPassword) return res.status(503).json({ error: 'ADMIN_PASSWORD is not configured.' });
+  if (!loginAllowed(req)) return res.status(429).json({ error: 'Too many attempts. Try again in 10 minutes.' });
+
+  const supplied = Buffer.from(typeof req.body.password === 'string' ? req.body.password : '');
+  const expected = Buffer.from(adminPassword);
+  const matches = supplied.length === expected.length && crypto.timingSafeEqual(supplied, expected);
+
+  if (!matches) {
+    failedLogin(req);
+    return res.status(401).json({ error: 'Wrong password.' });
+  }
+
+  res.setHeader('Set-Cookie', sessionCookie(req, makeSession(), Math.floor(sessionMs / 1000)));
+  return res.json({ ok: true });
+});
+
+app.post('/api/logout', (req, res) => {
+  res.setHeader('Set-Cookie', sessionCookie(req, '', 0));
+  res.json({ ok: true });
+});
 
 app.get('/api/tools', route(async (req, res) => {
   const { rows } = await pool.query(`SELECT ${cols} FROM tools ORDER BY lower(name), id`);
-  res.json(rows);
+  res.json(rows.map(present));
 }));
 
-app.post('/api/tools', route(async (req, res) => {
+app.post('/api/tools', requireAuth, route(async (req, res) => {
   const entry = normalize(req.body);
   const { rows } = await pool.query(
-    `INSERT INTO tools (name, category, description, use_when, repo, tags)
-     VALUES ($1, $2, $3, $4, $5, $6) RETURNING ${cols}`,
-    [entry.name, entry.category, entry.description, entry.use_when, entry.repo, entry.tags]
+    `INSERT INTO tools (name, link) VALUES ($1, $2) RETURNING ${cols}`,
+    [entry.name, entry.link]
   );
-  res.status(201).json(rows[0]);
+  res.status(201).json(present(rows[0]));
 }));
 
-app.put('/api/tools/:id', route(async (req, res) => {
-  const id = toolId(req);
+app.put('/api/tools/:id', requireAuth, route(async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) throw fail(400, 'Invalid id.');
+
   const entry = normalize(req.body);
   const { rows } = await pool.query(
-    `UPDATE tools
-     SET name = $1, category = $2, description = $3, use_when = $4, repo = $5, tags = $6, updated_at = now()
-     WHERE id = $7 RETURNING ${cols}`,
-    [entry.name, entry.category, entry.description, entry.use_when, entry.repo, entry.tags, id]
+    `UPDATE tools SET name = $1, link = $2, updated_at = now() WHERE id = $3 RETURNING ${cols}`,
+    [entry.name, entry.link, id]
   );
 
   if (!rows.length) throw fail(404, 'Entry not found.');
 
-  res.json(rows[0]);
+  res.json(present(rows[0]));
 }));
 
-app.delete('/api/tools/:id', route(async (req, res) => {
-  const id = toolId(req);
-  const { rowCount } = await pool.query('DELETE FROM tools WHERE id = $1', [id]);
+app.delete('/api/tools/:id', requireAuth, route(async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) throw fail(400, 'Invalid id.');
 
+  const { rowCount } = await pool.query('DELETE FROM tools WHERE id = $1', [id]);
   if (!rowCount) throw fail(404, 'Entry not found.');
 
   res.json({ ok: true });
