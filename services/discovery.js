@@ -25,6 +25,8 @@ const SYNONYMS = {
   codebase: 'codebase',
   codebases: 'codebase',
   consumption: 'token',
+  usage: 'token',
+  reduction: 'reduce',
   edit: 'edit',
   editor: 'edit',
   editing: 'edit',
@@ -264,6 +266,7 @@ function scoreResource(resource, query, weights) {
   const compatibilityNotes = [];
   let score = 0;
   let specificHits = 0;
+  let bestValueHits = 0;
 
   for (const [field, tokenWeight, phraseWeight, label] of FIELD_WEIGHTS) {
     const values = valuesFor(normalized, field);
@@ -281,6 +284,11 @@ function scoreResource(resource, query, weights) {
       const valueTokens = tokenize(value);
       const matched = tokens.some((token) => valueTokens.includes(token));
       const exact = value.toLowerCase().includes(phrase);
+
+      if (field === 'capabilities' || field === 'use_when' || field === 'activation_keywords') {
+        const valueHits = tokens.filter((token) => valueTokens.includes(token)).length;
+        if (valueHits > bestValueHits) bestValueHits = valueHits;
+      }
 
       if (!matched && !exact) continue;
 
@@ -303,6 +311,7 @@ function scoreResource(resource, query, weights) {
   if (!score) return null;
 
   score += Math.min(specificHits, 4) * 2;
+  if (bestValueHits >= 2) score += 8 + (bestValueHits - 2) * 4;
 
   if (discovery.do_not_use_when.length) {
     compatibilityNotes.push(...discovery.do_not_use_when.slice(0, 3).map((value) => `Not for: ${value}`));

@@ -71,6 +71,24 @@ test('phrase matching respects word boundaries', () => {
   assert.equal(discovery.scoreResource(resource, 'art'), null);
 });
 
+test('multi-term capability match beats scattered single-term matches', () => {
+  const scattered = {
+    id: 1,
+    name: 'Scattered',
+    category: '',
+    discovery: { capabilities: ['context awareness'], use_when: ['token budget'] }
+  };
+  const combined = {
+    id: 2,
+    name: 'Combined',
+    category: '',
+    discovery: { capabilities: ['Reduce context token usage'] }
+  };
+
+  const results = discovery.searchResources([scattered, combined], 'reduce context token usage', { limit: 2 });
+  assert.equal(results[0].name, 'Combined');
+});
+
 test('getResourceDetails normalizes legacy resources', () => {
   const resource = discovery.getResourceDetails([{ id: 7, name: 'Legacy', link: '' }], '7');
   assert.equal(resource.name, 'Legacy');
