@@ -30,7 +30,8 @@ const DISCOVERY_COLUMNS = [
   'verification_status',
   'last_verified_at',
   'analysis_evidence',
-  'metadata_version'
+  'metadata_version',
+  'verification_normalized'
 ];
 const RESTORE_COLUMNS = [
   'id', 'name', 'link', 'category', 'meta_key', ...DISCOVERY_COLUMNS, 'created_at', 'updated_at'
@@ -189,6 +190,7 @@ async function restoreRows(connectionString, rows) {
         last_verified_at TIMESTAMPTZ,
         analysis_evidence JSONB NOT NULL DEFAULT '{}'::jsonb,
         metadata_version INTEGER NOT NULL DEFAULT 0,
+        verification_normalized INTEGER NOT NULL DEFAULT 0,
         created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
       )

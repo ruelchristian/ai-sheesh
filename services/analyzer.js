@@ -3,11 +3,21 @@
 const MAX_FILE_BYTES = 200000;
 const TIMEOUT_MS = 10000;
 
+function githubToken() {
+  return process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
+}
+
 const CANDIDATE_FILES = [
   'README.md',
   'README.MD',
   'readme.md',
+  'README.rst',
+  'README.txt',
   'docs/README.md',
+  'docs/index.md',
+  'docs/getting-started.md',
+  'docs/installation.md',
+  '.github/README.md',
   'SKILL.md',
   'skill.md',
   'AGENTS.md',
@@ -20,14 +30,14 @@ const CANDIDATE_FILES = [
 ];
 
 const PLATFORM_PATTERNS = [
-  ['Claude Code', /\bclaude code\b/i],
-  ['Claude', /\bclaude\b(?! code)/i],
-  ['Codex', /\bcodex\b/i],
-  ['Cursor', /\bcursor\b/i],
-  ['Gemini', /\bgemini\b/i],
-  ['GitHub Copilot', /\bcopilot\b/i],
-  ['Windsurf', /\bwindsurf\b/i],
-  ['Cline', /\bcline\b/i]
+  ['Claude Code', /\bclaude code (?:plugin|skill|integration|support)\b|\b(?:for|with|on|supports?|works? with|built for) claude code\b/i],
+  ['Claude', /\bclaude (?:skill|agent|plugin|integration)\b/i],
+  ['Codex', /\bcodex (?:cli|skill|integration)\b|\b(?:for|with|on|supports?|works? with) codex\b/i],
+  ['Cursor', /\bcursor (?:rule|skill|integration|extension)\b|\b(?:for|with|on|supports?|works? with) cursor\b/i],
+  ['Gemini', /\bgemini (?:cli|skill|integration|extension)\b|\b(?:for|with|on|supports?|works? with) gemini\b/i],
+  ['GitHub Copilot', /\b(?:github )?copilot (?:extension|integration|skill)\b|\b(?:for|with|supports?) (?:github )?copilot\b/i],
+  ['Windsurf', /\bwindsurf (?:rule|skill|integration|extension)\b|\b(?:for|with|on|supports?) windsurf\b/i],
+  ['Cline', /\bcline (?:rule|skill|integration|extension)\b|\b(?:for|with|on|supports?) cline\b/i]
 ];
 
 function repoFromLink(link) {
@@ -190,13 +200,36 @@ function relatedFromText(text, resources, selfId) {
     .slice(0, 5);
 }
 
+function secondaryCategoriesFromTopics(topics, resources, primaryCategory) {
+  const terms = unique((Array.isArray(topics) ? topics : [])
+    .flatMap((topic) => String(topic).toLowerCase().replace(/[-_]+/g, ' ').split(/\s+/))
+    .filter((term) => term.length >= 4));
+
+  const categories = unique((Array.isArray(resources) ? resources : [])
+    .map((resource) => String(resource.category || '').trim())
+    .filter(Boolean));
+
+  const primary = String(primaryCategory || '').toLowerCase();
+  return categories
+    .filter((category) => category.toLowerCase() !== primary)
+    .filter((category) => {
+      const lower = category.toLowerCase();
+      return terms.some((term) => lower.includes(term));
+    })
+    .slice(0, 3);
+}
+
 async function analyzeRepository(resource, options) {
   const opts = options || {};
   const repo = repoFromLink(resource && resource.link);
 
   if (!repo) throw new Error('Analyze Repository supports GitHub repositories only.');
 
-  const apiHeaders = { Accept: 'application/vnd.github+json' };
+  const token = githubToken();
+  const apiHeaders = Object.assign(
+    { Accept: 'application/vnd.github+json' },
+    token ? { Authorization: `Bearer ${token}` } : {}
+  );
   const repoJson = await fetchWithTimeout(
     `https://api.github.com/repos/${repo.owner}/${repo.name}`,
     { headers: apiHeaders }
@@ -251,13 +284,17 @@ async function analyzeRepository(resource, options) {
     }
   }
 
-  const sections = parseSections(readme ? readme.content : allText);
+  const docFiles = files.filter((file) => /\.(md|markdown|rst|txt)$/i.test(file.path));
+  const sections = docFiles.length
+    ? docFiles.flatMap((file) => parseSections(file.content).map((section) => Object.assign({ file: file.path }, section)))
+    : parseSections(allText);
   const featureText = sectionText(sections, /feature|capabilit|what (?:it|this) does|overview|about/i);
   const useText = sectionText(sections, /use when|when to use|use case|when should/i);
   const avoidText = sectionText(sections, /do not use|not for|limitation|caveat|avoid when/i);
   const installText = sectionText(sections, /install|getting started|quick ?start|setup|usage/i);
 
   const repoTopics = Array.isArray(repoInfo.topics) ? repoInfo.topics : [];
+  const packageKeywords = Array.isArray(packageInfo.keywords) ? packageInfo.keywords : [];
   const description = String(repoInfo.description || '').trim()
     || (paragraphs(sectionText(sections, /description|about|overview/i) || (readme ? readme.content : ''))[0] || '')
     || String((resource.discovery && resource.discovery.description) || '').trim();
@@ -276,6 +313,7 @@ async function analyzeRepository(resource, options) {
   const activationKeywords = unique([
     repo.name,
     ...repoTopics,
+    ...packageKeywords,
     ...capabilities.slice(0, 8).map((capability) => capability.split(/\s+/).slice(0, 5).join(' ')),
     ...sections.filter((section) => /feature|capabilit|use case/i.test(section.heading)).map((section) => section.heading)
   ]).slice(0, 20);
@@ -317,6 +355,7 @@ async function analyzeRepository(resource, options) {
       installation_instructions: installationInstructions,
       documentation_url: documentationUrl,
       related_resources: relatedFromText(allText, opts.resources, resource.id),
+      secondary_categories: secondaryCategoriesFromTopics(repoTopics, opts.resources, resource.category),
       analysis_evidence: {
         source: {
           repository: repo.htmlUrl,
@@ -326,12 +365,17 @@ async function analyzeRepository(resource, options) {
         evidence,
         warnings
       },
-      verification_status: files.length ? 'Partially Verified' : 'Unverified',
-      last_verified_at: new Date().toISOString()
+      verification_status: '',
+      last_verified_at: ''
     },
     evidence,
     warnings
   };
 }
 
-module.exports = { analyzeRepository, repoFromLink, parseSections };
+module.exports = {
+  analyzeRepository,
+  repoFromLink,
+  parseSections,
+  secondaryCategoriesFromTopics
+};

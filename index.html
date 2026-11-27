@@ -44,7 +44,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .ops button{border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;font-size:.78rem;padding:4px 9px;border-radius:6px;cursor:pointer}
 .ops button:hover{background:var(--chip)}
 .ops button.del{color:#fca5a5}
-.editor{border:1px solid var(--bd);border-radius:12px;background:var(--bg);color:var(--tx);max-width:560px;width:calc(100% - 32px);padding:20px}
+.editor{border:1px solid var(--bd);border-radius:12px;background:var(--bg);color:var(--tx);max-width:640px;max-height:92vh;overflow:auto;width:calc(100% - 32px);padding:20px}
 .editor::backdrop{background:rgba(0,0,0,.7)}
 .editor form{display:grid;gap:10px}
 .editor h2{margin:0 0 4px;font-size:1.15rem}
@@ -89,6 +89,22 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <label>Category <select id="f-category-select"></select></label>
 <div class="hint">Pick an existing category, or choose “+ New category”.</div>
 <label id="new-category-label" hidden>New category <input id="f-category-new" maxlength="80" placeholder="Type a category"></label>
+<details id="meta-fields"><summary>Discovery metadata (optional)</summary>
+<label>Description <textarea id="f-description" rows="3"></textarea></label>
+<label>Resource Type <input id="f-resource-type" maxlength="200"></label>
+<label>Capabilities (one per line) <textarea id="f-capabilities" rows="3"></textarea></label>
+<label>When to Use (one per line) <textarea id="f-use-when" rows="3"></textarea></label>
+<label>When Not to Use (one per line) <textarea id="f-do-not-use-when" rows="3"></textarea></label>
+<label>Activation Keywords (one per line) <textarea id="f-activation-keywords" rows="3"></textarea></label>
+<label>Supported Platforms (one per line) <textarea id="f-supported-platforms" rows="3"></textarea></label>
+<label>Installation Instructions <textarea id="f-installation-instructions" rows="5"></textarea></label>
+<label>Documentation URL <input id="f-documentation-url" type="url" maxlength="2000"></label>
+<label>Related Resources (one per line) <textarea id="f-related-resources" rows="3"></textarea></label>
+<label>Secondary Categories (one per line) <textarea id="f-secondary-categories" rows="3"></textarea></label>
+<label>Verification Status <input id="f-verification-status" maxlength="80" placeholder="Unverified"></label>
+<label>Last Verified At <input id="f-last-verified-at" maxlength="40" placeholder="ISO timestamp"></label>
+<label>Analysis Evidence (JSON) <textarea id="f-analysis-evidence" rows="4"></textarea></label>
+</details>
 <div id="detected" class="detected">Detected: waiting for link</div>
 <div class="actions"><button id="cancel" class="secondary" type="button">Cancel</button><button id="save" class="primary" type="submit">Save</button></div>
 </form>
@@ -215,6 +231,8 @@ window.TOOLS = [
 var rows=[],q="",searchResults=null,searchSeq=0,searchTimer=null;
 var auth={enabled:false,authenticated:false},editable=false;
 var activeResource=null,reviewResource=null,reviewData=null;
+var DISCOVERY_INPUTS={description:"f-description",resource_type:"f-resource-type",capabilities:"f-capabilities",use_when:"f-use-when",do_not_use_when:"f-do-not-use-when",activation_keywords:"f-activation-keywords",supported_platforms:"f-supported-platforms",installation_instructions:"f-installation-instructions",documentation_url:"f-documentation-url",related_resources:"f-related-resources",secondary_categories:"f-secondary-categories",verification_status:"f-verification-status",last_verified_at:"f-last-verified-at",analysis_evidence:"f-analysis-evidence"};
+var DISCOVERY_LIST_FIELDS={capabilities:1,use_when:1,do_not_use_when:1,activation_keywords:1,supported_platforms:1,related_resources:1,secondary_categories:1};
 var $=function(i){return document.getElementById(i)};
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function prepare(value){
@@ -230,8 +248,8 @@ function icon(kind){
  return'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>';
 }
 function metaFor(r){
-  var p=prepare(r.link),m=(window.META||{})[r.meta_key||r.name]||(window.META||{})[r.name]||(window.META||{})[p.link]||{},d=r.discovery||{};
-  return{link:p.link,host:p.host,kind:p.kind,category:r.category||m.category||"",description:d.description||m.description||"",discovery:d};
+  var p=prepare(r.link),d=r.discovery||{};
+  return{link:p.link,host:p.host,kind:p.kind,category:r.category||"",description:d.description||"",discovery:d};
 }
 function categoryOptions(){
   var seen={};
@@ -250,6 +268,22 @@ function selectedCategory(){
   var value=$("f-category-select").value;
   return value==="__new__"?$("f-category-new").value.trim():value;
 }
+function fillDiscovery(d){
+  Object.keys(DISCOVERY_INPUTS).forEach(function(key){$(DISCOVERY_INPUTS[key]).value=reviewText((d||{})[key])});
+}
+function parseDiscovery(){
+  var out={};
+  Object.keys(DISCOVERY_INPUTS).forEach(function(key){
+    var raw=$(DISCOVERY_INPUTS[key]).value.trim();
+    if(key==="analysis_evidence"){
+      if(!raw)out[key]={};
+      else try{out[key]=JSON.parse(raw)}catch(err){throw new Error("Analysis Evidence must be valid JSON.")}
+    }else if(DISCOVERY_LIST_FIELDS[key]){
+      out[key]=raw?raw.split(/[\r\n,]+/).map(function(v){return v.trim()}).filter(Boolean):[];
+    }else out[key]=raw;
+  });
+  return out;
+}
 function say(msg,err){var s=$("status");s.textContent=msg||"";s.className="status"+(err?" err":"")}
 function api(path,opt){
  return fetch(path,Object.assign({headers:{"Content-Type":"application/json"}},opt||{})).then(function(res){
@@ -267,7 +301,7 @@ function authStatus(){
 function load(){
  var apiOk=true;
  return api("/api/tools").then(function(data){rows=data||[];say("")}).catch(function(e){
-  apiOk=false;rows=(window.TOOLS||[]).map(function(r,i){r=Object.assign({},r);r.id=-(i+1);return r});
+  apiOk=false;rows=(window.TOOLS||[]).map(function(r,i){var key=r.meta_key||r.name,seed=(window.META||{})[key]||{};return Object.assign({},r,{id:-(i+1),offline:true,category:r.category||seed.category||"",discovery:Object.assign({capabilities:[],use_when:[],do_not_use_when:[],activation_keywords:[],supported_platforms:[],related_resources:[],secondary_categories:[],analysis_evidence:{},verification_status:"Unverified"},seed)})});
   editable=false;say("API unavailable. Read-only seed data. "+e.message,true);
  }).then(authStatus).then(function(){
   if(apiOk&&auth.enabled&&!auth.authenticated)say("Read only. Log in to add, edit, or delete links.");
@@ -329,6 +363,7 @@ function openEditor(r){
  $("f-link").value=r?r.link||"":"";
  updateDetected();
  fillCategory(r?metaFor(r).category:"");
+  fillDiscovery(r?(r.discovery||{}):{});
  if(!$("editor").open)$("editor").showModal();
  $("f-name").focus();
 }
@@ -343,7 +378,7 @@ function openDetail(r){
  var verified=d.verification_status?esc(d.verification_status):"";
  if(d.last_verified_at)verified+=(verified?" · ":"")+esc(d.last_verified_at);
  var evidence=d.analysis_evidence&&Object.keys(d.analysis_evidence).length?'<pre>'+esc(JSON.stringify(d.analysis_evidence,null,2))+"</pre>":"";
- $("detail-body").innerHTML='<div class="cardhead"><a class="icon '+m.kind+'" href="'+esc(m.link)+'" target="_blank" rel="noopener">'+icon(m.kind)+"</a><div><h2>"+esc(r.name)+'</h2><div class="meta">'+(m.category?'<span class="pill">'+esc(m.category)+"</span>":'<span class="pill '+m.kind+'">'+(m.kind==="github"?"GitHub repo":"Custom site")+"</span>")+(d.resource_type?'<span class="pill">'+esc(d.resource_type)+"</span>":"")+"</div></div></div>"+detailSection("Description",d.description?esc(d.description):"")+detailSection("Resource Type",d.resource_type?esc(d.resource_type):"")+detailSection("Capabilities",chipList(d.capabilities))+detailSection("When to Use",chipList(d.use_when))+detailSection("When Not to Use",chipList(d.do_not_use_when))+detailSection("Supported Platforms",chipList(d.supported_platforms))+detailSection("Installation Instructions",d.installation_instructions?'<pre>'+esc(d.installation_instructions)+"</pre>":"")+detailSection("Documentation",doc)+detailSection("Related Resources",chipList(d.related_resources,true))+detailSection("Verification",verified)+detailSection("Analysis Evidence",evidence);
+ $("detail-body").innerHTML='<div class="cardhead"><a class="icon '+m.kind+'" href="'+esc(m.link)+'" target="_blank" rel="noopener">'+icon(m.kind)+"</a><div><h2>"+esc(r.name)+'</h2><div class="meta">'+(m.category?'<span class="pill">'+esc(m.category)+"</span>":'<span class="pill '+m.kind+'">'+(m.kind==="github"?"GitHub repo":"Custom site")+"</span>")+(d.resource_type?'<span class="pill">'+esc(d.resource_type)+"</span>":"")+"</div></div></div>"+detailSection("Description",d.description?esc(d.description):"")+detailSection("Resource Type",d.resource_type?esc(d.resource_type):"")+detailSection("Capabilities",chipList(d.capabilities))+detailSection("Activation Keywords",chipList(d.activation_keywords))+detailSection("When to Use",chipList(d.use_when))+detailSection("When Not to Use",chipList(d.do_not_use_when))+detailSection("Supported Platforms",chipList(d.supported_platforms))+detailSection("Installation Instructions",d.installation_instructions?'<pre>'+esc(d.installation_instructions)+"</pre>":"")+detailSection("Documentation",doc)+detailSection("Related Resources",chipList(d.related_resources,true))+detailSection("Secondary Categories",chipList(d.secondary_categories))+detailSection("Verification",verified)+detailSection("Analysis Evidence",evidence);
  $("detail-edit").hidden=!editable;
  $("detail-analyze").hidden=!(editable&&m.kind==="github");
  if(!$("detail").open)$("detail").showModal();
@@ -404,15 +439,17 @@ function applyReview(e){
  }).catch(function(err){$("review-error").textContent=err.message}).then(function(){btn.disabled=false});
 }
 function closeEditor(){$("editor").close()}
-function collect(){return{name:$("f-name").value.trim(),link:$("f-link").value.trim(),category:selectedCategory()}}
+function collect(){return{name:$("f-name").value.trim(),link:$("f-link").value.trim(),category:selectedCategory(),discovery:parseDiscovery()}}
 function removeEntry(r){
  if(!window.confirm("Delete "+r.name+"?"))return;
  api("/api/tools/"+r.id,{method:"DELETE"}).then(load).then(function(){say("Link deleted.")}).catch(function(e){say(e.message,true)});
 }
 $("form").onsubmit=function(e){
  e.preventDefault();
- var id=$("f-id").value,btn=$("save");btn.disabled=true;
- api(id?"/api/tools/"+id:"/api/tools",{method:id?"PUT":"POST",body:JSON.stringify(collect())}).then(function(){closeEditor();return load()}).then(function(){say(id?"Link updated.":"Link added.")}).catch(function(e){say(e.message,true)}).then(function(){btn.disabled=false});
+ var id=$("f-id").value,payload;
+  try{payload=collect()}catch(err){say(err.message,true);return}
+  var btn=$("save");btn.disabled=true;
+ api(id?"/api/tools/"+id:"/api/tools",{method:id?"PUT":"POST",body:JSON.stringify(payload)}).then(function(){closeEditor();return load()}).then(function(){say(id?"Link updated.":"Link added.")}).catch(function(e){say(e.message,true)}).then(function(){btn.disabled=false});
 };
 $("login-form").onsubmit=function(e){
  e.preventDefault();$("login-error").textContent="";

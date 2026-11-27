@@ -15,6 +15,7 @@ The library now supports AI-style discovery. Search accepts plain-language reque
 - `data/meta.js` — AI-written seed metadata. Copied into Postgres by an additive migration. Later edits live in Postgres.
 - `render.yaml` — Render Blueprint for the web service. Database env vars are set outside the Blueprint.
 - `scripts/refresh-free-db.js` — backup-first free database rotation. Backs up and restores all discovery metadata.
+- `scripts/enrich-metadata.js` — backup-first metadata enrichment from GitHub evidence. Fills empty fields and appends evidence-based list items.
 - `test/discovery.test.js` — seven requested queries plus service normalization tests.
 - `data/*.json`, `MATT_MURPHY_*.md`, `TOOL_RANKINGS.md` — research archives and notes.
 
@@ -37,13 +38,15 @@ Stored per row, all optional:
 - `last_verified_at`
 - `analysis_evidence`
 
-Existing rows work with empty metadata. Migrations only add columns; they do not delete rows or columns. The old hardcoded descriptions remain in `data/meta.js` as seed values. A hidden `meta_key` keeps them attached after an entry is renamed or relinked. Category is editable CRUD data. Categories come from rows plus seed metadata; the editor also accepts a new category.
+Existing rows work with empty metadata. Migrations only add columns; they never delete rows or columns. Empty links become GitHub search links instead of being deleted. The old hardcoded descriptions remain in `data/meta.js` as seed values, and a one-time backfill fills empty fields only. A hidden `meta_key` keeps them attached after an entry is renamed or relinked. Category and all discovery fields are editable in the CRUD dialog. Categories come from rows plus seed metadata; the editor also accepts a new category.
 
 ### Analyze Repository
 
-Authenticated admins can run **Analyze Repository** on GitHub entries. The analyzer fetches public repository files and proposes metadata with source evidence. The review screen lets an admin edit every suggestion before applying it.
+Authenticated admins can run **Analyze Repository** on GitHub entries. The analyzer reads README/docs, `SKILL.md`, `AGENTS.md`, `CLAUDE.md`, `package.json`, plugin and MCP configs. It proposes metadata with file-level evidence. The review screen lets an admin edit every suggestion before applying it.
 
-Filled fields are protected. A suggested value overwrites an existing value only when its **Overwrite saved value** checkbox is selected. The analyzer does not invent install commands, compatibility, capabilities, or license data. Empty suggestions stay empty.
+Filled fields are protected. A suggested value overwrites an existing value only when its **Overwrite saved value** checkbox is selected. The analyzer does not invent install commands, compatibility, capabilities, or license data. Platform claims require explicit support wording. Verification stays `Unverified` until a human sets it. `GITHUB_TOKEN` is optional and raises the GitHub API rate limit.
+
+For a bulk evidence pass, run `npm run enrich-metadata` for a dry run, then `npm run enrich-metadata -- --apply`. Use `--limit=5` to test a small batch. The script saves a JSON backup before writing. It fills empty scalar fields, appends unique evidence-based list items, and never changes verification fields.
 
 ## Search and discovery services
 
@@ -131,4 +134,4 @@ Entry shape:
 
 ## Migration risks
 
-Additive migrations preserve IDs, names, links, categories, and rows. They do not delete records. The rotation script is the only destructive path; it always backs up first and aborts on zero rows. Run `npm run refresh-db` before `--apply`. Keep the backup until the replacement database is verified.
+Additive migrations preserve IDs, names, links, categories, and rows. They do not delete records. Empty links become GitHub search links. The one-time verification cleanup only resets seed-supplied `Partially Verified` statuses to `Unverified`. Manual verification survives. The rotation script is the only destructive resource path; it always backs up first and aborts on zero rows. Run `npm run refresh-db` before `--apply`. Keep the backup until the replacement database is verified.

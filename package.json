@@ -8,7 +8,8 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "test": "node --test test/*.test.js",
-    "refresh-db": "node scripts/refresh-free-db.js"
+    "refresh-db": "node scripts/refresh-free-db.js",
+    "enrich-metadata": "node scripts/enrich-metadata.js"
   },
   "engines": {
     "node": ">=20"

@@ -45,6 +45,11 @@ test('findResourcesForTask strips request phrasing', () => {
   assert.equal(found.results[0].name, 'founder');
 });
 
+test('phrase matching respects word boundaries', () => {
+  const resource = { id: 1, name: 'Starter', category: '', discovery: { description: 'Start here' } };
+  assert.equal(discovery.scoreResource(resource, 'art'), null);
+});
+
 test('getResourceDetails normalizes legacy resources', () => {
   const resource = discovery.getResourceDetails([{ id: 7, name: 'Legacy', link: '' }], '7');
   assert.equal(resource.name, 'Legacy');

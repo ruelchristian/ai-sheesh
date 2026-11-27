@@ -27,8 +27,8 @@ window.META = {
     "documentation_url": "https://github.com/pbakaus/impeccable",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -64,8 +64,8 @@ window.META = {
     "documentation_url": "https://github.com/Leonxlnx/taste-skill",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -103,8 +103,8 @@ window.META = {
     "documentation_url": "https://github.com/miqdadbadjuber/anti-slop",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -142,8 +142,8 @@ window.META = {
     "documentation_url": "https://github.com/search?type=repositories&q=ui-ux%20pro%20max",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -179,8 +179,8 @@ window.META = {
     "documentation_url": "",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -222,8 +222,8 @@ window.META = {
     "documentation_url": "https://github.com/motiondivision/motion",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -257,8 +257,8 @@ window.META = {
     "documentation_url": "https://21st.dev/",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -295,8 +295,8 @@ window.META = {
     "documentation_url": "https://github.com/nilbuild/page-mascot",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -337,8 +337,8 @@ window.META = {
     "documentation_url": "https://github.com/obra/superpowers",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -374,8 +374,8 @@ window.META = {
     "documentation_url": "",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -410,8 +410,8 @@ window.META = {
     "documentation_url": "",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -442,8 +442,8 @@ window.META = {
     "documentation_url": "https://github.com/DietrichGebert/ponytail",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -477,8 +477,8 @@ window.META = {
     "documentation_url": "https://github.com/search?type=repositories&q=caveman",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -510,8 +510,8 @@ window.META = {
     "documentation_url": "https://github.com/shanraisshan/claude-code-best-practice",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -548,8 +548,8 @@ window.META = {
     "documentation_url": "https://github.com/wshobson/agents",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -580,8 +580,8 @@ window.META = {
     "documentation_url": "",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -607,8 +607,8 @@ window.META = {
     "documentation_url": "https://github.com/anthropics/skills",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -641,8 +641,8 @@ window.META = {
     "documentation_url": "",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -671,8 +671,8 @@ window.META = {
     "documentation_url": "https://github.com/stablyai/orca",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -705,8 +705,8 @@ window.META = {
     "documentation_url": "https://github.com/search?type=repositories&q=Hindsight",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -741,8 +741,8 @@ window.META = {
     "documentation_url": "https://github.com/Graphify-Labs/graphify",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -776,8 +776,8 @@ window.META = {
     "documentation_url": "https://github.com/Panniantong/Agent-Reach",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -810,8 +810,8 @@ window.META = {
     "documentation_url": "https://github.com/baidu/Unlimited-OCR",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -846,8 +846,8 @@ window.META = {
     "documentation_url": "https://github.com/hugohe3/ppt-master",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -880,8 +880,8 @@ window.META = {
     "documentation_url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -915,8 +915,8 @@ window.META = {
     "documentation_url": "https://github.com/tanviet12/vbsec",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -949,8 +949,8 @@ window.META = {
     "documentation_url": "https://github.com/cloudflare/security-audit-skill",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -986,8 +986,8 @@ window.META = {
     "documentation_url": "https://github.com/anthropics/defending-code-reference-harness",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1030,8 +1030,8 @@ window.META = {
     "documentation_url": "",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -1060,8 +1060,8 @@ window.META = {
     "documentation_url": "https://github.com/OWASP/www-project-agentic-skills-top-10",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1095,8 +1095,8 @@ window.META = {
     "documentation_url": "",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -1125,8 +1125,8 @@ window.META = {
     "documentation_url": "https://github.com/kenryu42/cc-safety-net",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1165,8 +1165,8 @@ window.META = {
     "documentation_url": "",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -1199,8 +1199,8 @@ window.META = {
     "documentation_url": "https://github.com/elementalsouls/Claude-BugHunter",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1237,8 +1237,8 @@ window.META = {
     "documentation_url": "https://github.com/SnailSploit/Claude-Red",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1269,8 +1269,8 @@ window.META = {
     "documentation_url": "https://github.com/search?type=repositories&q=Wardrobe",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1315,8 +1315,8 @@ window.META = {
     "documentation_url": "https://github.com/headroomlabs-ai/headroom",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1356,8 +1356,8 @@ window.META = {
     "documentation_url": "https://github.com/thedotmack/claude-mem",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1394,8 +1394,8 @@ window.META = {
     "documentation_url": "https://github.com/Tejashmakwana/motionmaxxing",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1430,8 +1430,8 @@ window.META = {
     "documentation_url": "https://github.com/caru-ini/stack-diagram",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1465,8 +1465,8 @@ window.META = {
     "documentation_url": "https://github.com/mromidev/claude-animated-shorts",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -1499,8 +1499,8 @@ window.META = {
     "documentation_url": "https://github.com/elvarofficial/teardown",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1543,8 +1543,8 @@ window.META = {
     "documentation_url": "https://github.com/benjitaylor/skills",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1577,8 +1577,8 @@ window.META = {
     "documentation_url": "https://github.com/haydenschmitty/floorplan",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1623,8 +1623,8 @@ window.META = {
     "documentation_url": "https://github.com/t3dotgg/tstack",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1665,8 +1665,8 @@ window.META = {
     "documentation_url": "https://github.com/Leonxlnx/earshot",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1711,8 +1711,8 @@ window.META = {
     "documentation_url": "https://github.com/JuneYaooo/rea-video",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1757,8 +1757,8 @@ window.META = {
     "documentation_url": "https://github.com/heydamir/unslop",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1799,8 +1799,8 @@ window.META = {
     "documentation_url": "https://github.com/patch-gg/pixelfx",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1836,8 +1836,8 @@ window.META = {
     "documentation_url": "https://github.com/WordPress/openverse",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1872,8 +1872,8 @@ window.META = {
     "documentation_url": "https://github.com/Clipwing/skills",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1917,8 +1917,8 @@ window.META = {
     "documentation_url": "https://github.com/workersio/breakscale",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -1963,8 +1963,8 @@ window.META = {
     "documentation_url": "https://github.com/ranahaani/i-hate-editing",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2009,8 +2009,8 @@ window.META = {
     "documentation_url": "https://github.com/0x4m4/hexstrike-ai",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2048,8 +2048,8 @@ window.META = {
     "documentation_url": "https://github.com/Jakeschincariol/founder-skill",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2097,8 +2097,8 @@ window.META = {
     "documentation_url": "https://github.com/makevoid/claude-make-an-anime",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2153,8 +2153,8 @@ window.META = {
     "documentation_url": "https://github.com/garrytan/gstack",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2195,8 +2195,8 @@ window.META = {
     "documentation_url": "https://github.com/Remocn/remocn",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2243,8 +2243,8 @@ window.META = {
     "documentation_url": "https://github.com/NVIDIA/SkillSpector",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2279,8 +2279,8 @@ window.META = {
     "documentation_url": "https://github.com/GoogleChrome/modern-web-guidance",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2323,8 +2323,8 @@ window.META = {
     "documentation_url": "https://github.com/google/elephant-goldfish-model",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2368,8 +2368,8 @@ window.META = {
     "documentation_url": "https://github.com/dansugc/reverse-engineer-marketing",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -2405,8 +2405,8 @@ window.META = {
     "documentation_url": "https://github.com/roryclear/clearcam",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -2443,8 +2443,8 @@ window.META = {
     "documentation_url": "https://github.com/m14r41/PentestingEverything",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2482,8 +2482,8 @@ window.META = {
     "documentation_url": "https://github.com/meta/astryx",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2518,8 +2518,8 @@ window.META = {
     "documentation_url": "https://github.com/donnemartin/system-design-primer",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2558,8 +2558,8 @@ window.META = {
     "documentation_url": "https://github.com/microsoft/VibeVoice",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2592,8 +2592,8 @@ window.META = {
     "documentation_url": "https://github.com/rohitg00/ai-engineering-from-scratch",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -2628,8 +2628,8 @@ window.META = {
     "documentation_url": "https://github.com/alan2207/bulletproof-react",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -2666,8 +2666,8 @@ window.META = {
     "documentation_url": "https://github.com/morluto/rea",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2707,8 +2707,8 @@ window.META = {
     "documentation_url": "https://github.com/sickn33/agentic-awesome-skills",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2747,8 +2747,8 @@ window.META = {
     "documentation_url": "https://github.com/initMAX/zabbix-mcp-server",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -2779,8 +2779,8 @@ window.META = {
     "documentation_url": "https://github.com/liquidslr/system-design-notes",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2813,8 +2813,8 @@ window.META = {
     "documentation_url": "https://github.com/tinyhumansai/openhuman",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2857,8 +2857,8 @@ window.META = {
     "documentation_url": "https://github.com/dotnet/skills",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2898,8 +2898,8 @@ window.META = {
     "documentation_url": "https://github.com/aspnetboilerplate/aspnetboilerplate",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -2933,8 +2933,8 @@ window.META = {
     "documentation_url": "https://github.com/frontend-joe/css-reels",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -2980,8 +2980,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3024,8 +3024,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3074,8 +3074,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3118,8 +3118,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3161,8 +3161,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3199,8 +3199,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3238,8 +3238,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3281,8 +3281,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3318,8 +3318,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3351,8 +3351,8 @@ window.META = {
     "documentation_url": "https://github.com/davila7/claude-code-templates",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "AI-written seed dataset",
       "columns": []
@@ -3389,8 +3389,8 @@ window.META = {
     "documentation_url": "https://github.com/upstash/context7",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -3430,8 +3430,8 @@ window.META = {
     "documentation_url": "https://github.com/modelcontextprotocol/servers",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -3485,8 +3485,8 @@ window.META = {
     "documentation_url": "https://github.com/kajisho5/ffmpeg-skill",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [
@@ -3532,8 +3532,8 @@ window.META = {
     "documentation_url": "https://github.com/ruelchristian/software-factory",
     "related_resources": [],
     "secondary_categories": [],
-    "verification_status": "Partially Verified",
-    "last_verified_at": "2026-11-27T07:40:00.000Z",
+    "verification_status": "Unverified",
+    "last_verified_at": "",
     "analysis_evidence": {
       "source": "legacy database columns",
       "columns": [

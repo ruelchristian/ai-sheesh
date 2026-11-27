@@ -320,7 +320,11 @@ async function init() {
     `);
   }
 
-  await pool.query(`DELETE FROM tools WHERE link IS NULL OR link = ''`);
+  await pool.query(`
+    UPDATE tools
+    SET link = 'https://github.com/search?type=repositories&q=' || regexp_replace(name, ' ', '%20', 'g')
+    WHERE link IS NULL OR link = ''
+  `);
   await pool.query(`ALTER TABLE tools ALTER COLUMN link SET NOT NULL`);
   await pool.query('ALTER TABLE tools ADD COLUMN IF NOT EXISTS meta_key TEXT');
 
@@ -349,7 +353,8 @@ async function init() {
     ADD COLUMN IF NOT EXISTS verification_status TEXT NOT NULL DEFAULT '',
     ADD COLUMN IF NOT EXISTS last_verified_at TIMESTAMPTZ,
     ADD COLUMN IF NOT EXISTS analysis_evidence JSONB NOT NULL DEFAULT '{}'::jsonb,
-    ADD COLUMN IF NOT EXISTS metadata_version INTEGER NOT NULL DEFAULT 0
+    ADD COLUMN IF NOT EXISTS metadata_version INTEGER NOT NULL DEFAULT 0,
+    ADD COLUMN IF NOT EXISTS verification_normalized INTEGER NOT NULL DEFAULT 0
   `);
 
   const meta = loadMeta();
@@ -384,18 +389,24 @@ async function init() {
   }
 
   const { rows: needsMetadata } = await pool.query(`
-    SELECT id, meta_key, name FROM tools WHERE metadata_version = 0
+    SELECT ${cols} FROM tools WHERE metadata_version = 0
   `);
 
   for (const row of needsMetadata) {
     const key = row.meta_key || row.name;
-    const values = discoveryValues(meta[key] || {});
+    const seedValues = meta[key] || {};
+    const current = discoveryFromRow(row);
+    const merged = Object.assign({}, current);
+
+    for (const field of DISCOVERY_KEYS) {
+      if (field === 'verification_status' || field === 'last_verified_at') continue;
+      if (isEmptyValue(current[field]) && !isEmptyValue(seedValues[field])) merged[field] = seedValues[field];
+    }
+
+    const values = discoveryValues(merged);
     const params = [...values, row.id];
     const assignments = Object.values(DISCOVERY_FIELDS)
-      .map((column, index) => {
-        if (column === 'description') return `description = CASE WHEN description = '' THEN $${index + 1} ELSE description END`;
-        return `${column} = $${index + 1}`;
-      })
+      .map((column, index) => `${column} = $${index + 1}`)
       .join(', ');
 
     await pool.query(`UPDATE tools SET ${assignments}, metadata_version = 1 WHERE id = $${params.length}`, params);
@@ -427,6 +438,26 @@ async function init() {
     throw error;
   } finally {
     client.release();
+  }
+
+  const { rows: needsVerificationFix } = await pool.query(`
+    SELECT id, verification_status, analysis_evidence FROM tools
+    WHERE verification_normalized = 0
+  `);
+
+  for (const row of needsVerificationFix) {
+    const source = row.analysis_evidence && row.analysis_evidence.source;
+    const seeded = source === 'legacy database columns' || source === 'AI-written seed dataset';
+
+    if (seeded && row.verification_status === 'Partially Verified') {
+      await pool.query(`
+        UPDATE tools
+        SET verification_status = 'Unverified', last_verified_at = NULL
+        WHERE id = $1
+      `, [row.id]);
+    }
+
+    await pool.query('UPDATE tools SET verification_normalized = 1 WHERE id = $1', [row.id]);
   }
 }
 

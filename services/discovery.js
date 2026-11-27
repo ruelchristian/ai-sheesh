@@ -146,10 +146,26 @@ function valuesFor(resource, field) {
   return list(resource.discovery[field]);
 }
 
+function containsPhrase(value, phrase) {
+  const lower = String(value || '').toLowerCase();
+  const needle = String(phrase || '').toLowerCase();
+
+  if (!needle) return false;
+
+  let index = lower.indexOf(needle);
+  while (index >= 0) {
+    const before = index === 0 ? '' : lower.charAt(index - 1);
+    const after = lower.charAt(index + needle.length);
+    if (!/[a-z0-9]/.test(before) && !/[a-z0-9]/.test(after)) return true;
+    index = lower.indexOf(needle, index + 1);
+  }
+
+  return false;
+}
+
 function phraseMatches(values, phrase, tokens) {
   return values.some((value) => {
-    const lower = value.toLowerCase();
-    if (lower.includes(phrase)) return true;
+    if (containsPhrase(value, phrase)) return true;
     const valueTokens = tokenize(value);
     return tokens.length > 0 && tokens.every((token) => valueTokens.includes(token));
   });
